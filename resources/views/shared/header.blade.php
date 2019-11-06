@@ -17,37 +17,33 @@
                         <li>
                             <a href="forums.html">Forum</a>
                         </li>
+                        
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-3">
+                    <ul class="social-icons">
                         @guest
                         <li>
-                            <a href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                            <b><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></b>
                         </li>
                         @else
                         <li>
-                            <a href="#" role="button">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                            <a href="{{ route('my_account')}}" role="button">
+                                <b>{{ __('My Profile') }} <span class="caret"></span></b>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                            <b><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
-                            </a>
+                            </a></b>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </li>
                         @endguest
-                    </ul>
-                </div>
-                <div class="col-md-4 col-sm-3">
-                    <ul class="social-icons">
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -60,7 +56,6 @@
                 <img src="images/logo.png" alt="">
                 <p>Newspaper &amp; Editorial HTML5 Magazine</p>
             </a>
-
             <div class="advertisement">
                 <a href="#"><img src="upload/addsense/620x80.jpg" alt=""></a>
             </div>

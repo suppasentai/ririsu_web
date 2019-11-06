@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.userapp')
 
-@section('title', 'Regis')
+@section('title', 'Edit Profile')
 
 @section('content')
 
@@ -13,7 +13,7 @@
                 <!-- register box -->
                 <div class="register-box">
                     <div class="title-section">
-                        <h1><span>{{ __('Register Form') }}</span></h1>
+                        <h1><span>{{ __('Edit Profile') }}</span></h1>
                     </div>
                     
                     <form id="register-form" method="POST" action="{{ route('register') }}">
@@ -21,6 +21,26 @@
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="first_name">{{ __('First Name') }}</label>
+                                    <input id="first_name" type="text" class="@error('frirst_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name">
+                                    @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="last_name">{{ __('Last Name') }}</label>
+                                    <input id="last_name" name="last_name" type="text" class="@error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" required autocomplete="last_name">
+                                    @error('last_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="email">{{ __('E-mail*') }}</label>
@@ -33,21 +53,19 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="name">{{ __('Username*') }}</label>
-                                <input id="name" name="name" type="text">
+                                <input id="name" name="name" type="text" class="@error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name">
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group ">
-                        <label for="password">{{ __('Password*') }}</label>
-                        <input id="password" name="password" type="password" class="@error('password') is-invalid @enderror" required autocomplete="new-password">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+
                         </div>
-                        <div class="form-group ">           
-                        <label for="password-confirm">{{ __('Confirm Password*') }}</label>
-                        <input id="password-confirm" name="password_confirmation" type="password"  required autocomplete="new-password">
+                        <div class="form-group ">          
+
                         </div>
                         <div class="user-thumbnail">
                             <input type="file" name="user-thumb" id="user-thumb">
