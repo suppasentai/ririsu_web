@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Grade;
 use App\Institution;
+use App\Release;
 
 class ReleaseController extends Controller
 {
@@ -21,7 +22,7 @@ class ReleaseController extends Controller
         $this->validate($request, [
             'title' => 'required',
         ]);
-        $article = new Article();
+        $article = new Release();
         $article->title = $request->title;
         $article->description = $request->description;
         $article->url_video = $request->url_video;
@@ -50,6 +51,6 @@ class ReleaseController extends Controller
         }
         $article->user_id = $request->user()->id;
         $article->save();
-        return redirect(route('searchArticlesByUser', ['user' => Auth::user()->id]))->with($strStatus, $strFlash);
+        return redirect(route('my_account'));
     }
 }
