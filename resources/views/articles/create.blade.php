@@ -1,7 +1,9 @@
 @extends('layouts.userapp')
 
 @section('head')
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    {{-- Summernote --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 @endsection
 
 @section('content')
@@ -14,7 +16,7 @@
                     <div class="panel-heading">Create new article</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="#" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="{{  route('articles.store') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group">
@@ -41,11 +43,10 @@
 
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description" class="col-md-4 control-label">Description</label>
-                                <input name="description" type="hidden">
-                                <div id="new_article_editor">
-                                        <p>Hello World!</p>
-                                        <p>Some initial <strong>bold</strong> text</p>
-                                        <p><br></p>
+                                <div class="col-md-6">
+                                    <textarea id="description" type="text" class="form-control" name="description">
+                                        {{ old('description') }}
+                                    </textarea>
 
                                     {{-- @if ($errors->has('description'))
                                         <span class="help-block">
@@ -165,55 +166,32 @@
 @endsection
 
 @section('foot')
-    <!-- Include the Quill library -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+    $('#description').summernote({
+    height: ($(window).height() - 300),
+    minHeight: null,             // set minimum height of editor
+    maxHeight: null,             // set maximum height of editor
+    focus: true                  // set focus to editable area after initializing summernote
+});
 
-    <!-- Initialize Quill editor -->
-    <script>
-    
-    var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-        ['blockquote', 'code-block'],
-
-        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-        [{ 'direction': 'rtl' }],                         // text direction
-
-        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        [{ 'font': [] }],
-        [{ 'align': [] }],
-
-        ['clean']                                         // remove formatting button
-    ];
-
-    var options = {
-        debug: 'info',
-        modules: {
-            toolbar: toolbarOptions
-        },
-        placeholder: 'Compose an epic...',
-        theme: 'snow'
-    };
-
-    var quill = new Quill('#new_article_editor', options);
-
-    var form = document.querySelector('form');
-        form.onsubmit = function() {
-        // Populate hidden form on submit
-        var description = document.querySelector('input[name=description]');
-        description.value = JSON.stringify(quill.getContents());
-        
-        console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-        
-        // No back end to actually submit to!
-        alert('Open the console to see the submit data!')
-        return false;
-    };
-
-    </script>
+// function uploadImage(image) {
+//     var data = new FormData();
+//     data.append("image", image);
+//     $.ajax({
+//         url: 'Your url to deal with your image',
+//         cache: false,
+//         contentType: false,
+//         processData: false,
+//         data: data,
+//         type: "post",
+//         success: function(url) {
+//             var image = $('<img>').attr('src', 'http://' + url);
+//             $('#summernote').summernote("insertNode", image[0]);
+//         },
+//         error: function(data) {
+//             console.log(data);
+//         }
+//     });
+// }
+  </script>
 @endsection
