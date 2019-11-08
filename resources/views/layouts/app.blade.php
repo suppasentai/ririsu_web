@@ -9,13 +9,7 @@
     <title>{{ config('app.name', 'Ririsu') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/modernmag-plugins.min.js') }}"></script>
-    <script src="{{ asset('js/popper.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/gmap3.min.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyCiqrIen8rWQrvJsu-7f4rOta0fmI5r2SI&amp;sensor=false&amp;language=en"></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -39,7 +33,22 @@
 
     </div>
     @include('shared.loginmodal')
+    <ul class="pagination-list">
+        <li><a href="#">Prev</a></li>
+        <li><a href="#" class="active">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">...</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
 
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/modernmag-plugins.min.js') }}"></script>
+    <script src="{{ asset('js/popper.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/gmap3.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     
 </body>
 </html>

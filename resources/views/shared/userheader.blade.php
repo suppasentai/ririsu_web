@@ -23,13 +23,13 @@
 					<h2><a class="text-white food" href="{{ route('my_account')}}">{{Auth::user()->name}}</a></h2>
 					<a href="#" class="close-menu"><i class="fa fa-window-close" aria-hidden="true"></i></a>
 					<ul class="vertical-menu">
-						<li class="droper"><a href="#">{{__("Account")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-							<ul class="level2">
-                                <li>
-                                    <a href="{{ route('my_account_edit')}}" role="button">
-                                        {{ __('My Release') }} <span class="caret"></span>
-                                    </a>
-                                </li>
+                        <li>
+                            <b><a href="{{ route('my_account')}}" role="button">
+                                {{ __('News') }} <span class="caret"></span>
+                            </a></b>
+                        </li>
+                        <li class="droper"><b><a href="#">{{__("Account")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
+							<ul class="level2 social-icons">
                                 <li>
                                     <a href="{{ route('my_account_edit')}}" role="button">
                                         {{ __('Edit Profile') }} <span class="caret"></span>
@@ -37,11 +37,16 @@
                                 </li>
 							</ul>
 						</li>
-						<li class="droper"><a href="#">{{__("Articles")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-							<ul class="level2">
+						<li class="droper"><b><a href="#">{{__("Articles")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
+							<ul class="level2 social-icons">
                                 <li>
                                     <a href="{{ route('articles.create')}}" role="button">
                                         {{ __('New Articles') }} <span class="caret"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('my_acticles')}}" role="button">
+                                        {{ __('My Articles') }} <span class="caret"></span>
                                     </a>
                                 </li>
 							</ul>

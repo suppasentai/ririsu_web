@@ -367,24 +367,24 @@
     focus: true                  // set focus to editable area after initializing summernote
 });
 
-// function uploadImage(image) {
-//     var data = new FormData();
-//     data.append("image", image);
-//     $.ajax({
-//         url: 'Your url to deal with your image',
-//         cache: false,
-//         contentType: false,
-//         processData: false,
-//         data: data,
-//         type: "post",
-//         success: function(url) {
-//             var image = $('<img>').attr('src', 'http://' + url);
-//             $('#summernote').summernote("insertNode", image[0]);
-//         },
-//         error: function(data) {
-//             console.log(data);
-//         }
-//     });
-// }
+function uploadImage(image) {
+    var data = new FormData();
+    data.append("image", image);
+    $.ajax({
+        url: 'Your url to deal with your image',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: data,
+        type: "post",
+        success: function(url) {
+            var image = $('<img>').attr('src', 'http://' + url);
+            $('#summernote').summernote("insertNode", image[0]);
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
+}
   </script>
 @endsection

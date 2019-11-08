@@ -5,22 +5,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Grade;
 use App\Institution;
+use App\Release;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $grades = Grade::all();
-        $institutions = Institution::all();
-        return view('my_account.index', ['user' => $user, 'grades' => $grades, 'institutions' => $institutions]);
+        $news = Release::orderBy('created_at', 'desc')->paginate(9);
+        return view('my_account.index', ['news' => $news]);
+        // return view('my_account.category7');
     }
 
-    public function articles(){
-        $user = Auth::user();
-        $grades = Grade::all();
-        $institutions = Institution::all();
-        return view('my_account.index', ['user' => $user, 'grades' => $grades, 'institutions' => $institutions]);
+    public function articles()
+    {
+        $articles = Release::where('user_id', '=', '1')->orderBy('created_at', 'desc')->paginate(2);
+        return view('my_account.my_articles', ['articles' => $articles]);
     }
 
     public function edit()

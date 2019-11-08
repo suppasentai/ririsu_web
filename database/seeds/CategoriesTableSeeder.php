@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $titles = ['Technology', 'Mobile', 'Application', 'Entertainment', 'Beauty', 'Fashion', 'Lifestyle', 'Business', 'Gourmet', 'Sports'];
+        $titles = ['Tech', 'Mobile', 'App', 'Entmt', 'Beauty', 'Fashion', 'Lifestyle', 'Business', 'Gourmet', 'Sports'];
         foreach ($titles as $key => $value) {
             DB::table('categories')->insert([
                 'title' => $value,
