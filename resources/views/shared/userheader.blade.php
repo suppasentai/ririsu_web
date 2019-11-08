@@ -8,32 +8,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <span class="navbar-brand live-time">{{Auth::user()->name}}</span>
+                    <span class="navbar-brand live-time">&nbsp;{{Auth::user()->name}}</span>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item drop-link">
-                                <a class="nav-link food" href="{{ route('my_account')}}">{{Auth::user()->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="dropdown">
-                                <li>
-                                    <a href="{{ route('my_account_edit')}}" role="button">
-                                        <b>{{ __('Edit Profile') }} <span class="caret"></span></b>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('my_account_edit')}}" role="button">
-                                        <b>{{ __('Edit Profile') }} <span class="caret"></span></b>
-                                    </a>
-                                </li>
-                                <li>
-                                    <b><a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a></b>
-        
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </li>
+                                <img src="/images/logoreal6.png" alt="">
                             </ul>
                         </li>
                     </ul>

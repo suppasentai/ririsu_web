@@ -32,14 +32,11 @@
 </head>
 <body>
     <div id="userapp">
-
         @include('shared.userheader')
 
         <main class="py-4">
             @yield('content')
         </main>
-
-        @include('shared.footer')
     </div>
     
     @yield('foot')

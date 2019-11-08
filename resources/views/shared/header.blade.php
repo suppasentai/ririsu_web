@@ -53,7 +53,7 @@
     <div class="header-banner-place">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="">
+                <img src="images/logoreal6.png" alt="">
                 <p>Newspaper &amp; Editorial HTML5 Magazine</p>
             </a>
             <div class="advertisement">
