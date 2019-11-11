@@ -7,6 +7,7 @@ use App\Category;
 use App\Grade;
 use App\Institution;
 use App\Release;
+use Illuminate\Support\Facades\Storage;
 
 class ReleaseController extends Controller
 {
@@ -40,8 +41,8 @@ class ReleaseController extends Controller
         if ($img != null) {
             if ($img->getError() == 0) {
                 $file_route = time() . '_' . $img->getClientOriginalName();
-                Storage::disk('imagesArticles')->put($file_route, \File::get($img));
-                $article->image = $file_route;
+                Storage::disk('s3')->put($file_route, \File::get($img));
+                $article->image = Storage::disk('s3')->url($file_route);
             } elseif($img->getError() == 1) {
                 $strFlash = $img->getErrorMessage();
                 $strStatus = 'warning';
