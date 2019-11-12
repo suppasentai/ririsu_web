@@ -20,6 +20,7 @@ class CreateReleasesTable extends Migration
             $table->text('image')->nullable();
             $table->text('url_video')->nullable();
             $table->date('date')->nullable();
+            $table->integer('page_views')->default(0);
             $table->boolean('active');
             $table->integer('user_id')->index();
             $table->string('category_ref')->nullable();

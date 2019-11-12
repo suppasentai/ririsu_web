@@ -7,13 +7,14 @@ use App\Grade;
 use App\Institution;
 use App\Release;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
+
     public function index()
     {
         $news = Release::orderBy('created_at', 'desc')->paginate(9);
+        $featured_news = Release::orderBy('created_at', 'desc')->paginate(5);
         return view('my_account.index', ['news' => $news]);
         // return view('my_account.category7');
     }

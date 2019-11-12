@@ -18,9 +18,7 @@
 								</div>
 	
 								<div class="iso-call">
-									@foreach ($news as $new)
-										@include('my_account.masonrynew')
-									@endforeach
+									@each('my_account.masonrynew', $news, 'new')
 								</div>
 	
 								<div class="center-button">
