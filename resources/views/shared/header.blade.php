@@ -6,16 +6,13 @@
                 <div class="col-md-8 col-sm-9">
                     <ul class="info-list">
                         <li>
-                            <span class="live-time"><i class="fa fa-calendar-o"></i>10 Jannuary 2017</span>
+                        <span class="live-time"><i class="fa fa-calendar-o"></i>{{Carbon\Carbon::now()->isoFormat('dddd, MMMM Do YYYY')}}</span>
                         </li>
                         <li>
-                            <a href="about.html">About Us</a>
+                            <a href="about.html">{{__("About Us")}}</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="forums.html">Forum</a>
+                            <a href="contact.html">{{__("Contact Us")}}</a>
                         </li>
                         
                     </ul>

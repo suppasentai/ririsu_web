@@ -22,13 +22,10 @@
 				<div class="vertical-box">
 					<h2><a class="text-white food" href="{{ route('my_account')}}">{{Auth::user()->name}}</a></h2>
 					<a href="#" class="close-menu"><i class="fa fa-window-close" aria-hidden="true"></i></a>
-					<ul class="vertical-menu">
-                        <li>
-                            <b><a href="{{ route('my_account')}}" role="button">
-                                {{ __('News') }} <span class="caret"></span>
-                            </a></b>
-                        </li>
-                        <li class="droper"><b><a href="#">{{__("Account")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
+					<ul class="vertical-menu social-icons">
+                        
+                        
+                        <li class="droper"><b><a href="#">{{__("Account Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
 							<ul class="level2 social-icons">
                                 <li>
                                     <a href="{{ route('my_account_edit')}}" role="button">
@@ -36,8 +33,9 @@
                                     </a>
                                 </li>
 							</ul>
-						</li>
-						<li class="droper"><b><a href="#">{{__("Articles")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
+                        </li>
+                        
+						<li class="droper"><b><a href="#">{{__("Articles Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
 							<ul class="level2 social-icons">
                                 <li>
                                     <a href="{{ route('articles.create')}}" role="button">
@@ -51,6 +49,13 @@
                                 </li>
 							</ul>
                         </li>
+
+                        <li>
+                            <b><a href="{{ route('my_account')}}">
+                                {{ __('News') }}
+                            </a></b>
+                        </li>
+                        
                         <li>
                             <b><a href="{{ route('home')}}" role="button">
                                 {{ __('Back to Homepage') }} <span class="caret"></span>

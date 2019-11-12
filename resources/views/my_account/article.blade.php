@@ -12,8 +12,8 @@
             <h2><a href="#">{{ $article->title }}</a></h2>
             <ul class="post-tags">
                 <li><i class="lnr lnr-user"></i>{{__("by")}} <a href="#">{{$article->user->first_name}}</a></li>
-                {{-- <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li> --}}
-                {{-- <li><i class="lnr lnr-eye"></i>872 Views</li> --}}
+                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                <li><i class="lnr lnr-eye"></i>872 Views</li>
             </ul>
             <p>{!! \Illuminate\Support\Str::words(strip_tags($article->description), 50, '...') !!}</p>
         </div>

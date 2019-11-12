@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'StaticController@home');
-Route::get('/about', 'StaticController@about');
+Route::get('/', 'HomeController@index');
+Route::get('/about', 'HomeController@about');
 
 Auth::routes();
 
