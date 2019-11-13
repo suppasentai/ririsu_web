@@ -19,4 +19,9 @@ class Release extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'release_tag', 'release_id', 'tag_id');
+    }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,7 +13,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        $admin = Role::where('slug', 'editor')->first();
+        $user1 = User::create([
             'name' => Str::random(10),
             'first_name' => 'Frodo',
             'last_name' => 'Baggins',
@@ -24,5 +27,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'sonduc2210@gmail.com',
             'password' => bcrypt('secret'),
         ]);
+        $user1->roles()->attach($admin);
     }
 }
