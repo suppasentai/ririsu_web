@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Enums\ReleaseStatus;
 
 class CreateReleasesTable extends Migration
 {
@@ -21,7 +22,7 @@ class CreateReleasesTable extends Migration
             $table->text('url_video')->nullable();
             $table->date('date')->nullable();
             $table->integer('page_views')->default(0);
-            $table->boolean('active');
+            $table->tinyInteger('status')->unsigned()->default(ReleaseStatus::Pending);
             $table->integer('user_id')->index();
             $table->string('category_ref')->nullable();
             $table->string('grade_ref')->nullable();

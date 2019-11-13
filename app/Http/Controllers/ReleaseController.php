@@ -7,6 +7,7 @@ use App\Category;
 use App\Grade;
 use App\Institution;
 use App\Release;
+use App\Enums\ReleaseStatus;
 use Illuminate\Support\Facades\Storage;
 
 class ReleaseController extends Controller
@@ -31,9 +32,9 @@ class ReleaseController extends Controller
         $article->grade_ref = $request->grade_ref;
         $article->institution_ref = $request->institution_ref;
         if($request->user()->role != "ADMIN"){
-            $article->active = false;
+            $article->status = ReleaseStatus::Pending;
         }else{
-            $article->active = true;
+            $article->status = true;
         }
         $img = $request->file('image');
         $strFlash = 'Article Created';

@@ -1,5 +1,4 @@
-<header class="clearfix">
-
+<header class="clearfix style-3">
     <div class="top-line">
         <div class="container">
             <div class="row">
@@ -46,34 +45,26 @@
             </div>
         </div>
     </div>
-
-    <div class="header-banner-place">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logoreal6.png" alt="">
-                <p>Newspaper &amp; Editorial HTML5 Magazine</p>
-            </a>
-            <div class="advertisement">
-                <a href="#"><img src="upload/addsense/620x80.jpg" alt=""></a>
-            </div>
-        </div>
-    </div>
-
+        
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <a href="index.html">
+                <img src="images/logoreal.resized.png" alt="">
+                <p>Newspaper &amp; Editorial Magazine</p>
+            </a>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link features" href="#">Features <i class="fa fa-angle-down"
-                                aria-hidden="true"></i></a>
+                        <a class="nav-link features" href="#">Features <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="megamenu">
                             <div class="row">
                                 <div class="col-lg-3">
@@ -152,8 +143,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -168,8 +158,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -184,8 +173,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -200,8 +188,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -232,8 +219,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -248,8 +234,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -264,8 +249,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -280,8 +264,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -305,8 +288,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -321,8 +303,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -337,8 +318,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -353,8 +333,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -366,14 +345,12 @@
                         <a class="nav-link fashion" href="#">Fashion</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link travel" href="#">Travel <i class="fa fa-angle-down"
-                                aria-hidden="true"></i></a>
+                        <a class="nav-link travel" href="#">Travel <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item drop-link">
                         <a class="nav-link food" href="#">Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <ul class="dropdown">
-                            <li><a href="forums.html">Forum Pages <i class="fa fa-angle-right"
-                                        aria-hidden="true"></i></a>
+                            <li><a href="forums.html">Forum Pages <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                 <ul class="dropdown level2">
                                     <li><a href="forums.html">Forum</a></li>
                                     <li><a href="forums-category.html">Topics</a></li>
@@ -394,12 +371,9 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search for..." aria-label="Search">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                </form>
             </div>
         </div>
     </nav>
+
 </header>
 <!-- End Header -->

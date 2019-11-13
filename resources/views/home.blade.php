@@ -142,7 +142,6 @@
     
                     <div class="row">
                         <div class="col-lg-8">
-                            
                             <!-- Posts-block -->
                             <div class="posts-block standard-box">
                                 <div class="title-section">
@@ -758,7 +757,7 @@
                                 </div>
     
                                 <div class="widget tags-widget">
-                                    <h1>Tags</h1>
+                                    <h1>{{__('Tags')}}</h1>
                                     <ul class="tags-list">
                                         <li><a href="#">Food</a></li>
                                         <li><a href="#">Sport</a></li>

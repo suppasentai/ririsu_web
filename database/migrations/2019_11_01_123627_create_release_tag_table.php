@@ -14,8 +14,18 @@ class CreateReleaseTagTable extends Migration
     public function up()
     {
         Schema::create('release_tag', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedBigInteger('release_id');
+            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
+            $table->unique(['release_id','tag_id']);
+            $table->foreign('release_id')
+                ->references('id')
+                ->on('releases')
+                ->onDelete('cascade');
+            $table->foreign('tag_id')
+                ->references('id')
+                ->on('tags')
+                ->onDelete('cascade');
         });
     }
 
