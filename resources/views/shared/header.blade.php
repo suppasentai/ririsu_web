@@ -54,7 +54,7 @@
             </button>
 
             <a href="index.html">
-                <img src="images/logoreal.resized.png" alt="">
+                <img src="/images/logoreal.resized.png" alt="">
                 <p>Newspaper &amp; Editorial Magazine</p>
             </a>
 

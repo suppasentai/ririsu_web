@@ -16,6 +16,8 @@ Route::get('/about', 'HomeController@about');
 
 Auth::routes();
 
+Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseController@show']);
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
     Route::get('my_account', 'AccountController@index')->name('my_account');
