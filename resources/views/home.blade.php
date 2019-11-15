@@ -139,9 +139,9 @@
                 ================================================== -->
             <section id="content-section">
                 <div class="container">
-    
                     <div class="row">
                         <div class="col-lg-8">
+                            @if($top_news->isEmpty())
                             <!-- Posts-block -->
                             <div class="posts-block standard-box">
                                 <div class="title-section">
@@ -197,6 +197,7 @@
                                 
                             </div>
                             <!-- End Posts-block -->
+                            @endif
     
                             <!-- Advertisement -->
                             <div class="advertisement">

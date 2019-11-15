@@ -1,4 +1,4 @@
-<header class="clearfix style-3">
+<header class="clearfix style-4">
     <div class="top-line">
         <div class="container">
             <div class="row">

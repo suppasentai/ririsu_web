@@ -18,9 +18,6 @@
                     
                     <form id="register-form" method="POST" action="{{ route('register') }}">
                         @csrf
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="first_name">{{ __('First Name') }}</label>
@@ -41,24 +38,41 @@
                                     @enderror
                                 </div>
                             </div>
-                        <div class="form-group row">
+                        <div class="form-group row {{ $errors->has('grade_ref') ? ' has-error' : '' }}">
                             <div class="col-md-6">
-                                <label for="email">{{ __('E-mail*') }}</label>
-                                <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <label for="grade" class="control-label">{{__('Grade')}}</label>
+                                <select class="form-control" id="grade" name="grade">
+                                    @foreach( $grades as $grade )
+                                        @if($grade->title == Auth::user()->grade)
+                                            <option value="{{ $grade->title }}" selected>{{ $grade->title }}</option>
+                                        @else
+                                            <option value="{{ $grade->title }}">{{ $grade->title }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('grade_ref'))
+                                <span class="help-block">
+                                <strong>{{ $errors->first('grade_ref') }}</strong>
                                 </span>
-                                @enderror
+                            @endif
                             </div>
-                            <div class="col-md-6">
-                                <label for="name">{{ __('Username*') }}</label>
-                                <input id="name" name="name" type="text" class="@error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name">
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                            <div class="col-md-6 {{ $errors->has('institution_ref') ? ' has-error' : '' }}">
+                                <label for="institution_ref" class="control-label">Institution</label>
+                                <select class="form-control" id="institution_ref" name="institution_ref">
+                                    @foreach( $institutions as $institution )
+                                        @if($institution->title == Auth::user()->institution_ref)
+                                            <option value="{{ $institution->title }}" selected>{{ $institution->title }}</option>
+                                        @else
+                                            <option value="{{ $institution->title }}">{{ $institution->title }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+    
+                                @if ($errors->has('institution_ref'))
+                                    <span class="help-block">
+                                    <strong>{{ $errors->first('institution_ref') }}</strong>
                                 </span>
-                                @enderror
+                                @endif
                             </div>
                         </div>
                         <div class="form-group ">
@@ -76,7 +90,7 @@
                         </div>
                         <div class="form-group">
                         <button type="submit" id="submit-register2">
-                            <i class="fa fa-paper-plane"></i> {{ __('Sign Up') }}
+                            <i class="fa fa-paper-plane"></i> {{ __('Update') }}
                         </button>
                         </div>
                     </form>

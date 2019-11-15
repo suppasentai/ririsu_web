@@ -1,21 +1,20 @@
-<div class="news-post article-post">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="post-image">
-                    <a href="{{ route('releases.show', ['$id' => $release->id])}}">
-                        <img src="{{ $article->image }}" alt="">
-                    </a>
-                <a class="category category-tech" href="#">{{ $article->category_ref }}</a>
+<div class="author-profile m-0">
+    <div class="author-box">
+        <div class="news-post large-post m-0">
+            <img alt="" src="{{$article->image}}">
+            <div class="author-content">
+                <h5><a class="text-dark" href="{{ route('releases.show', ['$id' => $article->id])}}">{{ $article->title }}</a></h5>
+                <ul class="post-tags">
+                    <li><a href="#"><i class="lnr lnr-user"></i> {{__("Author:")}} <span>{{$article->user->first_name}}</span></a></li>
+                    <li><a href="#"><i class="lnr lnr-book"></i><span>{{$article->updated_at}}</span></a></li>
+                    <li class="badge badge-success text-white">{{$article->category_ref}}</li>
+                </ul>
+                <ul class="post-tags">
+                    <li>Tags: <span class="badge badge-secondary text-white">{{$article->category_ref}}</span></li>
+                </ul>
+                    <a class="read-more" href="single-post.html">Edit <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a class="read-more bg-danger" href="single-post.html">Delete <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             </div>
-        </div>
-        <div class="col-sm-8">
-            <h2><a href="#">{{ $article->title }}</a></h2>
-            <ul class="post-tags">
-                <li><i class="lnr lnr-user"></i>{{__("by")}} <a href="#">{{$article->user->first_name}}</a></li>
-                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                <li><i class="lnr lnr-eye"></i>872 Views</li>
-            </ul>
-            <p>{!! \Illuminate\Support\Str::words(strip_tags($article->description), 50, '...') !!}</p>
         </div>
     </div>
 </div>

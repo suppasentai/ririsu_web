@@ -25,6 +25,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('update_my_account', 'AccountController@edit')->name('my_account_edit');
     Route::post('update_my_account', 'AccountController@update')->name('my_account_update');
 
+    Route::resource('categories', 'CategoryController');
+    ROute::resource('instutions', 'InstitutionController');
+
     Route::resource('articles', 'ReleaseController');
 });
 Route::get('/home', 'HomeController@index')->name('home');

@@ -18,8 +18,9 @@ class ReleasesTableSeeder extends Seeder
 
         $release1 = Release::create([
             'title' => 'test', 
-            'user_id' => '1',
-            'slug' => uniqid()
+            'slug' => uniqid(),
+            'category_ref' =>  'Tech',
+            'user_id' =>  '1'
         ]);
         $release1->tags()->attach($admin);
     }

@@ -25,8 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     @yield('head')
 </head>
-<body>
-    <div id="userapp">
+<body class="boxed-style">
+    <div id="container">
         @include('shared.userheader')
 
         <main class="py-4">
