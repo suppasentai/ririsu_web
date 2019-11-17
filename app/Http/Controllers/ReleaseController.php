@@ -36,6 +36,7 @@ class ReleaseController extends Controller
         $article->category_ref = $request->category_ref;
         $article->grade_ref = $request->grade_ref;
         $article->institution_ref = $request->institution_ref;
+        $article->slug = uniqid();
         if($request->user()->role != "ADMIN"){
             $article->status = ReleaseStatus::Pending;
         }else{

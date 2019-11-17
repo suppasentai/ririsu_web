@@ -63,7 +63,7 @@
                                     </span>
                                 @enderror
                             </div> <!-- form-group// --> 
-                            <div class="ml-4 form-group">
+                            <div class="form-group">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label  for="remember">
                                     {{ __('Remember Me') }}

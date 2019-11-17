@@ -21,7 +21,7 @@ class AccountController extends Controller
 
     public function articles()
     {
-        $articles = Release::where('user_id', '=', '1')->orderBy('created_at', 'desc')->paginate(2);
+        $articles = Auth::user()->releases;
         return view('my_account.my_articles', ['articles' => $articles]);
     }
 
@@ -30,7 +30,7 @@ class AccountController extends Controller
         $user = Auth::user();
         $grades = Grade::all();
         $institutions = Institution::all();
-        return view('my_account.edit', ['user' => $user, 'grades' => $grades, 'institutions' => $institutions]);
+        return view('my_account.index', ['user' => $user, 'grades' => $grades, 'institutions' => $institutions]);
     }
 
     public function update(Request $request)

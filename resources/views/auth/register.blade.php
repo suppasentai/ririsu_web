@@ -18,9 +18,6 @@
                     
                     <form id="register-form" method="POST" action="{{ route('register') }}">
                         @csrf
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="email">{{ __('E-mail*') }}</label>
@@ -48,13 +45,6 @@
                         <div class="form-group ">           
                         <label for="password-confirm">{{ __('Confirm Password*') }}</label>
                         <input id="password-confirm" name="password_confirmation" type="password"  required autocomplete="new-password">
-                        </div>
-                        <div class="user-thumbnail">
-                            <input type="file" name="user-thumb" id="user-thumb">
-                            <span>Upload your Image</span>
-                            <div class="thumb-holder">
-                                <span>100x100</span>
-                            </div>
                         </div>
                         <div class="form-group">
                         <button type="submit" id="submit-register2">

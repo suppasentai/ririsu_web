@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
         $admin = Role::where('slug', 'editor')->first();
         $user1 = User::create([
             'name' => Str::random(10),
+            'slug' => uniqid(),
             'first_name' => 'Frodo',
             'last_name' => 'Baggins',
             'grade' => '5th grade',
