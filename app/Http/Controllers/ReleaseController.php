@@ -28,10 +28,14 @@ class ReleaseController extends Controller
     public function store(Request $request){
         $this->validate($request, [
             'title' => 'required',
+            'description' => 'required',
+            'category_ref' => 'required',
+            'grade_ref' => 'required',
+            'institution_ref' => 'required'
         ]);
         $article = new Release();
         $article->title = $request->title;
-        $article->description = $request->description;
+        
         $article->url_video = $request->url_video;
         $article->category_ref = $request->category_ref;
         $article->grade_ref = $request->grade_ref;
@@ -42,14 +46,35 @@ class ReleaseController extends Controller
         }else{
             $article->status = true;
         }
+
+        //image in desc upload
+        $desc = $request->input('description');
+        $dom = new \DomDocument();
+        $dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $images = $dom->getElementsByTagName('img');
+        foreach($images as $k => $img){
+            $data = $img->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            $image_name= "/desc/" . time().$k.'.png';
+            Storage::disk('s3')->put($image_name, $data);
+            $img->removeAttribute('src');
+            $img->setAttribute('src', Storage::disk('s3')->url($image_name));
+        }
+
+        $desc = $dom->saveHTML();
+        $article->description = $desc;
+
+        //thumbnail upload
         $img = $request->file('image');
         $strFlash = 'Article Created';
         $strStatus = 'success';
         if ($img != null) {
             if ($img->getError() == 0) {
-                $file_route = time() . '_' . $img->getClientOriginalName();
-                Storage::disk('s3')->put($file_route, \File::get($img));
-                $article->image = Storage::disk('s3')->url($file_route);
+                $file_name = time() . '_' . $img->getClientOriginalName();
+                Storage::disk('s3')->put($file_name, \File::get($img));
+                $article->image = Storage::disk('s3')->url($file_name);
             } elseif($img->getError() == 1) {
                 $strFlash = $img->getErrorMessage();
                 $strStatus = 'warning';

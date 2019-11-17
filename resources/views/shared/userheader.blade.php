@@ -363,6 +363,11 @@
                                     {{ __('Edit Profile') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('password_edit')}}" role="button">
+                                    {{ __('Change Password') }} <span class="caret"></span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     
