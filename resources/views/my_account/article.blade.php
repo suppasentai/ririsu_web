@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="post-image">
-                    <a href="#">
+                    <a href="{{ route('releases.show', ['$id' => $release->id])}}">
                         <img src="{{ $article->image }}" alt="">
                     </a>
                 <a class="category category-tech" href="#">{{ $article->category_ref }}</a>

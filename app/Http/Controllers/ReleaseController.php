@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ReleaseController extends Controller
 {
+    public function show($slug){
+        $release = Release::where('slug', '=', $slug)->first();
+        return view('ririsu.show', ['release' => $release]);
+    }
+
     public function create()
     {
         $categories = Category::all();

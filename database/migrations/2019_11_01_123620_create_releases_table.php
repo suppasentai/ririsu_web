@@ -17,7 +17,8 @@ class CreateReleasesTable extends Migration
         Schema::create('releases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('slug')->unique();
             $table->text('image')->nullable();
             $table->text('url_video')->nullable();
             $table->date('date')->nullable();
