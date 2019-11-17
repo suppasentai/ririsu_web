@@ -1,6 +1,6 @@
 @extends('layouts.userapp')
 
-@section('title', 'Edit Profile')
+@section('title', 'Edit Password')
 
 @section('content')
 
@@ -15,19 +15,51 @@
                     </div>
                 @endif
 
-                @if (session('warning'))
+                @if (session('error'))
                     <div class="alert alert-warning">
-                            <p>{{ session('warning') }}</p>
+                            <p>{{ session('error') }}</p>
                     </div>
                 @endif
+
+
 
                 <!-- register box -->
                 <div class="register-box">
                     <div class="title-section">
-                        <h1><span>{{ __('Edit Profile') }}</span></h1>
+                        <h1><span>{{ __('Update Password') }}</span></h1>
                     </div>
+                    <form class="register-form" method="POST" action="{{ route('password_update') }}">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="old_password" class="col-md-2 col-form-label">{{ __('Current password') }}</label>
+                            <div class="col-md-6">
+                                <input id="old_password" name="old_password" type="password" class="form-control" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="new_password" class="col-md-2 col-form-label">{{ __('New password') }}</label>
+                            <div class="col-md-6">
+                                <input id="new_password" name="new_password" type="password" class="form-control" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password_confirm" class="col-md-2 col-form-label">{{ __('Confirm password') }}</label>
                     
-                    <form id="register-form" method="POST" enctype="multipart/form-data" action="{{ route('my_account_update') }}">
+                            <div class="col-md-6">
+                                <input id="password_confirm" name="password_confirm" type="password" class="form-control" required
+                                       autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group login-row row mb-0">
+                            <div class="col-md-8 offset-md-2">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Submit') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    {{-- <form id="register-form" method="POST" action="{{ route('password_update') }}">
                         @csrf
                         <div class="form-group row">
                             <div class="col-md-6">
@@ -135,7 +167,7 @@
                             <i class="fa fa-paper-plane"></i> {{ __('Update') }}
                         </button>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
                 <!-- End register box -->
 
@@ -539,34 +571,4 @@
     </div>
 </section>
 @endsection
-{{-- 
-@section('foot')
-    <script>
-        $(document).ready(function(){
-    
-        $('#country_name').keyup(function(){ //bắt sự kiện keyup khi người dùng gõ từ khóa tim kiếm
-        var query = $(this).val(); //lấy gía trị ng dùng gõ
-        if(query != '') //kiểm tra khác rỗng thì thực hiện đoạn lệnh bên dưới
-        {
-        var _token = $('input[name="_token"]').val(); // token để mã hóa dữ liệu
-        $.ajax({
-            url:"{{ route('search') }}", // đường dẫn khi gửi dữ liệu đi 'search' là tên route mình đặt bạn mở route lên xem là hiểu nó là cái j.
-            method:"POST", // phương thức gửi dữ liệu.
-            data:{query:query, _token:_token},
-            success:function(data){ //dữ liệu nhận về
-            $('#countryList').fadeIn();  
-            $('#countryList').html(data); //nhận dữ liệu dạng html và gán vào cặp thẻ có id là countryList
-        }
-        });
-        }
-    });
-    
-        $(document).on('click', 'li', function(){  
-        $('#country_name').val($(this).text());  
-        $('#countryList').fadeOut();  
-        });  
-    
-    });
-    </script>
-@endsection --}}
 
