@@ -363,6 +363,11 @@
                                     {{ __('Edit Profile') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('password_edit')}}" role="button">
+                                    {{ __('Change Password') }} <span class="caret"></span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     
@@ -376,6 +381,11 @@
                             <li>
                                 <a href="{{ route('my_acticles')}}" role="button">
                                     {{ __('My Articles') }} <span class="caret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('articlesFormStatus')}}" role="button">
+                                    {{ __('Enable/Disable Articles') }} <span class="caret"></span>
                                 </a>
                             </li>
                         </ul>

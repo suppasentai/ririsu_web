@@ -24,9 +24,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('my_articles', 'AccountController@articles')->name('my_acticles');
     Route::get('update_my_account', 'AccountController@edit')->name('my_account_edit');
     Route::post('update_my_account', 'AccountController@update')->name('my_account_update');
+    Route::get('update_password', 'AccountController@editPassword')->name('password_edit');
+    Route::post('update_password', 'AccountController@updatePassword')->name('password_update');
 
     Route::resource('categories', 'CategoryController');
     ROute::resource('instutions', 'InstitutionController');
+
+    Route::get('articles_form_status', 'DashboardController@articlesFormStatus')->name('articlesFormStatus');
+    Route::post('articlesChangeStatus/{article}', 'DashboardController@articlesChangeStatus')->name('articlesChangeStatus');
 
     Route::resource('articles', 'ReleaseController');
 });

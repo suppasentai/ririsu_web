@@ -12,6 +12,6 @@ use BenSampo\Enum\Enum;
 final class ReleaseStatus extends Enum
 {
     const Pending =   0;
-    const Active =   1;
+    const Editing =   1;
     const Released = 2;
 }

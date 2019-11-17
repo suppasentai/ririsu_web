@@ -67,12 +67,12 @@
           </div>
           {{-- End Right Panel --}}
           <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Create Article</h4>
+            <h4 class="mb-3">{{__('Create Article')}}</h4>
             <form class="form-horizontal" role="form" method="POST" action="{{  route('articles.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                     <div class="form-group">
-                        <label for="image">Image</label>
+                        <label for="image">{{__('Image')}}</label>
                         <input id="image" type="file" class="form-control" name="image" accept="image/*">
                     </div>
 
@@ -107,7 +107,7 @@
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label for="description" class="control-label">Description</label>
                         <div>
-                            <textarea id="description1" type="text" class="form-control" name="description">
+                            <textarea id="description" type="text" class="form-control" name="description">
                                 {{ old('description') }}
                             </textarea>
 
@@ -203,31 +203,11 @@
 
 @section('foot')
 <script>
-    $('#description1').summernote({
+    $('#description').summernote({
     height: ($(window).height() - 300),
     minHeight: null,             // set minimum height of editor
     maxHeight: null,             // set maximum height of editor
     focus: true                  // set focus to editable area after initializing summernote
 });
-
-function uploadImage(image) {
-    var data = new FormData();
-    data.append("image", image);
-    $.ajax({
-        url: 'Your url to deal with your image',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: data,
-        type: "post",
-        success: function(url) {
-            var image = $('<img>').attr('src', 'http://' + url);
-            $('#summernote').summernote("insertNode", image[0]);
-        },
-        error: function(data) {
-            console.log(data);
-        }
-    });
-}
   </script>
 @endsection
