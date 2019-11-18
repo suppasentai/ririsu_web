@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
             'slug' => uniqid(),
             'first_name' => 'Frodo',
             'last_name' => 'Baggins',
-            'grade' => '5th grade',
             'institution_ref' => 'Central',
             'image' => NULL,
             'identification_document' => 1193373386,
@@ -29,5 +28,21 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('secret'),
         ]);
         $user1->roles()->attach($admin);
+
+        $author = Role::where('slug', 'journalist')->first();
+        $user2 = User::create([
+            'name' => Str::random(10),
+            'slug' => uniqid(),
+            'first_name' => 'Samwise',
+            'last_name' => 'Gamgee',
+            'institution_ref' => 'Central',
+            'image' => NULL,
+            'identification_document' => 1193373387,
+            'telephone' => 3194995423,
+            'address' => 'Calle 12 # 13 - 31 Belén, La Unión, Valle del Cauca, Colombia',
+            'email' => 'caoduc2210@gmail.com',
+            'password' => bcrypt('secret'),
+        ]);
+        $user2->roles()->attach($author);
     }
 }

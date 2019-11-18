@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->roles()->where('slug', $roleSlug)->count() == 1;
     }
+
+    public function institution()
+    {
+        return $this->hasOne(Institution::class);
+    }
 }

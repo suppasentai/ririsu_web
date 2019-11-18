@@ -13,5 +13,5 @@ final class ReleaseStatus extends Enum
 {
     const Pending =   0;
     const Editing =   1;
-    const Released = 2;
+    const Published = 2;
 }

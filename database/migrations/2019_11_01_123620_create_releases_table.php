@@ -30,6 +30,7 @@ class CreateReleasesTable extends Migration
             $table->timestamps();
 
             $table->integer('user_id')->index();
+            $table->integer('institution_id')->index();
         });
     }
 

@@ -1,46 +1,46 @@
-<div class="top-line">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-9">
-                <ul class="info-list social-icons text-left">
-                    <li><a href="{{route("home")}}"><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Homepage</i></a>
-                    </li>
-                    <li>
-                    <span class="live-time"><i class="fa fa-calendar-o"></i>{{Carbon\Carbon::now()->isoFormat('dddd, MMMM Do YYYY')}}</span>
-                    </li>
-                    
-                </ul>
-            </div>
-            <div class="col-md-4 col-sm-3">
-                <ul class="social-icons">
-                    @guest
-                    <li>
-                        <b><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></b>
-                    </li>
-                    @else
-                    <li>
-                        <a href="{{ route('my_account')}}" role="button">
-                            <b>{{ __('My Profile') }} <span class="caret"></span></b>
-                        </a>
-                    </li>
-                    <li>
-                        <b><a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a></b>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                    @endguest
-                </ul>
+<header class="clearfix">  
+    <div class="top-line">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-9">
+                    <ul class="info-list social-icons text-left">
+                        <li><a href="{{route("home")}}"><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Homepage</i></a>
+                        </li>
+                        <li>
+                        <span class="live-time"><i class="fa fa-calendar-o"></i>{{Carbon\Carbon::now()->isoFormat('dddd, MMMM Do YYYY')}}</span>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-3">
+                    <ul class="social-icons">
+                        @guest
+                        <li>
+                            <b><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></b>
+                        </li>
+                        @else
+                        <li>
+                            <a href="{{ route('my_account')}}" role="button">
+                                <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                            </a>
+                        </li>
+                        <li>
+                            <b><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a></b>
+    
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<header class="clearfix">    
+    </div>  
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a href="#" class="open-menu p-0"><i class="fa fa-user-circle" aria-hidden="true"></i><span class="navbar-brand live-time">&nbsp;{{Auth::user()->name}}</span></a>

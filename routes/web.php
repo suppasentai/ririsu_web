@@ -28,12 +28,23 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::post('update_password', 'AccountController@updatePassword')->name('password_update');
 
     Route::resource('categories', 'CategoryController');
-    ROute::resource('instutions', 'InstitutionController');
+    Route::resource('instutions', 'InstitutionController');
 
-    Route::get('articles_form_status', 'DashboardController@articlesFormStatus')->name('articlesFormStatus');
-    Route::post('articlesChangeStatus/{article}', 'DashboardController@articlesChangeStatus')->name('articlesChangeStatus');
+    Route::get('create_articles', 'ReleaseController@create')
+        ->name('create_articles')
+        ->middleware('can:release.create');
+    Route::post('create_articles', 'ReleaseController@store')
+        ->name('store_articles')
+        ->middleware('can:release.create');
 
-    Route::resource('articles', 'ReleaseController');
+    Route::get('articles_form_status', 'DashboardController@articlesFormStatus')
+        ->name('articlesFormStatus')
+        ->middleware('can:release.publish');
+    Route::post('articlesChangeStatus/{article}', 'DashboardController@articlesChangeStatus')
+        ->name('articlesChangeStatus')
+        ->middleware('can:release.publish');
+    
+
 });
 Route::get('/home', 'HomeController@index')->name('home');
 

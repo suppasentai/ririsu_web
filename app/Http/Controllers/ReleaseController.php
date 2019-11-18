@@ -25,6 +25,15 @@ class ReleaseController extends Controller
         return view('articles.create', ['categories' => $categories, 'grades' => $grades, 'institutions' => $institutions]);
     }
 
+    public function drafts(){
+        $releasesQuery = Release::editing();
+        if(Gate::denies('release.draft')) {
+            $releasesQuery = $releasesQuery->where('user_id', Auth::user()->id);
+        }
+        $releases = $releasesQuery->paginate();
+        return view('drafts', compact('releases'));
+    }
+
     public function store(Request $request){
         $this->validate($request, [
             'title' => 'required',
@@ -42,7 +51,7 @@ class ReleaseController extends Controller
         $article->institution_ref = $request->institution_ref;
         $article->slug = uniqid();
         if($request->user()->role != "ADMIN"){
-            $article->status = ReleaseStatus::Pending;
+            $article->status = ReleaseStatus::Editing;
         }else{
             $article->status = true;
         }

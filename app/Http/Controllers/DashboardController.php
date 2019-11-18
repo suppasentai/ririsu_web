@@ -36,18 +36,22 @@ class DashboardController extends Controller
     }
 
     public function articlesFormStatus(){
-        $articles = Release::orderBy('created_at', 'desc')->paginate($this->pagination);
-        return view('articles.form_status', ['articles' => $articles]);
+        $releasesQuery = Release::editing();
+        if(Gate::denies('release.draft')) {
+            $releasesQuery = $releasesQuery->where('user_id', Auth::user()->id);
+        }
+        $releases = $releasesQuery->paginate();
+        return view('articles.form_status', compact('releases'));
     }
 
     public function articlesChangeStatus(Request $request, Release $article){
-        if($article->status == ReleaseStatus::Pending)
+        if($article->status == ReleaseStatus::Editing)
         {
-            $article->status = ReleaseStatus::Released;
+            $article->status = ReleaseStatus::Published;
         }
         else
         {
-            $article->status = ReleaseStatus::Pending;
+            $article->status = ReleaseStatus::Editing;
         }
 
         $article->save();
