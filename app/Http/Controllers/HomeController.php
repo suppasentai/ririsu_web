@@ -14,12 +14,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function __construct(){
+        
+    } 
+
+
     public function index()
     {
-        $top_news = Release::orderBy('created_at', 'desc')->take(15)->get();
+        $lasted_news = Release::orderBy('created_at', 'desc')->take(15)->get();
         $featured_news = Release::orderBy('created_at', 'desc')->paginate(5);
         $tags = Tag::all();
-        return view('home', ['top_news' => $top_news, 'featured_news' => $featured_news]);
+        return view('home', ['lasted_news' => $lasted_news, 'featured_news' => $featured_news]);
     }
 
     public function about(){

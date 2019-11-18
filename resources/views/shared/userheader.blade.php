@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8 col-sm-9">
                 <ul class="info-list social-icons text-left">
-                    <li><a href="forums.html"><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Homepage</i></a>
+                    <li><a href="{{route("home")}}"><i class="fa fa-angle-left" aria-hidden="true"></i> Back to Homepage</i></a>
                     </li>
                     <li>
                     <span class="live-time"><i class="fa fa-calendar-o"></i>{{Carbon\Carbon::now()->isoFormat('dddd, MMMM Do YYYY')}}</span>
