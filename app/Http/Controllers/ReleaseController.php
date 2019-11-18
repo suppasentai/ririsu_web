@@ -50,17 +50,20 @@ class ReleaseController extends Controller
         //image in desc upload
         $desc = $request->input('description');
         $dom = new \DomDocument();
-        $dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml(mb_convert_encoding($desc, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
         $images = $dom->getElementsByTagName('img');
         foreach($images as $k => $img){
             $data = $img->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $data = base64_decode($data);
-            $image_name= "/desc/" . time().$k.'.png';
-            Storage::disk('s3')->put($image_name, $data);
-            $img->removeAttribute('src');
-            $img->setAttribute('src', Storage::disk('s3')->url($image_name));
+            if(strpos($data, 'https') && strpos($data, 'https') == false )
+            {
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $data = base64_decode($data);
+                $image_name= "/desc/" . time().$k.'.png';
+                Storage::disk('s3')->put($image_name, $data);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', Storage::disk('s3')->url($image_name));
+            }
         }
 
         $desc = $dom->saveHTML();

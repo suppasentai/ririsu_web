@@ -383,6 +383,11 @@
                                     {{ __('My Articles') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('articlesFormStatus')}}" role="button">
+                                    {{ __('Enable/Disable Articles') }} <span class="caret"></span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

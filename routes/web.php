@@ -30,6 +30,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('categories', 'CategoryController');
     ROute::resource('instutions', 'InstitutionController');
 
+    Route::get('articles_form_status', 'DashboardController@articlesFormStatus')->name('articlesFormStatus');
+    Route::post('articlesChangeStatus/{article}', 'DashboardController@articlesChangeStatus')->name('articlesChangeStatus');
+
     Route::resource('articles', 'ReleaseController');
 });
 Route::get('/home', 'HomeController@index')->name('home');
