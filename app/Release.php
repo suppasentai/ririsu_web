@@ -9,7 +9,7 @@ use App\Enums\ReleaseStatus;
 class Release extends Model
 {
     public $fillable = [
-        'title', 'description', 'image', 'url_video', 'date', 'active', 'user_id', 'category_ref', 'grade_ref', 'institution_ref',
+        'title', 'description', 'image', 'url_video', 'date', 'active', 'user_id', 'category_ref', 'grade_ref',
     ];
 
     public function user()

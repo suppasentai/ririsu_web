@@ -18,6 +18,16 @@ Auth::routes();
 
 Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseController@show']);
 
+//create institution
+Route::group(['prefix' => 'institutions'], function () {
+    Route::get('create_step1', 'InstitutionController@create_step1')->name('create_step1');
+    Route::post('create_step1', 'InstitutionController@post_create_step1')->name('post_create_step1');
+    Route::get('create_step2', 'InstitutionController@create_step2')->name('create_step2');
+    Route::post('create_step2', 'InstitutionController@post_create_step2')->name('post_create_step2');
+    Route::get('create_step3', 'InstitutionController@create_step3')->name('create_step3');
+    Route::post('store', 'InstitutionController@store')->name('store_institution');
+});
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
     Route::get('my_account', 'AccountController@index')->name('my_account');
@@ -43,9 +53,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::post('articlesChangeStatus/{article}', 'DashboardController@articlesChangeStatus')
         ->name('articlesChangeStatus')
         ->middleware('can:release.publish');
-    
-
 });
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/rc', function () {

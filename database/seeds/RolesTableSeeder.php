@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
 
 class RolesTableSeeder extends Seeder
 {
@@ -23,7 +24,8 @@ class RolesTableSeeder extends Seeder
             'name' => 'Journalist', 
             'slug' => 'journalist',
             'permissions' => [
-                'release.create' => true
+                'release.create' => true,
+                'release.draft' => true
             ]
         ]);
         $client = Role::create([

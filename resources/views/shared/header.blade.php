@@ -20,7 +20,11 @@
                     <ul class="social-icons">
                         @guest
                         <li>
-                            <b><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></b>
+                            <b><a href="{{route('create_step1')}}">{{__('Request Release')}}</a></b>
+                        </li>
+                        &nbsp;
+                        <li>
+                            <b><a href="#" data-toggle="modal" data-target="#loginModal">{{__('Login')}}</a></b>
                         </li>
                         @else
                         <li>

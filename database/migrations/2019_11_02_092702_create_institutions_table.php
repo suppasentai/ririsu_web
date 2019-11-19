@@ -16,8 +16,15 @@ class CreateInstitutionsTable extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->text('description')->nullable();
-            $table->text('image')->nullable();
+            $table->string('representative_name');
+            $table->date('incorp_date')->nullable();
+            $table->string('location');
+            $table->string('tel');
+            $table->string('identification_code');
+            $table->bigInteger('capital_stock')->nullable();
+            $table->integer('employees_number')->nullable();
+            $table->string('url')->nullable();
+            $table->string('email');
             $table->timestamps();
         });
     }

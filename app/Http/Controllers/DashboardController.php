@@ -9,6 +9,7 @@ use App\Grade;
 use App\Release;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Enums\ReleaseStatus;
 
 class DashboardController extends Controller
@@ -40,8 +41,8 @@ class DashboardController extends Controller
         if(Gate::denies('release.draft')) {
             $releasesQuery = $releasesQuery->where('user_id', Auth::user()->id);
         }
-        $releases = $releasesQuery->paginate();
-        return view('articles.form_status', compact('releases'));
+        $articles = $releasesQuery->paginate();
+        return view('articles.form_status', compact('articles'));
     }
 
     public function articlesChangeStatus(Request $request, Release $article){

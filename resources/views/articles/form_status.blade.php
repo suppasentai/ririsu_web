@@ -1,4 +1,5 @@
 @extends('layouts.userapp')
+
 @section('content')
   <section id="content-section">
     <div class="container">
@@ -7,7 +8,6 @@
         <div class="text-center title-section">
           <h1>{{__("Create new article")}}</h1>
         </div>
-  
         <div class="row">
           <div class="col-md-8 order-md-1">
             <h4 class="mb-3">{{__('Create Article')}}</h4>

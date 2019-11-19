@@ -26,11 +26,9 @@ class CreateReleasesTable extends Migration
             $table->tinyInteger('status')->unsigned()->default(ReleaseStatus::Pending);
             $table->string('category_ref')->nullable();
             $table->string('grade_ref')->nullable();
-            $table->string('institution_ref')->nullable();
             $table->timestamps();
 
             $table->integer('user_id')->index();
-            $table->integer('institution_id')->index();
         });
     }
 
