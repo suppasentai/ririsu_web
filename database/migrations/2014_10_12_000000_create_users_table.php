@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('grade')->nullable();
-            $table->string('institution_ref')->nullable();
             $table->string('name');
             $table->text('image')->nullable();
             $table->bigInteger('identification_document')->nullable();
@@ -30,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->string('institution_id')->nullable();
         });
     }
 

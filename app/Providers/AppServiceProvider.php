@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Release;
+use App\Policies\ReleasePolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    protected $policies = [
+        Release::class => ReleasePolicy::class,
+    ];
+
     /**
      * Bootstrap any application services.
      *
@@ -23,5 +30,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerPolicies();
+
+        Gate::define('release.create', ReleasePolicy::class.'@create');
+        Gate::define('release.publish', ReleasePolicy::class.'@publish');
+        Gate::define('release.draft', ReleasePolicy::class.'@draft');
+        
     }
 }
