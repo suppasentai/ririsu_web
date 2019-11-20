@@ -374,7 +374,7 @@
                     <li class="droper"><b><a href="#">{{__("Articles Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">
                             <li>
-                                <a href="{{ route('articles.create')}}" role="button">
+                                <a href="{{ route('create_articles')}}" role="button">
                                     {{ __('New Articles') }} <span class="caret"></span>
                                 </a>
                             </li>

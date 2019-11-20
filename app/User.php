@@ -66,6 +66,6 @@ class User extends Authenticatable
 
     public function institution()
     {
-        return $this->hasOne(Institution::class);
+        return $this->belongsTo(Institution::class);
     }
 }

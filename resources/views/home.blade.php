@@ -19,9 +19,13 @@
                     <div class="row">
                         <div class="col-lg-8">
 
-                            @include('home.lasted_box', ['lasted_news' => $lasted_news])
+                            @if($lasted_news->isEmpty())
+                                @include('home.lasted_box', ['lasted_news' => $lasted_news])
+                            @endif
                             
-                            @include('home.featured_box', ['featured_news' => $featured_news])
+                            @if($featured_news->isEmpty())
+                                @include('home.featured_box', ['featured_news' => $featured_news])
+                            @endif
                             
                             @include('home.combined_box')
 
