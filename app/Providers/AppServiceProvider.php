@@ -5,7 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Release;
+use App\Tag;
 use App\Policies\ReleasePolicy;
+use Aoo\Policies\TagPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
 
     protected $policies = [
         Release::class => ReleasePolicy::class,
+        Tag::class => TagPolicy::class,
     ];
 
     /**
@@ -35,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('release.create', ReleasePolicy::class.'@create');
         Gate::define('release.publish', ReleasePolicy::class.'@publish');
         Gate::define('release.draft', ReleasePolicy::class.'@draft');
+
+        Gate::resource('tag', TagPolicy::class);
         
     }
 }

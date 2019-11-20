@@ -9,12 +9,12 @@
           <h1>{{__("Create new article")}}</h1>
         </div>
         <div class="row">
-          <div class="col-md-8 order-md-1">
+          <div class="col-md-12">
             <h4 class="mb-3">{{__('Create Article')}}</h4>
             <div class="card card-default">
 
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row news-post large-post mb-0">
                         <table class="table table-hover" id="articles">
                             <thead>
                                 <tr>
@@ -23,7 +23,9 @@
                                     <th>User</th>
                                     <th>Created at</th>
                                     <th>Actions</th>
-                                    <th>Publish</th>
+                                    @can('release.publish')
+                                        <th>Publish</th>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,13 +39,15 @@
                                           <a class="read-more" href="single-post.html">Edit <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                           <a class="read-more bg-danger" href="single-post.html">Delete <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                         </td>
-                                        <td>
-                                            @if($article->status == App\Enums\ReleaseStatus::Published)
-                                                <button id="{{ $article->id }}" class="btn btn-success btn-sm" onclick="changeStatus({{ $article->id }})"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
-                                            @else
-                                                <button id="{{ $article->id }}" class="btn btn-danger btn-sm" onclick="changeStatus({{ $article->id }})"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
-                                            @endif
-                                        </td>
+                                        @can('release.publish')
+                                            <td>
+                                                @if($article->status == App\Enums\ReleaseStatus::Published)
+                                                    <button id="{{ $article->id }}" class="btn btn-success btn-sm" onclick="changeStatus({{ $article->id }})"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+                                                @else
+                                                    <button id="{{ $article->id }}" class="btn btn-danger btn-sm" onclick="changeStatus({{ $article->id }})"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                                                @endif
+                                            </td>
+                                        @endcan
                                     </tr>
                                 @endforeach
                             </tbody>
