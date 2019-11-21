@@ -14,7 +14,7 @@ class ReleasesTableSeeder extends Seeder
     public function run()
     {
         
-        $admin = Tag::where('title', 'Game')->first();
+        $tag = Tag::where('title', 'Game')->first();
 
         $release1 = Release::create([
             'title' => 'test', 
@@ -22,6 +22,6 @@ class ReleasesTableSeeder extends Seeder
             'category_ref' =>  'Tech',
             'user_id' =>  '1'
         ]);
-        $release1->tags()->attach($admin);
+        $release1->tags()->attach($tag);
     }
 }

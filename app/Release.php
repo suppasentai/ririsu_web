@@ -5,12 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\ReleaseStatus;
+use App\Tag;
+use Carbon\Carbon;
 
 class Release extends Model
 {
+    
     public $fillable = [
         'title', 'description', 'image', 'url_video', 'date', 'active', 'user_id', 'category_ref', 'grade_ref',
     ];
+
+    protected $appends = ['features', 'published'];
+
+
 
     public function user()
     {
@@ -38,5 +45,23 @@ class Release extends Model
 
     public function scopePending($query){
         return $query->where('status', ReleaseStatus::Pending);
+    }
+
+    public function getFeaturesAttribute()
+    {
+        $tags = Tag::pluck('title');
+        $features = [];
+        $release_tags = $this->tags()->pluck('title');
+        foreach($tags as $tag){
+            $features[$tag] = 0;
+            foreach($release_tags as $release_tag){
+                if($tag == $release_tag) $features[$tag]++;
+            }
+        }
+        return $features;
+    }
+
+    public function getPublishedAttribute(){
+        return Carbon::parse($this->created_at)->diffInMinutes();
     }
 }
