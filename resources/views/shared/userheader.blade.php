@@ -352,7 +352,7 @@
                     
                     <li>
                         <b><a href="{{ route('my_account')}}">
-                            {{ __('News') }}&nbsp
+                            {{ __('News') }}&nbsp;
                         </a></b>
                     </li>
                     
@@ -379,19 +379,23 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('my_acticles')}}" role="button">
+                                <a class='pr-5' href="{{ route('my_acticles')}}" role="button">
                                     {{ __('My Articles') }} <span class="caret"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('articlesFormStatus')}}" role="button">
-                                    {{ __('Enable/Disable Articles') }} <span class="caret"></span>
+                                    {{ __('Drafts ') }} <span class="caret"></span>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
-                    
+                    <li>
+                        <b><a href="{{ route('tags.index')}}" role="button">
+                            {{ __('Tags Control') }} <span class="caret"></span>
+                        </a></b>
+                    </li>
                     
                     <li>
                         <b><a href="{{ route('home')}}" role="button">

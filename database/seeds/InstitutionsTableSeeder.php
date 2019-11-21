@@ -11,6 +11,7 @@ class InstitutionsTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create();
         $titles = ['Anor', 'Woodland Realm', 'Durins Folk', 'Gondor'];
         $representative_names = ['Aragon', 'Legolas', 'Gimli', 'Boromir'];
         $locations = ['Rivendell', 'Woodland Realm', 'Blue Mountains', 'Gondor'];
@@ -25,6 +26,7 @@ class InstitutionsTableSeeder extends Seeder
                 'employees_number' => NULL,
                 'url' => NULL,
                 'incorp_date' => NULL,
+                'tel' => $faker->phoneNumber,
                 'location' => $locations[$i],
                 'identification_code' => $indents[$i],
                 'email' => $emails[$i]

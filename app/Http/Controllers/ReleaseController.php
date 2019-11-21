@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Grade;
-use App\Institution;
 use App\Release;
+use App\Tag;
 use App\Enums\ReleaseStatus;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,8 +21,9 @@ class ReleaseController extends Controller
     {
         $categories = Category::all();
         $grades = Grade::all();
-        $institutions = Institution::all();
-        return view('articles.create', ['categories' => $categories, 'grades' => $grades, 'institutions' => $institutions]);
+        $tags = Tag::get()->pluck('title', 'id');
+        $temp_tags = NULL;
+        return view('articles.create', ['temp_tags'=>  $temp_tags,  'categories' => $categories, 'grades' => $grades, 'tags' => $tags]);
     }
 
     public function drafts(){
@@ -40,15 +41,12 @@ class ReleaseController extends Controller
             'description' => 'required',
             'category_ref' => 'required',
             'grade_ref' => 'required',
-            'institution_ref' => 'required'
         ]);
         $article = new Release();
         $article->title = $request->title;
-        
         $article->url_video = $request->url_video;
         $article->category_ref = $request->category_ref;
         $article->grade_ref = $request->grade_ref;
-        $article->institution_ref = $request->institution_ref;
         $article->slug = uniqid();
         if($request->user()->role != "ADMIN"){
             $article->status = ReleaseStatus::Editing;
@@ -96,6 +94,19 @@ class ReleaseController extends Controller
         }
         $article->user_id = $request->user()->id;
         $article->save();
+        $tags_array = (array)$request->input('tag');
+        
+        for($i = 0; $i<count($tags_array);$i++){
+            if(strpos($tags_array[$i],'@/new')){
+                $tags_array[$i]     = str_replace('@/new','', $tags_array[$i]);
+                $new_tag = new Tag();
+                $new_tag->title = $tags_array[$i];
+                $new_tag->save();
+                $tags_array[$i] = $new_tag->id;
+            }
+        }
+        $article->tags()->sync($tags_array);
+
         return redirect(route('my_account'));
     }
 }

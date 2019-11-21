@@ -30,6 +30,8 @@ Route::group(['prefix' => 'institutions'], function () {
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
+    Route::resource('tags', 'TagController');
+
     Route::get('my_account', 'AccountController@index')->name('my_account');
     Route::get('my_articles', 'AccountController@articles')->name('my_acticles');
     Route::get('update_my_account', 'AccountController@edit')->name('my_account_edit');

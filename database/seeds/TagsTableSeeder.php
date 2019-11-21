@@ -23,8 +23,6 @@ class TagsTableSeeder extends Seeder
         foreach ($titles as $key => $value) {
             DB::table('tags')->insert([
                 'title' => $value,
-                'description' => NULL,
-                'image' => NULL,
             ]);
         }
     }
