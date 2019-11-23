@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 
 Auth::routes();
+Route::get('user/activation/{token}', 'Auth\RegisterController@activateUser')->name('user.activate');
 
 Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseController@show']);
 

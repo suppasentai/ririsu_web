@@ -35,7 +35,12 @@
 
                 <div class="row justify-content-md-center">
                     <aside class="col-sm-6">
-                    
+                    @if (session('warning'))
+                        <span class="alert alert-warning help-block">
+                            <strong>{{ session('warning') }}</strong>
+                        </span>
+                    @endif                    
+
                     <div class="card">
                     <article class="card-body">
                         <a href="{{ route('register') }}" class="float-right btn btn-outline-primary">{{__("Sign up")}}</a>
