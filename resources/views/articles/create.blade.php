@@ -69,30 +69,23 @@
           </div>
           {{-- End Right Panel --}}
           <div class="col-md-8 order-md-1">
-            {{-- <form class="form-horizontal" role="form" method="POST" action="{{  route('store_articles') }}" enctype="multipart/form-data"> --}}
             {!! Form::open(['method' => 'POST', 'route'  => 'store_articles', 'role' =>  'form',
               'class' => 'form-horizontal', 'enctype' => 'multipart/form-data', 'id' => 'article_create_form']) !!}
-              {{-- {{ csrf_field() }} --}}
 
               <div class="form-group">
                 {!! Form::label('image', __('Image')) !!}
-                  {{-- <label for="image">{{__('Image')}}</label> --}}
                 {!! Form::file('image', ['id' => 'image', 'class'=> 'form-control', 'accept'=>'image/*'])!!}
-                  {{-- <input id="image" type="file" class="form-control" name="image" accept="image/*"> --}}
               </div>
               <div class="form-group">
                 {!! Form::label('tag', __('Tag')) !!}
-                {{-- <label for="tag">{{__('Tag')}}</label> --}}
                 {!! Form::select('tag[]', $tags, old('tag'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'selectall-tag' ]) !!}
               </div>
 
               <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                 {!! Form::label('title', __('Title'), ['class' => 'control-label']) !!}  
-                {{-- <label for="title" class="control-label">Title</label> --}}
 
                   <div>
                     {!! Form::text('title', old('title'), ['id'=> 'title', 'class' => 'form-control', 'required', 'autofocus']) !!}
-                      {{-- <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus> --}}
 
                       @if ($errors->has('title'))
                           <span class="help-block">
@@ -134,67 +127,63 @@
               </div>
 
               <div class="row">
-                  <div class="col-md-4 mb-3 form-group {{ $errors->has('grade_ref') ? ' has-error' : '' }}">
-                    {!! Form::label('grade_ref', __('Grade'), ['class' => 'control-label']) !!}   
-                    {{-- <label for="grade_ref" class="control-label">{{__("Grade")}}</label> --}}
-                    <select class="form-control" id="grade_ref" name="grade_ref">
-                          @foreach( $grades as $grade )
-                              @if($grade->title == Auth::user()->grade)
-                                  <option value="{{ $grade->title }}" selected>{{ $grade->title }}</option>
-                              @else
-                                  <option value="{{ $grade->title }}">{{ $grade->title }}</option>
-                              @endif
-                          @endforeach
-                      </select>
+                <div class="col-md-4 mb-3 form-group {{ $errors->has('grade_ref') ? ' has-error' : '' }}">
+                  {!! Form::label('grade_ref', __('Grade'), ['class' => 'control-label']) !!}   
+                  {{-- <label for="grade_ref" class="control-label">{{__("Grade")}}</label> --}}
+                  <select class="form-control" id="grade_ref" name="grade_ref">
+                    @foreach( $grades as $grade )
+                        @if($grade->title == Auth::user()->grade)
+                            <option value="{{ $grade->title }}" selected>{{ $grade->title }}</option>
+                        @else
+                            <option value="{{ $grade->title }}">{{ $grade->title }}</option>
+                        @endif
+                    @endforeach
+                  </select>
 
-                      @if ($errors->has('grade_ref'))
-                          <span class="help-block">
-                          <strong>{{ $errors->first('grade_ref') }}</strong>
-                      </span>
-                      @endif
-                  </div>
+                  @if ($errors->has('grade_ref'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('grade_ref') }}</strong>
+                    </span>
+                  @endif
+                </div>
 
-                  <div class="col-md-3 mb-3 form-group {{ $errors->has('category_ref') ? ' has-error' : '' }}">
-                    {!! Form::label('category_ref', __('Category'), ['class' => 'control-label']) !!}   
-                    {{-- <label for="category_ref" class="control-label">Category</label> --}}
-                      <select class="form-control" id="category_ref" name="category_ref">
-                          @foreach( $categories as $category )
-                              @if($category->title == old('category_ref'))
-                                  <option value="{{ $category->title }}" selected>{{ $category->title }}</option>
-                              @else
-                                  <option value="{{ $category->title }}">{{ $category->title }}</option>
-                              @endif
-                          @endforeach
-                      </select>
+                <div class="col-md-3 mb-3 form-group {{ $errors->has('category_ref') ? ' has-error' : '' }}">
+                  {!! Form::label('category_ref', __('Category'), ['class' => 'control-label']) !!}   
+                  <select class="form-control" id="category_ref" name="category_ref">
+                      @foreach( $categories as $category )
+                          @if($category->title == old('category_ref'))
+                              <option value="{{ $category->title }}" selected>{{ $category->title }}</option>
+                          @else
+                              <option value="{{ $category->title }}">{{ $category->title }}</option>
+                          @endif
+                      @endforeach
+                  </select>
 
-                      @if ($errors->has('category_ref'))
-                          <span class="help-block">
-                          <strong>{{ $errors->first('category_ref') }}</strong>
-                      </span>
-                      @endif
-                  </div>
+                  @if ($errors->has('category_ref'))
+                      <span class="help-block">
+                      <strong>{{ $errors->first('category_ref') }}</strong>
+                  </span>
+                  @endif
+                </div>
               </div>
 
               <div class="form-group">
-                  <div class="well well-sm">
-                      <div class="col-md-2">
-                          <i class="fa fa-warning fa-3x" aria-hidden="true"></i>
-                      </div>
-                      <div class="col-md-10">
-                          {{__('The articles will not be displayed until it is published by an editor')}}
-                      </div>
-                      <div class="clearfix"></div>
-                  </div>
+                <div class="well well-sm">
+                    <div class="col-md-2">
+                        <i class="fa fa-warning fa-3x" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10">
+                        {{__('The articles will not be displayed until it is published by an editor')}}
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
               </div>
 
               <div class="form-group">
-                {!! Form::button('<span class="fa fa-plus" aria-hidden="true"></span> Create', ['type'=> 'submit', 'class' =>  'btn btn-primary']) !!}
-                  {{-- <button type="submit" class="btn btn-primary">
-                      <span class="fa fa-plus" aria-hidden="true"></span> Create
-                  </button> --}}
+                {!! Form::button('<span class="fa fa-plus" aria-hidden="true"></span> Create', 
+                ['type'=> 'submit', 'class' =>  'btn btn-primary']) !!}
               </div>
             {!! Form::close() !!}
-            {{-- </form> --}}
           </div>
         </div>
       </div>

@@ -59,19 +59,4 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/rc', function () {
-    $releases        = json_decode(file_get_contents(storage_path('data/products-data.json')));
-    $selectedId      = intval(app('request')->input('id') ?? '8');
-    $selectedRelease = $releases[0];
-
-    $selectedReleases = array_filter($releases, function ($release) use ($selectedId) { return $release->id === $selectedId; });
-    if (count($selectedReleases)) {
-        $selectedRelease = $selectedReleases[array_keys($selectedReleases)[0]];
-    }
-
-    $releaseSimilarity = new App\ProductSimilarity($releases);
-    $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
-    $releases          = $releaseSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
-
-    return view('recomtest', compact('selectedId', 'selectedRelease', 'releases'));
-});
+Route::get('/rc', 'RecommendController@test');

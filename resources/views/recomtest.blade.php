@@ -36,7 +36,6 @@
                         <img class="large-product-image" src="{{ $selectedRelease->image }}" alt="Product Image">
                     </div>
                     <div class="card-body">
-                        <p class="card-text text-muted">{{ $selectedRelease->name }} (${{ $selectedRelease->price }})</p>
                     </div>
                 </div>
             </div>
@@ -55,7 +54,6 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Similarity: {{ round($release->similarity * 100, 1) }}%</h5>
-                        <p class="card-text text-muted">{{ $release->name }} (${{ $release->price }})</p>
                     </div>
                 </div>
             </div>
