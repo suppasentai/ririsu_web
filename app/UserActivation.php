@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class UserActivation extends Model
 {
@@ -10,7 +12,7 @@ class UserActivation extends Model
 
     protected function getToken()
     {
-        return hash_hmac('sha256', str_random(40), config('app.key'));
+        return hash_hmac('sha256', Str::random(40), config('app.key'));
     }
 
     public function createActivation($user)
@@ -30,7 +32,7 @@ class UserActivation extends Model
 
         $token = $this->getToken();
         UserActivation::where('user_id', $user->id)->update([
-            'token' => $token,
+            'activation_code' => $token,
             'created_at' => new Carbon()
         ]);
         return $token;
@@ -41,7 +43,7 @@ class UserActivation extends Model
         $token = $this->getToken();
         UserActivation::insert([
             'user_id' => $user->id,
-            'token' => $token,
+            'activation_code' => $token,
             'created_at' => new Carbon()
         ]);
         return $token;
@@ -54,11 +56,11 @@ class UserActivation extends Model
 
     public function getActivationByToken($token)
     {
-        return UserActivation::where('token', $token)->first();
+        return UserActivation::where('activation_code', $token)->first();
     }
 
     public function deleteActivation($token)
     {
-        UserActivation::where('token', $token)->delete();
+        UserActivation::where('activation_code', $token)->delete();
     }
 }
