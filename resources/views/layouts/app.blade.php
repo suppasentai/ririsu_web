@@ -23,15 +23,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     @yield('head')
 </head>
-<body class="boxed-style">
+<body class="">
     <div id="container">
 
         
         @include('shared.header')
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @yield('content')
 
         @include('shared.footer')
 

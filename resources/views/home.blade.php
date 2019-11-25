@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <!-- wide-news-heading
 			================================================== -->
 		<div class="wide-news-heading">
@@ -19,13 +18,10 @@
                     <div class="row">
                         <div class="col-lg-8">
 
-                            @if($lasted_news->isEmpty())
-                                @include('home.lasted_box', ['lasted_news' => $lasted_news])
-                            @endif
                             
-                            @if($featured_news->isEmpty())
-                                @include('home.featured_box', ['featured_news' => $featured_news])
-                            @endif
+                            @include('home.lasted_box')
+                            
+                            @include('home.featured_box')
                             
                             @include('home.combined_box')
 
@@ -349,169 +345,17 @@
                                     </div>
                                 </div>
     
-                                <div class="widget tags-widget">
-                                    <h1>{{__('Tags')}}</h1>
-                                    <ul class="tags-list">
-                                        <li><a href="#">Food</a></li>
-                                        <li><a href="#">Sport</a></li>
-                                        <li><a href="#">Lifestyle</a></li>
-                                        <li><a href="#">Fashion</a></li>
-                                        <li><a href="#">World</a></li>
-                                        <li><a href="#">Politic</a></li>
-                                        <li><a href="#">Travel</a></li>
-                                        <li><a href="#">Tech</a></li>
-                                        <li><a href="#">Music</a></li>
-                                        <li><a href="#">Economy</a></li>
-                                        <li><a href="#">Business</a></li>
-                                        <li><a href="#">Photos</a></li>
-                                        <li><a href="#">Company</a></li>
-                                        <li><a href="#">Traditional</a></li>
-                                        <li><a href="#">New</a></li>
-                                        <li><a href="#">Future</a></li>
-                                        <li><a href="#">Culture</a></li>
-                                    </ul>
-                                </div>
+                                @include('home.tags')
     
                             </div>
     
                         </div>
                     </div>
-    
-                    <!-- Advertisement -->
-                    <div class="advertisement">
-                        <a href="#"><img src="upload/addsense/620x80grey.jpg" alt=""></a>
-                    </div>
-                    <!-- End Advertisement -->
     
                     <!-- more from news box -->
-                    <div class="more-from-news">
-                        <h1>Weekly Top News</h1>
-                        <div class="row">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s3.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s6.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s8.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s9.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s10.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s12.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s15.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s16.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s18.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s23.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                                <div class="news-post thumb-post">
-                                    <div class="post-image">
-                                        <a href="single-post-2.html">
-                                            <img src="upload/blog/s24.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <h2><a href="single-post.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('home.weekly_news')
                     <!-- end more from news box -->
                 </div>
             </section>
             <!-- End content section -->
-</div>
 @endsection

@@ -35,6 +35,28 @@ class Release extends Model
         return $this->belongsToMany('App\Tag', 'release_tag', 'release_id', 'tag_id');
     }
 
+    public function scopeLasted($query){
+        return $query->orderBy('created_at' , 'desc')->take(15)->get();
+    }
+
+    public function scopeFeatured($query){
+        return $query->orderBy([ 'page_views' => 'desc' , 'created_at'=>'desc'])->paginate(5);
+    }
+
+    public function scopeCombined($query){
+        return $query->inRandomOrder()->limit(5)->get();
+    }
+
+    public function scopeNews($query){
+        return $query->orderBy('created_at' , 'desc')->paginate(6);
+    }
+
+    public function scopeWeekly($query){
+        return $query->whereBetween('created_at', 
+            [Carbon::now()->subWeek()->format("Y-m-d H:i:s"), Carbon::now()]
+            )->get();
+    }
+
     public function scopePublished($query){
         return $query->where('status', ReleaseStatus::Published);
     }
@@ -46,6 +68,7 @@ class Release extends Model
     public function scopePending($query){
         return $query->where('status', ReleaseStatus::Pending);
     }
+
 
     public function getFeaturesAttribute()
     {

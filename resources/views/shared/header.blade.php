@@ -1,4 +1,4 @@
-<header class="clearfix style-4">
+<header class="clearfix">
     <div class="top-line">
         <div class="container">
             <div class="row">
@@ -58,7 +58,7 @@
             </button>
 
             <a href="index.html">
-                <img src="/images/logoreal4.resized_194x64.png" alt="">
+                <img src="/images/logoreal6.resized.png" alt="">
             </a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
