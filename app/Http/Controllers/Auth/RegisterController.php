@@ -11,7 +11,8 @@ use App\Jobs\SendWelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
-use App\Classes\ActivationService;
+
+use App\ActivationService;
 
 class RegisterController extends Controller
 {
@@ -60,7 +61,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string','min:6', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'g-recaptcha-response' => 'required|recaptcha'
         ]);
     }
 
