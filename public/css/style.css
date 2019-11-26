@@ -2415,6 +2415,7 @@ div.search-box {
     margin-bottom: 8px;
     font-weight: 600; }
   #register-form input[type="text"],
+  #register-form input[type="tel"],
   #register-form input[type="password"],
   #login-form input[type="text"],
   #login-form input[type="password"] {
