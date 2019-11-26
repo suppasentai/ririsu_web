@@ -1,118 +1,73 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
-            </ul>
-        </div>
-    </div>
-</nav>
 <header class="clearfix">
-
     <div class="top-line">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-9">
                     <ul class="info-list">
                         <li>
-                            <span class="live-time"><i class="fa fa-calendar-o"></i>10 Jannuary 2017</span>
+                        <span class="live-time"><i class="fa fa-calendar-o"></i>{{Carbon\Carbon::now()->isoFormat('dddd, MMMM Do YYYY')}}</span>
                         </li>
                         <li>
-                            <a href="about.html">About Us</a>
+                            <a href="about.html">{{__("About Us")}}</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="contact.html">{{__("Contact Us")}}</a>
                         </li>
-                        <li>
-                            <a href="forums.html">Forum</a>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#loginModal">Login</a>
-                        </li>
+                        
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-3">
                     <ul class="social-icons">
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                        @guest
+                        <li>
+                            <b><a href="{{route('create_step1')}}">{{__('Request Release')}}</a></b>
+                        </li>
+                        &nbsp;
+                        <li>
+                            <b><a href="#" data-toggle="modal" data-target="#loginModal">{{__('Login')}}</a></b>
+                        </li>
+                        @else
+                        <li>
+                            <a href="{{ route('my_account')}}" role="button">
+                                <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                            </a>
+                        </li>
+                        <li>
+                            <b><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a></b>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="header-banner-place">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="">
-                <p>Newspaper &amp; Editorial HTML5 Magazine</p>
-            </a>
-
-            <div class="advertisement">
-                <a href="#"><img src="upload/addsense/620x80.jpg" alt=""></a>
-            </div>
-        </div>
-    </div>
-
+        
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <a href="index.html">
+                <img src="/images/logoreal6.resized.png" alt="">
+            </a>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link features" href="#">Features <i class="fa fa-angle-down"
-                                aria-hidden="true"></i></a>
+                        <a class="nav-link features" href="#">Features <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="megamenu">
                             <div class="row">
                                 <div class="col-lg-3">
@@ -191,8 +146,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -207,8 +161,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -223,8 +176,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -239,8 +191,7 @@
                                             <h2><a href="single-post.html">New alternatives are more</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -271,8 +222,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -287,8 +237,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -303,8 +252,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -319,8 +267,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -344,8 +291,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -360,8 +306,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -376,8 +321,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -392,8 +336,7 @@
                                             <h2><a href="single-post.html">Travelling is part of our life</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a>
-                                                </li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -405,14 +348,12 @@
                         <a class="nav-link fashion" href="#">Fashion</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link travel" href="#">Travel <i class="fa fa-angle-down"
-                                aria-hidden="true"></i></a>
+                        <a class="nav-link travel" href="#">Travel <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item drop-link">
                         <a class="nav-link food" href="#">Pages <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <ul class="dropdown">
-                            <li><a href="forums.html">Forum Pages <i class="fa fa-angle-right"
-                                        aria-hidden="true"></i></a>
+                            <li><a href="forums.html">Forum Pages <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                 <ul class="dropdown level2">
                                     <li><a href="forums.html">Forum</a></li>
                                     <li><a href="forums-category.html">Topics</a></li>
@@ -433,12 +374,9 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search for..." aria-label="Search">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                </form>
             </div>
         </div>
     </nav>
+
 </header>
 <!-- End Header -->
