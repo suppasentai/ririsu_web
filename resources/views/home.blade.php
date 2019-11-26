@@ -28,12 +28,17 @@
                             @include('home.articles_box')
                             
                         </div>
-                        @include('sidebar.sidebar')
+                        <div class="col-lg-4 sidebar-sticky">
+
+                            @include('sidebar.sidebar')
+                        
+                        </div>
                         
                     </div>
     
                     <!-- more from news box -->
-                    @include('home.weekly_news')
+
+                        @include('home.weekly_news')
                     <!-- end more from news box -->
                 </div>
             </section>

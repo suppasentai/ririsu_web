@@ -1,5 +1,3 @@
-<div class="col-lg-4 sidebar-sticky">
-                            
     <!-- Sidebar -->
     <div class="sidebar theiaStickySidebar">
         <div class="search-widget widget">
@@ -56,5 +54,3 @@
         @include('sidebar.tags_box')
 
     </div>
-
-</div>

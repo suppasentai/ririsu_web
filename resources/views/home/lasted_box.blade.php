@@ -22,7 +22,7 @@
                         <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                         <li><i class="lnr lnr-eye"></i>872 Views</li>
                     </ul>
-                    <p>{!! \Illuminate\Support\Str::words(strip_tags($lasted_news[6]->description), 15, '...') !!}</p>
+                    <p>{!! \Illuminate\Support\Str::words(strip_tags($lasted_news[6]->description), 1, '...') !!}</p>
                 </div>
             </div>
             <div class="col-sm-6">

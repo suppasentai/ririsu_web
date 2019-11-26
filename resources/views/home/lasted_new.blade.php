@@ -12,7 +12,7 @@
                 <li><i class="lnr lnr-user"></i>{{__("by ")}}<a href="#">{{$new->user->first_name}}</a></li>
                 <li><i class="lnr lnr-eye"></i>{{$new->page_views}}</li>
             </ul>
-            <p>{!! \Illuminate\Support\Str::words(strip_tags($new->description), 15, '...') !!}</p>
+            <p>{!! \Illuminate\Support\Str::words(strip_tags($new->description), 2, '...') !!}</p>
         </div>
     </div>
     <div class="col-sm-6">
@@ -28,7 +28,7 @@
                 <li><i class="lnr lnr-user"></i>{{__("by ")}}<a href="#">{{$new_2->user->firstname}}</a></li>
                 <li><i class="lnr lnr-eye"></i>{{$new->page_views}}</li>
             </ul>
-            <p>{!! \Illuminate\Support\Str::words(strip_tags($new->description), 15, '...') !!}</p>
+            <p>{!! \Illuminate\Support\Str::words(strip_tags($new->description), 2, '...') !!}</p>
         </div>
     </div>
 </div>
