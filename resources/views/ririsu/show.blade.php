@@ -69,7 +69,7 @@
 
                 <div class="col-lg-4 sidebar-sticky">
                     
-                    @include('shared.sidebar')
+                    @include('sidebar.sidebar')
 
                 </div>
             </div>

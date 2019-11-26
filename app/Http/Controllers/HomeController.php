@@ -22,10 +22,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $lasted_news = Release::orderBy('created_at', 'desc')->take(15)->get();
-        $featured_news = Release::orderBy('created_at', 'desc')->paginate(5);
-        $tags = Tag::all();
-        return view('home', ['lasted_news' => $lasted_news, 'featured_news' => $featured_news]);
+        return view('home');
     }
 
     public function about(){
