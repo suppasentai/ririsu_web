@@ -7,7 +7,9 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use App\Release;
 use App\Tag;
 use App\Policies\ReleasePolicy;
-use Aoo\Policies\TagPolicy;
+use App\Policies\TagPolicy;
+use Illuminate\Support\Facades\View;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,6 +42,30 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('release.draft', ReleasePolicy::class.'@draft');
 
         Gate::resource('tag', TagPolicy::class);
+
+        View::composer(['home.lasted_box'], function ($view) {
+            $view->with('lasted_news', Release::lasted());
+        });
+
+        View::composer(['home.featured', 'main_news_box'], function ($view) {
+            $view->with('featured_news', Release::featured());
+        });
+
+        View::composer(['home.articles_box'], function ($view) {
+            $view->with('news', Release::news());
+        });
+
+        View::composer(['home.combined_box'], function ($view) {
+            $view->with('news', Release::combined());
+        });     
+
+        View::composer(['home.weekly_news'], function ($view) {
+            $view->with('news', Release::weekly());
+        });
+
+        View::composer(['home.tags'], function ($view) {
+            $view->with('tags', Tag::paginate(20));
+        });
         
     }
 }

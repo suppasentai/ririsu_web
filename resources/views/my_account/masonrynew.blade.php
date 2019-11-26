@@ -7,8 +7,7 @@
         <h2><a href="{{ route('releases.show', ['slug' => $new->slug])}}">{{ $new->title }}</a></h2>
     </div>
     <ul class="post-tags">
-            <li><i class="lnr lnr-user"></i>{{__("by")}} <a href="#">{{$new->user->first_name}}</a></li>
-        <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+        <li><i class="lnr lnr-user"></i>{{__("by")}} <a href="#">{{$new->user->first_name}}</a></li>
         <li><i class="lnr lnr-eye"></i>{{$new->page_views}}</li>
     </ul>
     <p>{!! \Illuminate\Support\Str::words(strip_tags($new->description), 15, '...') !!}</p>
