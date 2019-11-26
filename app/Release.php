@@ -40,7 +40,13 @@ class Release extends Model
     }
 
     public function scopeFeatured($query){
-        return $query->orderBy([ 'page_views' => 'desc' , 'created_at'=>'desc'])->paginate(5);
+        return $query->orderBy('page_views', 'desc')->orderBy('created_at','desc')->paginate(5);
+    }
+
+    public function scopeFeaturedToday($query){
+        return $query->whereBetween('created_at', 
+            [Carbon::now()->subHours(24)->format("Y-m-d H:i:s"), Carbon::now()]
+            )->orderBy('page_views', 'desc')->take(4)->get();
     }
 
     public function scopeCombined($query){
@@ -55,6 +61,12 @@ class Release extends Model
         return $query->whereBetween('created_at', 
             [Carbon::now()->subWeek()->format("Y-m-d H:i:s"), Carbon::now()]
             )->get();
+    }
+
+    public function scopePopular($query){
+        return $query->orderBy('page_views', 'desc')->whereBetween('created_at', 
+        [Carbon::now()->subDay(3)->format("Y-m-d H:i:s"), Carbon::now()]
+        )->take(4)->get();
     }
 
     public function scopePublished($query){

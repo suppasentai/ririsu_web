@@ -43,18 +43,18 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::resource('tag', TagPolicy::class);
 
-        View::composer(['home.lasted_box'], function ($view) {
+        View::composer(['home.lasted_box', 'sidebar.lasted_box'], function ($view) {
             $view->with('lasted_news', Release::lasted());
         });
 
-        View::composer(['home.featured', 'main_news_box'], function ($view) {
+        View::composer(['home.featured_box', 'home.main_news_box', 'sidebar.featured_box'], function ($view) {
             $view->with('featured_news', Release::featured());
         });
 
         View::composer(['home.articles_box'], function ($view) {
             $view->with('news', Release::news());
         });
-
+        
         View::composer(['home.combined_box'], function ($view) {
             $view->with('news', Release::combined());
         });     
@@ -63,9 +63,20 @@ class AppServiceProvider extends ServiceProvider
             $view->with('news', Release::weekly());
         });
 
-        View::composer(['home.tags'], function ($view) {
+        View::composer(['sidebar.tags_box'], function ($view) {
             $view->with('tags', Tag::paginate(20));
         });
+
+        View::composer(['sidebar.todayfeatured_box'], function ($view) {
+            $view->with('news', Release::featuredToday());
+        });
+
+        View::composer(['sidebar.widget_box'], function ($view) {
+            $view->with('popular_news', Release::popular());
+            $view->with('recent_news', Release::popular());
+            $view->with('news', Release::popular());
+        });
+
         
     }
 }

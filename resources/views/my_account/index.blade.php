@@ -13,9 +13,6 @@
 							
 							<!-- Posts-block -->
 							<div class="posts-block masonry-box">
-								<div class="title-section">
-									<h1>Category Layout 7</h1>
-								</div>
 	
 								<div class="iso-call">
 									@each('my_account.masonrynew', $news, 'new')
