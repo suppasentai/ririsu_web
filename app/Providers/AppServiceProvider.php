@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('lasted_news', Release::lasted());
         });
 
-        View::composer(['home.featured'], function ($view) {
+        View::composer(['home.featured', 'main_news_box'], function ($view) {
             $view->with('featured_news', Release::featured());
         });
 
