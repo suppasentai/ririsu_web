@@ -86,7 +86,8 @@
                                         <a class="small" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                                     </div>
                                 @endif                                     
-                            </div> <!-- .row// -->                                                                  
+                            </div> <!-- .row// -->
+                                                                                              
                         </form>
                     </article>
                     </div> <!-- card.// -->

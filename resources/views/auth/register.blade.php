@@ -51,6 +51,15 @@
                             <i class="fa fa-paper-plane"></i> {{ __('Sign Up') }}
                         </button>
                         </div>
+                        @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     </form>
                 </div>
                 <!-- End register box -->
