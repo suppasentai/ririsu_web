@@ -1,4 +1,4 @@
-@if($lasted_news->isNotEmpty())
+@if($lasted_news->count()>=15)
     <!-- Posts-block -->
     <div class="posts-block standard-box">
         <div class="title-section">

@@ -7,10 +7,16 @@
 			================================================== -->
 			<section id="content-section">
 				<div class="container">
-	
+					@if (session('warning'))
+						<div>
+						<span class="alert alert-warning help-block">
+							<strong>{{ session('warning') }}</strong>
+						</span>
+						</div>
+					@endif
 					<div class="row">
 						<div class="col-lg-12">
-							
+							 
 							<!-- Posts-block -->
 							<div class="posts-block masonry-box">
 	

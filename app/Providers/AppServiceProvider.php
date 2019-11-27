@@ -37,12 +37,15 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        //authenticate
         Gate::define('release.create', ReleasePolicy::class.'@create');
         Gate::define('release.publish', ReleasePolicy::class.'@publish');
         Gate::define('release.draft', ReleasePolicy::class.'@draft');
 
         Gate::resource('tag', TagPolicy::class);
 
+
+        //pass data to views
         View::composer(['home.lasted_box', 'sidebar.lasted_box'], function ($view) {
             $view->with('lasted_news', Release::lasted());
         });

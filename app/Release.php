@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\ReleaseStatus;
 use App\Tag;
+use App\Category;
 use Carbon\Carbon;
 
 class Release extends Model
@@ -33,6 +34,25 @@ class Release extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Tag', 'release_tag', 'release_id', 'tag_id');
+    }
+
+    public function scopePolitic($query){
+        return $query->where('category_ref', 'Politic')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeBusiness($query){
+        return $query->where('category_ref', 'Business')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeTech($query){
+        return $query->where('category_ref', 'Tech')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeFood($query){
+        return $query->where('category_ref', 'Food')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeFashion($query){
+        return $query->where('category_ref', 'Fashion')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeSport($query){
+        return $query->where('category_ref', 'Sport')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
     }
 
     public function scopeLasted($query){
