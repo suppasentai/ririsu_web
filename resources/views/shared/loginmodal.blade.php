@@ -6,18 +6,41 @@
           <div class="title-section">
               <h1>Login</h1>
           </div>
-          <form id="login-form">
-              <p>Welcome! Login to your account.</p>
-              <label for="username">Username or Email Address*</label>
-              <input id="username" name="username" type="text">
-              <label for="password">Password*</label>
-              <input id="password" name="password" type="password">
-              <button type="submit" id="submit-register">
-                  <i class="fa fa-paper-plane"></i> Login
-              </button>
+          <form method="POST" action="{{ route('login') }}" id="login-form">
+            @csrf
+            <p>Welcome! Login to your account.</p>
+            <label for="email">{{ __('Username or Email Address*') }}</label>
+            <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  required autocomplete="email" autofocus>
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            <label for="password">{{ __('Password*') }}</label>
+            <input id="password" name="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+            @error('password')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+            @enderror
+            <div class="pl-4">
+            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <label  for="remember">
+                {{ __('Remember Me') }}
+            </label>
+            </div>
+            <button type="submit" id="submit-register">
+                <i class="fa fa-paper-plane"></i> {{ __('Login') }}
+            </button>
+                
           </form>
-            <p>Don't have account? <a href="register.html">Register Here</a></p>
-
+          @if (Route::has('password.request'))
+          <p><a href="{{ route('password.request') }}">
+              {{ __('Forgot Your Password?') }}
+          </a>
+          </p>
+          @endif
+          <p>Don't have account? <a href="{{ route('register') }}">{{ __('Register Here') }}</a></p>
         </div>
       </div>
     </div>
