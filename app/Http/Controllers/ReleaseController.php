@@ -14,6 +14,9 @@ class ReleaseController extends Controller
 {
     public function show($slug){
         $release = Release::where('slug', '=', $slug)->first();
+        views($release)
+            ->delayInSession(30)
+            ->record();
         return view('ririsu.show', ['release' => $release]);
     }
 

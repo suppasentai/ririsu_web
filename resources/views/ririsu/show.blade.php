@@ -13,8 +13,7 @@
                         <h1>{{($release->title)}}</h1>
                         <ul class="post-tags">
                             <li><i class="lnr lnr-user"></i>{{__('by ')}}<a href="#">{{$release->user->first_name}}</a></li>
-                            <li><a href="#"><i class="lnr lnr-book"></i><span>20 comments</span></a></li>
-                        <li><i class="lnr lnr-eye"></i>{{$release->page_views}} {{__('Views')}}</li>
+                        <li><i class="lnr lnr-eye"></i>{{views($release)->count()}} {{__('Views')}}</li>
                         </ul>
                         <div class="share-post-box">
                             <ul class="share-box">

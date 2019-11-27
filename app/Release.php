@@ -8,9 +8,12 @@ use App\Enums\ReleaseStatus;
 use App\Tag;
 use App\Category;
 use Carbon\Carbon;
+use CyrildeWit\EloquentViewable\Viewable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 
-class Release extends Model
+class Release extends Model implements ViewableContract
 {
+    use Viewable;
     
     public $fillable = [
         'title', 'description', 'image', 'url_video', 'date', 'active', 'user_id', 'category_ref', 'grade_ref',
