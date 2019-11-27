@@ -5,7 +5,7 @@
 
 <!-- Mirrored from nunforest.com/minberi-mag/underconstruction.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 15 Sep 2019 05:56:34 GMT -->
 <head>
-	<title>MinberiMAG</title>
+    <title>{{__('Login')}}</title>
 
 	<meta charset="utf-8">
 

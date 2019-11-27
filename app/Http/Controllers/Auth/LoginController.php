@@ -46,8 +46,7 @@ class LoginController extends Controller
     {
         if (!$user->active) {
             $this->activationService->sendActivationMail($user);
-            auth()->logout();
-            return back()->with('warning', 'Bạn cần xác thực tài khoản, chúng tôi đã gửi mã xác thực vào email của bạn, hãy kiểm tra và làm theo hướng dẫn.');
+            return redirect()->intended($this->redirectPath())->with('warning', 'Your account not activated yet');
         }
         return redirect()->intended($this->redirectPath());
     }

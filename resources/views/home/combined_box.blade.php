@@ -1,3 +1,4 @@
+@if($news->count()>=5)
 <!-- Posts-block -->
 <div class="posts-block combined-box">
     <div class="title-section">
@@ -72,3 +73,4 @@
     </div>
 </div>
 <!-- End Posts-block -->
+@endif

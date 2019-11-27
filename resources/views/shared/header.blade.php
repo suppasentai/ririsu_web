@@ -57,7 +57,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a href="index.html">
+            <a href="/">
                 <img src="/images/logoreal6.resized.png" alt="">
             </a>
 

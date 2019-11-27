@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\ReleaseStatus;
 use App\Tag;
+use App\Category;
 use Carbon\Carbon;
 
 class Release extends Model
@@ -35,12 +36,37 @@ class Release extends Model
         return $this->belongsToMany('App\Tag', 'release_tag', 'release_id', 'tag_id');
     }
 
+    public function scopePolitic($query){
+        return $query->where('category_ref', 'Politic')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeBusiness($query){
+        return $query->where('category_ref', 'Business')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeTech($query){
+        return $query->where('category_ref', 'Tech')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeFood($query){
+        return $query->where('category_ref', 'Food')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeFashion($query){
+        return $query->where('category_ref', 'Fashion')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+    public function scopeSport($query){
+        return $query->where('category_ref', 'Sport')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    }
+
     public function scopeLasted($query){
         return $query->orderBy('created_at' , 'desc')->take(15)->get();
     }
 
     public function scopeFeatured($query){
-        return $query->orderBy([ 'page_views' => 'desc' , 'created_at'=>'desc'])->paginate(5);
+        return $query->orderBy('page_views', 'desc')->orderBy('created_at','desc')->paginate(5);
+    }
+
+    public function scopeFeaturedToday($query){
+        return $query->whereBetween('created_at', 
+            [Carbon::now()->subHours(24)->format("Y-m-d H:i:s"), Carbon::now()]
+            )->orderBy('page_views', 'desc')->take(4)->get();
     }
 
     public function scopeCombined($query){
@@ -55,6 +81,12 @@ class Release extends Model
         return $query->whereBetween('created_at', 
             [Carbon::now()->subWeek()->format("Y-m-d H:i:s"), Carbon::now()]
             )->get();
+    }
+
+    public function scopePopular($query){
+        return $query->orderBy('page_views', 'desc')->whereBetween('created_at', 
+        [Carbon::now()->subDay(3)->format("Y-m-d H:i:s"), Carbon::now()]
+        )->take(4)->get();
     }
 
     public function scopePublished($query){
