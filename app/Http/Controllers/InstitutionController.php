@@ -29,7 +29,7 @@ class InstitutionController extends Controller
     {
 
         $validatedData = $request->validate([
-            'title' => 'bail|required|min:3|max:30',
+            'title' => 'bail|required|min:3|max:100',
             'representative_name' => 'bail|required|min:6|max:50',
             'incorp_date' => 'bail|nullable|date',
             'location' => 'bail|required',

@@ -40,6 +40,91 @@
                     </ul>
                 </div>
             </div>
+            <div class="container col-lg-8">
+                <div class="more-from-news">
+                <form id="register-form" method="POST" action="{{ route('post_create_step2') }}">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="email">{{ __('E-mail*') }}</label>
+                            <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name">{{ __('Username*') }}</label>
+                            <input id="name" name="name" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                    <label for="password">{{ __('Password*') }}</label>
+                    <input id="password" name="password" type="password" class="@error('password') is-invalid @enderror" required autocomplete="new-password">
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
+                    <div class="form-group ">           
+                    <label for="password-confirm">{{ __('Confirm Password*') }}</label>
+                    <input id="password-confirm" name="password_confirmation" type="password"  required autocomplete="new-password">
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="first_name">{{ __('First Name*') }}</label>
+                            <input id="first_name" type="text" class="@error('first_name') is-invalid @enderror" name="first_name" required autocomplete="first_name">
+                            @error('first_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="last_name">{{ __('Last Name*') }}</label>
+                            <input id="last_name" name="last_name" type="text" class="@error('last_name') is-invalid @enderror" required autocomplete="last_name">
+                            @error('last_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="telephone">{{ __('Phone Number*') }}</label>
+                            <input id="telephone" type="tel" class="@error('telephone') is-invalid @enderror" name="telephone" required autocomplete="telephone">
+                            @error('telephone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-md-center news-post large-post">
+                        <div class="col-md-3">
+                            <a class="read-more bg-warning" href="{{ route('create_step2') }}"><i class="fa fa-arrow-left"></i>{{__(' Back ')}}</a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" id="submit-register2">
+                                <i class="fa fa-paper-plane"></i> {{ __('Confirm') }}
+                            </button>
+                        </div>
+                    </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </form>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
