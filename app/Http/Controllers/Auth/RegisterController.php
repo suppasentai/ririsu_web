@@ -100,7 +100,7 @@ class RegisterController extends Controller
 
         $this->activationService->sendActivationMail($user);
 
-        return redirect('/login')->with('status', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
+        return redirect('/login')->with('status', 'We\'ll send an email to '.$user->email.' in 5 minutes. Open it up to activate your account.');
     }
 
     public function activateUser($token)
