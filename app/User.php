@@ -64,8 +64,8 @@ class User extends Authenticatable
         return $this->roles()->where('slug', $roleSlug)->count() == 1;
     }
 
-    public function institution()
+    public function company()
     {
-        return $this->belongsTo(Institution::class);
+        return $this->belongsTo(Company::class);
     }
 }

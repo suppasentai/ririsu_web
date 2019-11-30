@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('grade')->nullable();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->text('image')->nullable();
             $table->bigInteger('identification_document')->nullable();
             $table->bigInteger('telephone')->nullable();

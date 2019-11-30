@@ -32,7 +32,7 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="first_name">{{ __('First Name') }}</label>
-                                <input id="first_name" type="text" class="@error('first_name') is-invalid @enderror" name="first_name" value="{{ Auth::user()->first_name }}" required autocomplete="first_name">
+                                <input id="first_name" type="text" class="@error('first_name') is-invalid @enderror" name="first_name" value="{{ Auth::user()->first_name }}" autocomplete="first_name">
                                 @error('first_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="last_name">{{ __('Last Name') }}</label>
-                                <input id="last_name" name="last_name" type="text" class="@error('last_name') is-invalid @enderror" value="{{ Auth::user()->last_name }}" required autocomplete="last_name">
+                                <input id="last_name" name="last_name" type="text" class="@error('last_name') is-invalid @enderror" value="{{ Auth::user()->last_name }}" autocomplete="last_name">
                                 @error('last_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -65,24 +65,6 @@
                                     <span class="help-block">
                                         <strong>{{ $errors->first('grade_ref') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                            <div class="col-md-6 {{ $errors->has('institution_ref') ? ' has-error' : '' }}">
-                                <label for="institution_ref" class="control-label">Institution</label>
-                                <select class="form-control mb-3" id="institution_ref" name="institution_ref">
-                                    @foreach( $institutions as $institution )
-                                        @if($institution->title == Auth::user()->institution_ref)
-                                            <option value="{{ $institution->title }}" selected>{{ $institution->title }}</option>
-                                        @else
-                                            <option value="{{ $institution->title }}">{{ $institution->title }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-    
-                                @if ($errors->has('institution_ref'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('institution_ref') }}</strong>
-                                </span>
                                 @endif
                             </div>
                         </div>

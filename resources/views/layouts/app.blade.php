@@ -36,6 +36,7 @@
     </div>
     @include('shared.loginmodal')
 
+    @yield('foot')
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/modernmag-plugins.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>

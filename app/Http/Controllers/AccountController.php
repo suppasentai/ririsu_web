@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Grade;
-use App\Institution;
+use App\Company;
 use App\Release;
 use App\User;
 use App\Http\Requests\EditProfileRequest;
@@ -29,7 +29,6 @@ class AccountController extends Controller
         $news = Release::orderBy('created_at', 'desc')->paginate(9);
         $featured_news = Release::orderBy('created_at', 'desc')->paginate(5);
         return view('my_account.index', ['news' => $news]);
-        // return view('my_account.category7');
     }
 
     public function articles()
@@ -42,8 +41,8 @@ class AccountController extends Controller
     {
         $user = Auth::user();
         $grades = Grade::all();
-        $institutions = Institution::all();
-        return view('my_account.edit', ['user' => $user, 'grades' => $grades, 'institutions' => $institutions]);
+        $companies = Company::all();
+        return view('my_account.edit', ['user' => $user, 'grades' => $grades, 'companies' => $companies]);
     }
 
     public function update(EditProfileRequest $request)

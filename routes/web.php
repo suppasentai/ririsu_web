@@ -20,13 +20,10 @@ Route::get('user/activation/{token}', 'Auth\RegisterController@activateUser')->n
 Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseController@show']);
 
 //create institution
-Route::group(['prefix' => 'institutions'], function () {
-    Route::get('create_step1', 'InstitutionController@create_step1')->name('create_step1');
-    Route::post('create_step1', 'InstitutionController@post_create_step1')->name('post_create_step1');
-    Route::get('create_step2', 'InstitutionController@create_step2')->name('create_step2');
-    Route::post('create_step2', 'InstitutionController@post_create_step2')->name('post_create_step2');
-    Route::get('create_step3', 'InstitutionController@create_step3')->name('create_step3');
-    Route::post('store', 'InstitutionController@store')->name('store_institution');
+Route::group(['prefix' => 'companies'], function () {
+    Route::get('create_step1', 'CompanyController@create_step1')->name('create_step1');
+    Route::post('create_step1', 'CompanyController@post_create_step1')->name('post_create_step1');
+    Route::post('create_step2', 'CompanyController@post_create_step2')->name('post_create_step2');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
@@ -41,7 +38,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::post('update_password', 'AccountController@updatePassword')->name('password_update');
 
     Route::resource('categories', 'CategoryController');
-    Route::resource('instutions', 'InstitutionController');
+    //Route::resource('instutions', 'InstitutionController');
 
     Route::get('create_articles', 'ReleaseController@create')
         ->name('create_articles')
