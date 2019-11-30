@@ -16,7 +16,7 @@
                         
                     </ul>
                 </div>
-                <div class="col-md-4 col-sm-3">
+                <div class="col-md-4 col-sm-3" id="header_control">
                     <ul class="social-icons">
                         @guest
                         <li>
@@ -139,7 +139,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s25.jpg" alt="">
+                                                    <img src="/upload/blog/s25.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-world">Politic</a>
                                             </div>
@@ -154,7 +154,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s15.jpg" alt="">
+                                                    <img src="/upload/blog/s15.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-world">Economy</a>
                                             </div>
@@ -169,7 +169,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s23.jpg" alt="">
+                                                    <img src="/upload/blog/s23.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-world">Culture</a>
                                             </div>
@@ -184,7 +184,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s28.jpg" alt="">
+                                                    <img src="/upload/blog/s28.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-world">Business</a>
                                             </div>
@@ -215,7 +215,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s30.jpg" alt="">
+                                                    <img src="/upload/blog/s30.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-sport">Tennis</a>
                                             </div>
@@ -230,7 +230,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s31.jpg" alt="">
+                                                    <img src="/upload/blog/s31.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-sport">Football</a>
                                             </div>
@@ -245,7 +245,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s32.jpg" alt="">
+                                                    <img src="/upload/blog/s32.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-sport">winter sports</a>
                                             </div>
@@ -260,7 +260,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s29.jpg" alt="">
+                                                    <img src="/upload/blog/s29.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-sport">Basketball</a>
                                             </div>
@@ -284,7 +284,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s37.jpg" alt="">
+                                                    <img src="/upload/blog/s37.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-tech">Tennis</a>
                                             </div>
@@ -299,7 +299,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s38.jpg" alt="">
+                                                    <img src="/upload/blog/s38.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-tech">Tech</a>
                                             </div>
@@ -314,7 +314,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s39.jpg" alt="">
+                                                    <img src="/upload/blog/s39.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-tech">Tech</a>
                                             </div>
@@ -329,7 +329,7 @@
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post-2.html">
-                                                    <img src="upload/blog/s2.jpg" alt="">
+                                                    <img src="/upload/blog/s2.jpg" alt="">
                                                 </a>
                                                 <a href="#" class="category category-tech">Tech</a>
                                             </div>

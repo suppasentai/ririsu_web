@@ -23,10 +23,7 @@ Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseCont
 Route::group(['prefix' => 'companies'], function () {
     Route::get('create_step1', 'CompanyController@create_step1')->name('create_step1');
     Route::post('create_step1', 'CompanyController@post_create_step1')->name('post_create_step1');
-    Route::get('create_step2', 'CompanyController@create_step2')->name('create_step2');
     Route::post('create_step2', 'CompanyController@post_create_step2')->name('post_create_step2');
-    Route::get('create_step3', 'CompanyController@create_step3')->name('create_step3');
-    Route::post('store', 'CompanyController@store')->name('store_company');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {

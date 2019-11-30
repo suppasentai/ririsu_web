@@ -237,6 +237,7 @@
                         </div> <input type="button" name="next" class="next action-button" value="Next" id="nextUser"/> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     {{-- END USER --}}
+                    {{-- FINISH --}}
                     <fieldset>
                         <div class="form-card">
                             <div class="row">
@@ -256,8 +257,10 @@
                                     <h5 class="purple-text text-center">{{__('You Have Successfully Signed Up. We\'ll Send An Email In 5 Minutes. Please Open It Up To Validate Your Account.')}}</h5>
                                 </div>
                             </div>
+                            <a type="button" class="next action-button" href="{{route('home')}}">{{__('Back to Homepage')}}</a>
                         </div>
                     </fieldset>
+                    {{-- ENDFINISH --}}
                 </form>
             </div>
         </div>

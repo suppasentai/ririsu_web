@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+
+use App\ActivationService;
 
 class CompanyController extends Controller
 {
+    protected $activationService;
     //
-    public function __construct()
+    public function __construct(ActivationService $activationService)
     {
         $this->middleware('guest');
+        $this->activationService = $activationService;
     }
 
     public function create_step1(Request $request){
@@ -48,7 +54,7 @@ class CompanyController extends Controller
             'last_name' => 'required|string|min:1|max:20',
             //'name' => 'nullable|string|min:6|max:70',
             'telephone' => 'required|regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/',
-            'user_email' => 'required|string|email|max:255',
+            'user_email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:6',
             'password_confirmation' => 'required|same:password',
         ]);
@@ -56,95 +62,34 @@ class CompanyController extends Controller
 			return response()->json(['error'=>$validator->errors()->all()]);
         }
 
+        $company = new Company();
+        $company->title = $request->title;
+        $company->representative_name = $request->representative_name;
+        $company->identification_code = $request->identification_code;
+        $company->tel = $request->tel;
+        $company->location = $request->location;
+        $company->email = $request->email;
+        $company->url = $request->url;
+        $company->employees_number = $request->employees_number;
+        $company->capital_stock = $request->capital_stock;
+        $company->incorp_date = $request->incorp_date;
+
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->telephone = $request->telephone;
+        $user->email = $request->user_email;
+        $user->password = Hash::make($request->password);
+        $user->slug = uniqid();
+
+        $company->save();
+        $user->save();
+
+        event(new Registered($user));
+        auth()->login($user);
+
+        $this->activationService->sendActivationMail($user);
+
         return response()->json(['success'=>'Added new records.']);
-    }
-
-    public function store(Request $request)
-    {
-        $validatedInstitutionData = $request->validate([
-            'title' => 'bail|required|min:3|max:100',
-            'representative_name' => 'bail|required|min:6|max:50',
-            'incorp_date' => 'bail|nullable|date',
-            'location' => 'bail|required',
-            'tel' => 'bail|required|regex:/(09|01[2|6|8|9])+([0-9]{8})\b/',
-            'identification_code' => 'bail|required|min:6|max:10',
-            'capital_stock' => 'nullable',
-            'employees_number' => 'nullable',
-            'url' => 'bail|nullable|url',
-            'email' => 'bail|required|email'
-        ]);
-        $institution = new Institution();
-        $institution->fill($validatedData);
-        $validatedUserData = $request->validate([
-            'name' => 'bail|required|string|min:6|max:70',
-            'email' => 'bail|required|string|email|max:255',
-            'password' => 'bail|required|string|min:6',
-            'password_confirmation' => 'bail|required|same:password',
-        ]);
-        $user = new User();
-        $user->fill($validatedData);
-
-        $institution->save();
-        $user->save();
-
-        return redirect()->route('create_step2');
-    }
-
-     /**
-     * Post Request to store step1 info in session
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function post_create_step1asdyiu(Request $request)
-    {
-
-        $validatedInstitutionData = $request->validate([
-            'title' => 'bail|required|min:3|max:100',
-            'representative_name' => 'bail|required|min:6|max:50',
-            'incorp_date' => 'bail|nullable|date',
-            'location' => 'bail|required',
-            'tel' => 'bail|required|regex:/(01)[0-9]{9}/',
-            'identification_code' => 'bail|required|min:6|max:10',
-            'capital_stock' => 'nullable',
-            'employees_number' => 'nullable',
-            'url' => 'bail|nullable|url',
-            'email' => 'bail|required|email'
-        ]);
-        $institution = new Institution();
-        $institution->fill($validatedData);
-        $validatedUserData = $request->validate([
-            'name' => 'bail|required|string|min:6|max:70',
-            'email' => 'bail|required|string|email|max:255',
-            'password' => 'bail|required|string|min:6',
-            'password_confirmation' => 'bail|required|same:password',
-        ]);
-        $user = new User();
-        $user->fill($validatedData);
-
-        $institution->save();
-        $user->save();
-        if ($validator->passes()) {
-
-
-			return response()->json(['success'=>'Added new records.']);
-        }
-
-
-    	return response()->json(['error'=>$validator->errors()->all()]);
-    }
-
-    public function create_step2(Request $request){
-        $institution = $request->session()->get('institution');
-        $user = $request->session()->get('user');
-        return view('institutions.create_step2', ['institution' => $institution, 'user' => $user]);
-    }
-
-    
-
-    public function create_step3(Request $request){
-        $institution = $request->session()->get('institution');
-        $user = $request->session()->get('user');
-        return view('institutions.create_step3', ['institution' => $institution, 'user' => $user]);
     }
 }
