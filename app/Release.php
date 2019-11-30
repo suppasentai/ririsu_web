@@ -83,7 +83,7 @@ class Release extends Model implements ViewableContract
     public function scopeWeekly($query){
         return $query->whereBetween('created_at', 
             [Carbon::now()->subWeek()->format("Y-m-d H:i:s"), Carbon::now()]
-            )->get();
+            )->take(12)->get();
     }
 
     public function scopePopular($query){

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Release;
 use App\Tag;
+use Faker\Factory as Faker;
 
 class ReleasesTableSeeder extends Seeder
 {
@@ -13,15 +14,18 @@ class ReleasesTableSeeder extends Seeder
      */
     public function run()
     {
-        
-        
+        $titles = ['Tech', 'Politic', 'Business', 'Food', 'Fashion', 'Sport'];
+        $faker = Faker::create();
         for($i = 1; $i<= 40; $i++){
+            $cat = $titles[array_rand($titles)];
             $release1 = Release::create([
                 'image' => '/upload/blog/s'.$i.'.jpg',
                 'title' => 'test', 
                 'slug' => uniqid(),
-                'category_ref' =>  'Tech',
-                'user_id' =>  '1'
+                'category_ref' =>  $cat,
+                'user_id' =>  '1',
+                'description' => $faker->realText($maxNbChars = 5000, $indexSize = 3),
+                'note' => $faker->realText($maxNbChars = 200, $indexSize = 2),
             ]);
             $tag = Tag::all()->random();
             $release1->tags()->attach($tag);
