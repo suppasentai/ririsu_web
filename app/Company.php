@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Institution extends Model
+class Company extends Model
 {
     public $fillable = ['title', 'representative_name',
         'incorp_date', 'location', 'tel',

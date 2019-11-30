@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Institution;
+use App\Company;
 use App\User;
 use Validator;
 
-class InstitutionController extends Controller
+class CompanyController extends Controller
 {
     //
     public function __construct()
@@ -16,7 +16,7 @@ class InstitutionController extends Controller
     }
 
     public function create_step1(Request $request){
-        return view('institutions.create_step1');
+        return view('companies.create_step1');
     }
 
     public function post_create_step1(Request $request)
@@ -25,7 +25,7 @@ class InstitutionController extends Controller
             'title' => 'required|min:3|max:100',
             'representative_name' => 'required|min:6|max:50',
             'identification_code' => 'required|min:6|max:10',
-            'tel' => 'required|regex:/(01)[0-9]{9}/',
+            'tel' => 'required|regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/',
             'location' => 'required',
             'email' => 'required|email',
             'url' => 'nullable|url',
@@ -39,6 +39,24 @@ class InstitutionController extends Controller
 
         return response()->json(['success'=>'Added new records.']);
     	
+    }
+
+    public function post_create_step2(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'first_name' => 'required|string|min:1|max:20',
+            'last_name' => 'required|string|min:1|max:20',
+            //'name' => 'nullable|string|min:6|max:70',
+            'telephone' => 'required|regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/',
+            'user_email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6',
+            'password_confirmation' => 'required|same:password',
+        ]);
+        if ($validator->fails()) {
+			return response()->json(['error'=>$validator->errors()->all()]);
+        }
+
+        return response()->json(['success'=>'Added new records.']);
     }
 
     public function store(Request $request)
@@ -122,25 +140,7 @@ class InstitutionController extends Controller
         return view('institutions.create_step2', ['institution' => $institution, 'user' => $user]);
     }
 
-    public function post_create_step2(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'bail|required|string|min:6|max:70',
-            'email' => 'bail|required|string|email|max:255',
-            'password' => 'bail|required|string|min:6',
-            'password_confirmation' => 'bail|required|same:password',
-        ]);
-        if(empty($request->session()->get('user'))){
-            $user = new User();
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
-        }else{
-            $user = $request->session()->get('user');
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
-        }
-        return redirect()->route('create_step3');
-    }
+    
 
     public function create_step3(Request $request){
         $institution = $request->session()->get('institution');

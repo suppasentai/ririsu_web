@@ -14,14 +14,18 @@ class ReleasesTableSeeder extends Seeder
     public function run()
     {
         
-        $tag = Tag::where('title', 'Game')->first();
-
-        $release1 = Release::create([
-            'title' => 'test', 
-            'slug' => uniqid(),
-            'category_ref' =>  'Tech',
-            'user_id' =>  '1'
-        ]);
-        $release1->tags()->attach($tag);
+        
+        for($i = 1; $i<= 40; $i++){
+            $release1 = Release::create([
+                'image' => '/upload/blog/s'.$i.'.jpg',
+                'title' => 'test', 
+                'slug' => uniqid(),
+                'category_ref' =>  'Tech',
+                'user_id' =>  '1'
+            ]);
+            $tag = Tag::all()->random();
+            $release1->tags()->attach($tag);
+        }
+        
     }
 }

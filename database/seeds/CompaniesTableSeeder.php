@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class InstitutionsTableSeeder extends Seeder
+class CompaniesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,7 @@ class InstitutionsTableSeeder extends Seeder
         $indents = ['Aragon123', 'Legolas321', 'Gimli132', 'Boromir213'];
         $emails = ['aragon123@gmail.com', 'legolas321@gmail.com', 'gimli132@gmail.com', 'boromir213@gmail.com'];
         for ($i =0; $i<4; $i++) {
-            DB::table('institutions')->insert([
+            DB::table('companies')->insert([
                 'title' => $titles[$i],
                 'representative_name' => $representative_names[$i],
                 'tel' => NULL,

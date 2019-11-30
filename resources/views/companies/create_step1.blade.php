@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Institution Form')
+@section('title', 'Company Form')
 
 @section('head')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/js/gijgo.min.js"></script>
@@ -16,13 +16,13 @@
     <div class="row justify-content-center">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2 id="heading">{{__('Sign Up Institution Account')}}</h2>
+                <h2 id="heading">{{__('Sign Up Company Account')}}</h2>
                 <p>{{__('Fill all form field to go to next step')}}</p>
                 <form id="msform" form method="POST" action="{{ route('post_create_step1') }}">
                     @csrf
                     <!-- progressbar -->
                     <ul id="progressbar" class="row justify-content-center">
-                        <li class="active fa fa-building"><strong>{{__('Institution')}}</strong></li>
+                        <li class="active fa fa-building"><strong>{{__('Company')}}</strong></li>
                         <li id="personal"><strong>{{__('Personal')}}</strong></li>
                         {{-- <li id="payment"><strong>Image</strong></li> --}}
                         <li id="confirm"><strong>{{__('Finish')}}</strong></li>
@@ -36,11 +36,12 @@
                     <div class="alert alert-danger print-error-msg" style="display:none">
                         <ul></ul>
                     </div>
+                    {{-- CLIENT --}}
                     <fieldset>
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title">{{__('Institution Information:')}}</h2>
+                                    <h2 class="fs-title">{{__('Company Information:')}}</h2>
                                 </div>
                                 <div class="col-5">
                                     <h2 class="steps">{{__('Step 1 - 3')}}</h2>
@@ -156,8 +157,10 @@
                                     </ul>
                                 </div>
                             @endif
-                        </div> <input type="button" name="next" class="next action-button" id="nextInsti" value="Next" />
+                        </div> <input type="button" name="next" class="next action-button" id="nextCompany" value="Next" />
                     </fieldset>
+                    {{-- END CLIENT --}}
+                    {{-- USER --}}
                     <fieldset>
                         <div class="form-card">
                             <div class="row">
@@ -190,19 +193,8 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="telephone">{{ __('Phone Number*') }}</label>
-                                    <input id="telephone" type="tel" class="@error('telephone') is-invalid @enderror" name="telephone" required autocomplete="telephone">
-                                    @error('telephone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-6">
-                                    <label for="email">{{ __('E-mail*') }}</label>
-                                    <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <label for="user_email">{{ __('E-mail*') }}</label>
+                                    <input id="email" type="text" class="@error('email') is-invalid @enderror" name="user_email" value="{{ old('email') }}" required autocomplete="email">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -210,8 +202,13 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="name">{{ __('Username*') }}</label>
-                                    <input id="name" name="name" type="text">
+                                    <label for="telephone">{{ __('Phone Number*') }}</label>
+                                    <input id="telephone" type="tel" class="@error('telephone') is-invalid @enderror" name="telephone" required autocomplete="telephone">
+                                    @error('telephone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -239,6 +236,7 @@
                             @endif
                         </div> <input type="button" name="next" class="next action-button" value="Next" id="nextUser"/> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
+                    {{-- END USER --}}
                     <fieldset>
                         <div class="form-card">
                             <div class="row">

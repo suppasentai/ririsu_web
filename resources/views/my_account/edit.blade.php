@@ -67,24 +67,6 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="col-md-6 {{ $errors->has('institution_ref') ? ' has-error' : '' }}">
-                                <label for="institution_ref" class="control-label">Institution</label>
-                                <select class="form-control mb-3" id="institution_ref" name="institution_ref">
-                                    @foreach( $institutions as $institution )
-                                        @if($institution->title == Auth::user()->institution_ref)
-                                            <option value="{{ $institution->title }}" selected>{{ $institution->title }}</option>
-                                        @else
-                                            <option value="{{ $institution->title }}">{{ $institution->title }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-    
-                                @if ($errors->has('institution_ref'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('institution_ref') }}</strong>
-                                </span>
-                                @endif
-                            </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6">

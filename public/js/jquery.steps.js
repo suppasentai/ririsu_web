@@ -15,7 +15,7 @@ $(document).ready(function(){
         });
     }
     
-    $("#nextInsti").click(function(e){
+    $("#nextCompany").click(function(e){
         
         e.preventDefault();
         var _token = $("input[name='_token']").val();
@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 
         $.ajax({
-            url: "/institutions/create_step1",
+            url: "/companies/create_step1",
             type:'POST',
             data: {
                 _token:_token,
@@ -50,8 +50,8 @@ $(document).ready(function(){
             success: function(data) {
                 if($.isEmptyObject(data.error)){
                     $(".print-error-msg").css('display','none');
-                    current_fs = $("#nextInsti").parent();
-                    next_fs = $("#nextInsti").parent().next();
+                    current_fs = $("#nextCompany").parent();
+                    next_fs = $("#nextCompany").parent().next();
                     
                     //Add Class Active
                     $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -85,36 +85,30 @@ $(document).ready(function(){
         
         e.preventDefault();
         var _token = $("input[name='_token']").val();
-        var title = $("input[name='title']").val();
-        var representative_name = $("input[name='representative_name']").val();
-        var identification_code = $("input[name='identification_code']").val();
-        var tel = $("input[name='tel']").val();
-        var location = $("input[name='location']").val();
-        var email = $("input[name='email']").val();
-        var url = $("input[name='url']").val();
-        var employees_number = $("input[name='employees_number']").val();
-        var capital_stock = $("input[name='capital_stock']").val();
-        var incorp_date = $("input[name='incorp_date']").val();
+        var first_name = $("input[name='first_name']").val();
+        var last_name = $("input[name='last_name']").val();
+        var telephone = $("input[name='telephone']").val();
+        var user_email = $("input[name='user_email']").val();
+        var name = $("input[name='name']").val();
+        var password = $("input[name='password']").val();
+        var password_confirmation = $("input[name='password_confirmation']").val();
 
 
         $.ajax({
-            url: "/institutions/create_step1",
+            url: "/companies/create_step2",
             type:'POST',
             data: {
                 _token:_token,
-                title:title, 
-                representative_name:representative_name, 
-                identification_code:identification_code, 
-                tel:tel,
-                location:location, 
-                incorp_date:incorp_date, 
-                email:email, 
-                url:url,
-                employees_number:employees_number, 
-                capital_stock:capital_stock,
+                first_name:first_name, 
+                last_name:last_name, 
+                telephone:telephone, 
+                user_email:user_email,
+                password:password, 
+                password_confirmation:password_confirmation, 
             },
             success: function(data) {
                 if($.isEmptyObject(data.error)){
+                    $(".print-error-msg").css('display','none');
                     current_fs = $("#nextUser").parent();
                     next_fs = $("#nextUser").parent().next();
                     
