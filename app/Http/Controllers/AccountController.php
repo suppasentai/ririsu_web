@@ -33,7 +33,7 @@ class AccountController extends Controller
 
     public function articles()
     {
-        $articles = Release::where('user_id', '=', '1')->orderBy('created_at', 'desc')->paginate(2);
+        $articles = Release::where('user_id', '=', '1')->orderBy('created_at', 'desc')->paginate(5);
         return view('my_account.my_articles', ['articles' => $articles]);
     }
 

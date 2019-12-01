@@ -39,7 +39,7 @@
                     </div>
                     <!-- End single-post -->
                     
-                    @include('shared.postblock')
+                    @include('ririsu.postblock', ['similar_releases' => $similar_releases])
 
                     {{-- <!-- author-profile -->
                     <div class="author-profile">

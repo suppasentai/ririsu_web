@@ -1,12 +1,12 @@
 <html>
 <head>
-    <title>Activation Email - Allaravel.com</title>
+    <title>Activation Email - RIRISU</title>
 </head>
 <body>
     <p>
-        Chào mừng {{ $user->name }} đã đăng ký thành viên tại Allaravel.com. Bạn hãy click vào đường link sau đây để hoàn tất việc đăng ký.
+        Welcome {{$user->name}} has registered as a member at Ririsu.com. Please click on the following link to complete the registration.
         <br>
-        <a href="{{ $user->activation_link }}">{{ $user->activation_link }}</a>
+        <a href="{{ $user->activation_link }}">Activate my account</a>
     </p>
 </body>
 </html>

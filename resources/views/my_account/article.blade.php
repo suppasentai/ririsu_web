@@ -3,7 +3,7 @@
         <div class="news-post large-post m-0">
             <img alt="" src="{{$article->image}}">
             <div class="author-content">
-                <h5><a class="text-dark" href="{{ route('releases.show', ['$id' => $article->id])}}">{{ $article->title }}</a></h5>
+                <h5><a class="text-dark" href="{{ route('releases.show', ['slug' => $article->slug])}}">{{ $article->title }}</a></h5>
                 <ul class="post-tags">
                     <li><a href="#"><i class="lnr lnr-user"></i> {{__("Author:")}} <span>{{$article->user->first_name}}</span></a></li>
                     <li><a href="#"><i class="lnr lnr-book"></i><span>{{$article->updated_at}}</span></a></li>

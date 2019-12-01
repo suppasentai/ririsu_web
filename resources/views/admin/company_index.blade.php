@@ -6,7 +6,7 @@
         @include('alerts.success')
         @include('alerts.warning')
         <div class="text-center title-section">
-          <h1>{{__("Tags list")}}</h1>
+          <h1>{{__("Create new article")}}</h1>
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -18,31 +18,27 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
-                                    <th>User</th>
                                     <th>Created at</th>
                                     <th>Actions</th>
-                                    @can('release.publish')
-                                        <th>Publish</th>
-                                    @endcan
+                                    <th>Verify</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($articles as $article)
+                                @foreach ($companies as $company)
                                     <tr>
-                                        <td>{{ $article->id }}</td>
-                                        <td>{{ $article->title }}</td>
-                                        <td>{{ $article->user->first_name }}</td>
-                                        <td>{{ Carbon\Carbon::parse($article->created_at)->diffForHumans() }}</td>
+                                        <td>{{ $company->id }}</td>
+                                        <td>{{ $company->title }}</td>
+                                        <td>{{ Carbon\Carbon::parse($company->created_at)->diffForHumans() }}</td>
                                         <td>
-                                          <a class="read-more" href="single-post.html">Edit <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                                          <a class="read-more bg-danger" href="single-post.html">Delete <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                        <a class="read-more" href="single-post.html">{{__('Edit ')}}<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                          <a class="read-more bg-danger" href="single-post.html">{{__('Delete ')}}<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                         </td>
-                                        @can('release.publish')
+                                        @can('admin')
                                             <td>
-                                                @if($article->status == App\Enums\ReleaseStatus::Published)
-                                                    <button id="{{ $article->id }}" class="btn btn-success btn-sm" onclick="changeStatus({{ $article->id }})"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+                                                @if($company->verified == true)
+                                                    <button id="{{ $company->id }}" class="btn btn-success btn-sm" onclick="changeStatus({{ $company->id }})"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
                                                 @else
-                                                    <button id="{{ $article->id }}" class="btn btn-danger btn-sm" onclick="changeStatus({{ $article->id }})"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                                                    <button id="{{ $company->id }}" class="btn btn-danger btn-sm" onclick="changeStatus({{ $company->id }})"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                                                 @endif
                                             </td>
                                         @endcan
@@ -51,7 +47,7 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ $articles->links() }}
+                    {{ $companies->links() }}
                 </div>
             </div>
           </div>
@@ -68,7 +64,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: 'articlesChangeStatus/'+id,
+                url: 'companiesChangeStatus/'+id,
                 beforeSend: function () {
                     $("#"+id).removeClass("btn-danger");
                     $("#"+id).removeClass("btn-success");
@@ -76,15 +72,16 @@
                     $("#"+id).html('<i class="fa fa-refresh fa-spin"></i>');
                 },
                 success: function(result){
-                    if(result == {{ App\Enums\ReleaseStatus::Published }}){
+                    if(result == true){
                         $("#"+id).removeClass("btn-danger");
                         $("#"+id).addClass("btn-success");
                         $("#"+id).html('<i class="fa fa-check-circle" aria-hidden="true"></i>');
-                    }else if(result == {{ App\Enums\ReleaseStatus::Editing }}){
+                    }else if(result == false){
                         $("#"+id).removeClass("btn-success");
                         $("#"+id).addClass("btn-danger");
                         $("#"+id).html('<i class="fa fa-times-circle" aria-hidden="true"></i>');
                     }else{
+                        console.log(result)
                     }
                 }
             });

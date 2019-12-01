@@ -8,6 +8,7 @@ use App\Release;
 use App\Tag;
 use App\Policies\ReleasePolicy;
 use App\Policies\TagPolicy;
+use App\Policies\CompanyPolicy;
 use Illuminate\Support\Facades\View;
 
 
@@ -41,8 +42,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('release.create', ReleasePolicy::class.'@create');
         Gate::define('release.publish', ReleasePolicy::class.'@publish');
         Gate::define('release.draft', ReleasePolicy::class.'@draft');
-
-        Gate::resource('tag', TagPolicy::class);
+        Gate::before(function ($user, $ability) {
+            return$user->hasAccess(['admin']) ? true : null;
+        });
 
 
         //pass data to views

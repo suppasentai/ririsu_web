@@ -104,7 +104,6 @@ class Release extends Model implements ViewableContract
         return $query->where('status', ReleaseStatus::Pending);
     }
 
-
     public function getFeaturesAttribute()
     {
         $tags = Tag::pluck('title');

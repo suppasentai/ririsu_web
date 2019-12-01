@@ -9,7 +9,6 @@
                         <li>
                         <span class="live-time"><i class="fa fa-calendar-o"></i>{{Carbon\Carbon::now()->isoFormat('dddd, MMMM Do YYYY')}}</span>
                         </li>
-                        
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-3">
@@ -342,8 +341,6 @@
                     </form>
                 </div>
         </div>
-        
-
             <!-- vertical menu -->
             <div class="vertical-box" style=" overflow: hidden;">
                 <h2><a class="text-white food" href="{{ route('my_account')}}">{{Auth::user()->name}}</a></h2>
@@ -390,12 +387,24 @@
                             </li>
                         </ul>
                     </li>
-
-                    <li>
-                        <b><a href="{{ route('tags.index')}}" role="button">
-                            {{ __('Tags Control') }} <span class="caret"></span>
-                        </a></b>
+                    @can('admin')
+                    <li class="droper"><b><a href="#">{{__("Admin Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
+                        <ul class="level2 social-icons">
+                            <li>
+                                <a href="{{ route('tags.index')}}" role="button">
+                                    {{ __('Tags') }} <span class="caret"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class='pr-5' href="{{ route('companies.index')}}" role="button">
+                                    {{ __('Companies') }} <span class="caret"></span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+                    @endcan
+
+                    
                     
                     <li>
                         <b><a href="{{ route('home')}}" role="button">

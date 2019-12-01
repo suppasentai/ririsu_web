@@ -102,13 +102,4 @@ class RegisterController extends Controller
 
         return redirect('/login')->with('status', 'We\'ll send an email to '.$user->email.' in 5 minutes. Open it up to activate your account.');
     }
-
-    public function activateUser($token)
-    {
-        if ($user = $this->activationService->activateUser($token)) {
-            auth()->login($user);
-            return redirect('/login');
-        }
-        abort(404);
-    }
 }
