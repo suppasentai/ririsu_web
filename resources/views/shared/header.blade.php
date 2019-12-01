@@ -49,20 +49,21 @@
             </div>
         </div>
     </div>
-        
+    <div class="header-banner-place p-0">
+        <div class="row justify-content-center align-self-center">
+            <a class="navbar-brand align-middle" href="{{route('home')}}" title="MiniberiMAG Politics">
+            <img src="/images/banner-logo.png" alt="MiniberiMAG Politics">
+            </a>
+		</div>
+	</div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <a href="/">
-                <img src="/images/logoreal6.resized.png" alt="">
-            </a>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse center" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home</a>
                     </li>
