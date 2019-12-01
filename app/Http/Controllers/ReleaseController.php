@@ -10,15 +10,40 @@ use App\Tag;
 use App\Enums\ReleaseStatus;
 use App\User;
 use Illuminate\Support\Facades\Storage;
+use App\ReleaseSimilarity;
 
 class ReleaseController extends Controller
 {
+
+    protected function get_recommend($currentrelease){
+        $releases = Release::all()->toJSON();
+        $releases        = json_decode($releases);
+        $selectedId      = intval($currentrelease->id);
+        $selectedRelease = $releases[0];
+
+        $selectedReleases = array_filter($releases, function ($release) use ($selectedId) { return $release->id === $selectedId; });
+        
+        if (count($selectedReleases)) {
+            $selectedRelease = $selectedReleases[array_keys($selectedReleases)[0]];
+            // dd($selectedRelease);
+        }
+
+        $releaseSimilarity = new ReleaseSimilarity($releases);
+        $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
+        
+        $releases   = $releaseSimilarity->getReleasesSortedBySimularity($selectedId, $similarityMatrix);
+        $releases_id = array_column($releases, 'id');
+        return $releases_id = array_slice($releases_id, 0, 5);
+    }
+
     public function show($slug){
         $release = Release::where('slug', '=', $slug)->first();
+        $similar_releases_ids = $this->get_recommend($release);
+        $similar_releases = Release::whereIn('id', $similar_releases_ids)->get();
         views($release)
             ->delayInSession(30)
             ->record();
-        return view('ririsu.show', ['release' => $release]);
+        return view('ririsu.show', ['release' => $release, 'similar_releases' => $similar_releases]);
     }
 
     public function create()

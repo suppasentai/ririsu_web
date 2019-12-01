@@ -15,20 +15,24 @@ Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 
 Auth::routes();
-Route::get('user/activation/{token}', 'Auth\RegisterController@activateUser')->name('user.activate');
+Route::get('user/activation/{token}', 'UserActivationController@activateUser')->name('user.activate');
 
 Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseController@show']);
 
 //create institution
 Route::group(['prefix' => 'companies'], function () {
-    Route::get('create_step1', 'CompanyController@create_step1')->name('create_step1');
-    Route::post('create_step1', 'CompanyController@post_create_step1')->name('post_create_step1');
-    Route::post('create_step2', 'CompanyController@post_create_step2')->name('post_create_step2');
+    Route::get('create_step1', 'CompanyRegisterController@create_step1')->name('create_step1');
+    Route::post('create_step1', 'CompanyRegisterController@post_create_step1')->name('post_create_step1');
+    Route::post('create_step2', 'CompanyRegisterController@post_create_step2')->name('post_create_step2');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
-    Route::resource('tags', 'TagController');
+    Route::resource('tags', 'TagController')->middleware('can:tag');;
+    Route::resource('companies', 'CompanyController')->except(['create', 'store', 'edit'])->middleware('can:company');
+    Route::post('companiesChangeStatus/{company}', 'CompanyController@companiesChangeStatus')
+        ->name('companiesChangeStatus')
+        ->middleware('can:company');
 
     Route::get('my_account', 'AccountController@index')->name('my_account');
     Route::get('my_articles', 'AccountController@articles')->name('my_acticles');
