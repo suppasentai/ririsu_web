@@ -34,6 +34,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
         ->name('companiesChangeStatus')
         ->middleware('can:company');
 
+    Route::post('follow_company', 'CompanyController@followCompany')->name('follow_company');
     Route::get('my_account', 'AccountController@index')->name('my_account');
     Route::get('my_articles', 'AccountController@articles')->name('my_acticles');
     Route::get('update_my_account', 'AccountController@edit')->name('my_account_edit');

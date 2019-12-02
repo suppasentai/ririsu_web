@@ -169,6 +169,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
         /*
          * Application Service Providers...
          */
