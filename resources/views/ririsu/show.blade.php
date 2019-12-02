@@ -68,7 +68,7 @@
 
                 <div class="col-lg-4 sidebar-sticky">
                     
-                    @include('sidebar.sidebar')
+                    @include('sidebar.sidebar', ['release' => $release])
 
                 </div>
             </div>

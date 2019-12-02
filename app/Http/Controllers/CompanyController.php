@@ -41,4 +41,12 @@ class CompanyController extends Controller
         Mail::to($company->user->email)->send($mailable);
         return response()->json($company->verified);
     }
+
+    public function followCompany(Request $request){
+
+        $company = Company::find($request->company_id);
+        $response = auth()->user()->toggleFollow($company);
+
+        return response()->json(['success'=>$response]);
+    }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Enums\ReleaseStatus;
 use App\Tag;
 use App\Category;
+use App\Company;
 use Carbon\Carbon;
 use CyrildeWit\EloquentViewable\Viewable;
 use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
@@ -20,8 +21,6 @@ class Release extends Model implements ViewableContract
     ];
 
     protected $appends = ['features', 'published'];
-
-
 
     public function user()
     {
@@ -37,6 +36,11 @@ class Release extends Model implements ViewableContract
     public function tags()
     {
         return $this->belongsToMany('App\Tag', 'release_tag', 'release_id', 'tag_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
     public function scopePolitic($query){
