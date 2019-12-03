@@ -13,7 +13,7 @@ class Company extends Model
         'incorp_date', 'location', 'tel',
          'identification_code', 'capital_stock',
         'employees_number', 'url',
-        'bussiness_category_ref', 'email'];
+        'industry_ref', 'email'];
 
     public function user()
     {

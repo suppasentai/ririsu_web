@@ -18,11 +18,10 @@
                     </div>
                     <h2><a href="{{ route('releases.show', ['slug' => $lasted_news[6]->slug])}}">{{$lasted_news[6]->title}}</a></h2>
                     <ul class="post-tags">
-                            <li><i class="lnr lnr-user"></i>{{__("by ")}}<a href="#">{!! $lasted_news[6]->user->firstname !!}</a></li>
-                        <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                        <li><i class="lnr lnr-eye"></i>872 Views</li>
+                        <li><i class="lnr lnr-user"></i>{{__("by ")}}<a href="#">{{$lasted_news[6]->user->firstname}}</a></li>
+                        <li><i class="lnr lnr-eye"></i>{{views($lasted_news[6])->count()}}</li>
                     </ul>
-                    <p>{!! \Illuminate\Support\Str::words(strip_tags($lasted_news[6]->description), 15, '...') !!}</p>
+                    <p>{!! \Illuminate\Support\Str::words(strip_tags($lasted_news[6]->description), 20, '...') !!}</p>
                 </div>
             </div>
             <div class="col-sm-6">

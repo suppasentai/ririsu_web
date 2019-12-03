@@ -50,7 +50,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label class="fieldlabels" for="title">{{ __('Corporate name:*') }}</label>
-                                    <input id="title" type="text" name="title" class="@error('title') is-invalid @enderror" value="{{ old('title') }}" required autocomplete="title" placeholder="Corporate name">
+                                    <input id="title" type="text" name="title" class="@error('title') is-invalid @enderror bg-light" value="{{ old('title') }}" required autocomplete="title" placeholder="Corporate name">
                                     @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label  class="fieldlabels" for="representative_name">{{ __('Representative Name:*') }}</label>
-                                    <input id="representative_name" name="representative_name" class="@error('representative_name') is-invalid @enderror" value="{{ old('representative_name') }}" type="text" placeholder="Representative Name">
+                                    <input id="representative_name" name="representative_name" class="@error('representative_name') is-invalid @enderror bg-light" value="{{ old('representative_name') }}" type="text" placeholder="Representative Name">
                                     @error('representative_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
                             <div class="form-group row">
                                 <div class="col-md-3">
                                     <label class="fieldlabels" for="identification_code">{{ __('Identification Code:*') }}</label>
-                                    <input id="identification_code" name="identification_code" class="@error('identification_code') is-invalid @enderror" value="{{ old('identification_code') }}" type="text" required placeholder="Identification Code">
+                                    <input id="identification_code" name="identification_code" class="@error('identification_code') is-invalid @enderror bg-light" value="{{ old('identification_code') }}" type="text" required placeholder="Identification Code">
                                     @error('identification_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="fieldlabels" for="tel">{{ __('Contact No.:') }}</label>
-                                    <input id="tel" type="tel" class="@error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required placeholder="Contact No.">
+                                    <input id="tel" type="tel" class="@error('tel') is-invalid @enderror bg-light" name="tel" value="{{ old('tel') }}" required placeholder="Contact No.">
                                     @error('tel')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="fieldlabels" for="location">{{ __('Location:*') }}</label>
-                                    <input id="location" name="location" class="@error('location') is-invalid @enderror" type="text" value="{{ old('location') }}" required placeholder="Location">
+                                    <input id="location" name="location" class="@error('location') is-invalid @enderror bg-light" type="text" value="{{ old('location') }}" required placeholder="Location">
                                     @error('location')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -99,7 +99,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label class="fieldlabels" for="email">{{ __('E-mail:*') }}</label>
-                                    <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail">
+                                    <input id="email" type="text" class="@error('email') is-invalid @enderror bg-light" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="fieldlabels" for="url">{{ __('Corporate URL:') }}</label>
-                                    <input id="url" class="@error('url') is-invalid @enderror" name="url" type="text" placeholder="Corporate URL">
+                                    <input id="url" class="@error('url') is-invalid @enderror bg-light" name="url" type="text" placeholder="Corporate URL">
                                     @error('url')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -119,7 +119,7 @@
                             <div class="form-group row">
                                 <div class="col-md-3">
                                     <label class="fieldlabels" for="employees_number">{{ __('Employees Number:') }}</label>
-                                    <input id="employees_number" class="@error('employees_number') is-invalid @enderror" name="employees_number" type="number" min="1" placeholder="30">
+                                    <input id="employees_number" class="@error('employees_number') is-invalid @enderror bg-light" name="employees_number" type="number" min="1" placeholder="">
                                     @error('employees_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="fieldlabels" for="capital_stock">{{ __('Capital Stock (USD):') }}</label>
-                                    <input id="capital_stock" class="@error('capital_stock') is-invalid @enderror" type="number" min="1" step="1"  name="capital_stock" placeholder="2,000,000">
+                                    <input id="capital_stock" class="@error('capital_stock') is-invalid @enderror bg-light" type="number" min="1" step="1"  name="capital_stock" placeholder="">
                                     @error('capital_stock')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="fieldlabels" for="incorp_date">{{ __('Incoporation Date:') }}</label>
-                                    <input id="incorp_date" class="@error('incorp_date') is-invalid @enderror" name="incorp_date" value="{{ old('incorp_date') }}" placeholder="Incoporation Date">
+                                    <input id="incorp_date" class="@error('incorp_date') is-invalid @enderror bg-light" name="incorp_date" value="{{ old('incorp_date') }}" placeholder="Incoporation Date">
                                     @error('incorp_date')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -146,6 +146,22 @@
                                     <script>
                                         $('#incorp_date').datepicker();
                                     </script>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="industry_ref" class="control-label">{{__("Industry:*")}}</label>
+                                    <select class="form-control rounded-0 bg-light" id="industry_ref" name="industry_ref">
+                                        @foreach( $industries as $industry )
+                                            <option value="{{ $industry->title }}">{{ $industry->title }}</option>
+                                        @endforeach
+                                    </select>
+                  
+                                    @if ($errors->has('grade_ref'))
+                                      <span class="help-block">
+                                        <strong>{{ $errors->first('grade_ref') }}</strong>
+                                      </span>
+                                    @endif
                                 </div>
                             </div>
                             @if ($errors->any())

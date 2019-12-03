@@ -9,6 +9,7 @@ use App\Release;
 use App\Tag;
 use App\Enums\ReleaseStatus;
 use App\User;
+use Auth;
 use Illuminate\Support\Facades\Storage;
 use App\ReleaseSimilarity;
 
@@ -38,11 +39,17 @@ class ReleaseController extends Controller
 
     public function show($slug){
         $release = Release::where('slug', '=', $slug)->first();
+        
         $similar_releases_ids = $this->get_recommend($release);
         $similar_releases = Release::whereIn('id', $similar_releases_ids)->get();
-        views($release)
-            ->delayInSession(30)
-            ->record();
+
+        $visitor = null;
+        if(Auth::check()){ 
+            $visitor = Auth::user()->id;
+            views($release)->overrideVisitor($visitor)->delayInSession(30)->record();
+        }
+        else views($release)->delayInSession(30)->record();
+            
         return view('ririsu.show', ['release' => $release, 'similar_releases' => $similar_releases]);
     }
 

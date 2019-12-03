@@ -29,6 +29,7 @@ $(document).ready(function(){
         var employees_number = $("input[name='employees_number']").val();
         var capital_stock = $("input[name='capital_stock']").val();
         var incorp_date = $("input[name='incorp_date']").val();
+        var industry_ref = $("select[name='industry_ref']").val();
 
 
         $.ajax({
@@ -46,6 +47,7 @@ $(document).ready(function(){
                 url:url,
                 employees_number:employees_number, 
                 capital_stock:capital_stock,
+                industry_ref:industry_ref,
             },
             success: function(data) {
                 if($.isEmptyObject(data.error)){
@@ -97,6 +99,7 @@ $(document).ready(function(){
         var employees_number = $("input[name='employees_number']").val();
         var capital_stock = $("input[name='capital_stock']").val();
         var incorp_date = $("input[name='incorp_date']").val();
+        var industry_ref = $("select[name='industry_ref']").val();
 
         //USER INFO
         var _token = $("input[name='_token']").val();
@@ -131,50 +134,13 @@ $(document).ready(function(){
                 url:url,
                 employees_number:employees_number, 
                 capital_stock:capital_stock,
+                industry_ref:industry_ref,
             },
             success: function(data) {
                 if($.isEmptyObject(data.error)){
                     $(".print-error-msg").css('display','none');
 
                     $("#header_control").load(" #header_control>*","");
-
-                    // msg = '<div class="col-md-4 col-sm-3" id="header_control">
-                    //     <ul class="social-icons">
-                    //         @guest
-                    //         <li>
-                    //             <b><a href="{{route('create_step1')}}">{{__('Request Release')}}</a></b>
-                    //         </li>
-                    //         &nbsp;
-                    //         <li>
-                    //             <b><a href="#" data-toggle="modal" data-target="#loginModal">{{__('Login')}}</a></b>
-                    //         </li>
-                    //         @else
-                    //         <li>
-                    //             <a href="{{ route('my_account')}}" role="button">
-                    //                 <b>{{ __('My Profile') }} <span class="caret"></span></b>
-                    //             </a>
-                    //         </li>
-                    //         <li>
-                    //             <b><a href="{{ route('logout') }}"
-                    //                 onclick="event.preventDefault();
-                    //                                 document.getElementById('logout-form').submit();">
-                    //                 {{ __('Logout') }}
-                    //             </a></b>
-
-                    //             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    //                 @csrf
-                    //             </form>
-                    //         </li>
-                    //         @endguest
-                    //     </ul>
-                    // </div>';
-
-                    // $("#header_control").fadeOut(800, function(){
-                    //     $("#header_control").html(msg).fadeIn().delay(2000);
-
-                    // });
-
-                    
                     
                     current_fs = $("#nextUser").parent();
                     next_fs = $("#nextUser").parent().next();

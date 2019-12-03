@@ -23,6 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->string('identification_code');
             $table->bigInteger('capital_stock')->nullable();
             $table->integer('employees_number')->nullable();
+            $table->string('industry_ref');
             $table->string('url')->nullable();
             $table->string('email');
             $table->timestamps();
