@@ -17,13 +17,16 @@ class CompanyController extends Controller
         $this->middleware('auth');
     }
 
+    public function followedCompanies(){
+    }
+
     public function index(){
         $companies = Company::orderBy('verified' , 'desc')->paginate(6);
         return view('admin.company_index', ['companies' => $companies]);
     }
 
     public function show(){
-        return view('admin.company_show');
+        return view('companies.show');
     }
 
     public function companiesChangeStatus(Request $request, Company $company){

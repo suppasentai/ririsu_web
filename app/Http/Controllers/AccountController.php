@@ -24,6 +24,27 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
+    protected function get_recommend($currentrelease){
+        $releases = Release::all()->toJSON();
+        $releases        = json_decode($releases);
+        $selectedId      = intval($currentrelease->id);
+        $selectedRelease = $releases[0];
+
+        $selectedReleases = array_filter($releases, function ($release) use ($selectedId) { return $release->id === $selectedId; });
+        
+        if (count($selectedReleases)) {
+            $selectedRelease = $selectedReleases[array_keys($selectedReleases)[0]];
+            // dd($selectedRelease);
+        }
+
+        $releaseSimilarity = new ReleaseSimilarity($releases);
+        $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
+        
+        $releases   = $releaseSimilarity->getReleasesSortedBySimularity($selectedId, $similarityMatrix);
+        $releases_id = array_column($releases, 'id');
+        return $releases_id = array_slice($releases_id, 0, 5);
+    }
+
     public function index()
     {
         $news = Release::orderBy('created_at', 'desc')->paginate(9);
