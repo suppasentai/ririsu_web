@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Company;
 use App\User;
+use App\Industry;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -22,7 +23,8 @@ class CompanyRegisterController extends Controller
     }
 
     public function create_step1(Request $request){
-        return view('companies.create_step1');
+        $industries = Industry::all();
+        return view('companies.create_step1', ['industries' => $industries]);
     }
 
     public function post_create_step1(Request $request)
@@ -38,6 +40,7 @@ class CompanyRegisterController extends Controller
             'employees_number' => 'nullable',
             'capital_stock' => 'nullable',
             'incorp_date' => 'nullable|date',
+            'industry_ref' => 'required',
         ]);
         if ($validator->fails()) {
 			return response()->json(['error'=>$validator->errors()->all()]);
@@ -73,6 +76,7 @@ class CompanyRegisterController extends Controller
         $company->employees_number = $request->employees_number;
         $company->capital_stock = $request->capital_stock;
         $company->incorp_date = $request->incorp_date;
+        $company->industry_ref = $request->industry_ref;
 
         $user = new User();
         $user->first_name = $request->first_name;

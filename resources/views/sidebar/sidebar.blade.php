@@ -1,11 +1,12 @@
 <!-- Sidebar -->
 <div class="sidebar theiaStickySidebar">
+    @if(@isset($release))
     <ul class="author-list">
         <li>
             <div class="autor-box">
                 <div class="autor-content ml-0">
                     <div class="autor-title">
-                        <h1><span>{{Auth::user()->name}}</span><a href="autor-details.html">{{Auth::user()->articles()->count()}}</a></h1>
+                        <h1><span>{{$release->company->title}}</span><a href="autor-details.html"></a></h1>
                         <ul class="autor-social">
                             <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
@@ -15,6 +16,7 @@
                             <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
                             <li><a href="#" class="dribble"><i class="fa fa-dribbble"></i></a></li>
                         </ul>
+                        @if(Auth::check())
                         <button class="btn btn-info btn-sm action-follow" data-id="{{ $release->company->id }}"><strong>
                             @if(Auth::user()->isFollowing($release->company))
                                 UnFollow
@@ -23,6 +25,7 @@
                             @endif
                             </strong>
                         </button>
+                        @endif
                         <ul class="list-news">
                             
                             <li>
@@ -55,6 +58,7 @@
             </div>
         </li>
     </ul>
+    @endif
     <div class="search-widget widget">
         <form>
             <input type="search" placeholder="Search for..."/>

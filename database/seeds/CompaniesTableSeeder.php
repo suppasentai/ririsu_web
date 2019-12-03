@@ -12,24 +12,20 @@ class CompaniesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        $titles = ['Anor', 'Woodland Realm', 'Durins Folk', 'Gondor'];
-        $representative_names = ['Aragon', 'Legolas', 'Gimli', 'Boromir'];
-        $locations = ['Rivendell', 'Woodland Realm', 'Blue Mountains', 'Gondor'];
-        $indents = ['Aragon123', 'Legolas321', 'Gimli132', 'Boromir213'];
-        $emails = ['aragon123@gmail.com', 'legolas321@gmail.com', 'gimli132@gmail.com', 'boromir213@gmail.com'];
-        for ($i =0; $i<4; $i++) {
+        for ($i =0; $i<20; $i++) {
             DB::table('companies')->insert([
-                'title' => $titles[$i],
-                'representative_name' => $representative_names[$i],
-                'tel' => NULL,
-                'capital_stock'=> NULL,
-                'employees_number' => NULL,
-                'url' => NULL,
-                'incorp_date' => NULL,
+                'title' => $faker->company,
+                'representative_name' => $faker->name(),
+                'capital_stock'=> rand(100000, 1000000),
+                'employees_number' => rand(10, 100),
+                'url' => $faker->url,
+                'incorp_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'tel' => $faker->phoneNumber,
-                'location' => $locations[$i],
-                'identification_code' => $indents[$i],
-                'email' => $emails[$i]
+                'location' => $faker->address,
+                'identification_code' => $faker->ean8,
+                'email' => $faker->safeEmail,
+                'industry_ref' => DB::table('industries')->inRandomOrder()->first()->title,
+                'verified' => true,
             ]);
         }
     }
