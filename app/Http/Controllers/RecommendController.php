@@ -30,9 +30,10 @@ class RecommendController extends Controller
         }
 
         $releaseSimilarity = new ReleaseSimilarity($companies, 'companies');
-        $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix('companies');
-        $companies          = $releaseSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
-        dd($companies);
+        // $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
+        $predictMatrix  = $releaseSimilarity->calculatePredictMatrix();
+        // $companies          = $releaseSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
+
         return view('recomtest', compact('selectedId', 'selectedRelease', 'releases'));
     }
 }

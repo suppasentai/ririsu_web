@@ -61,10 +61,8 @@ class Similarity
 
     // Chua can dung (Tinh the the loai)
 
-    public static function jaccard(string $string1, string $string2, string $separator = ','): float
+    public static function jaccard(array $a, array $b): float
     {
-        $a            = explode($separator, $string1);
-        $b            = explode($separator, $string2);
         $intersection = array_unique(array_intersect($a, $b));
         $union        = array_unique(array_merge($a, $b));
 

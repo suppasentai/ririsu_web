@@ -12,13 +12,15 @@ class ReleaseSimilarity
     protected $categoryWeight = 1;
     protected $industryWeight = 1;
     protected $stockWeight = 1;
+    protected $followersWeight = 1;
     protected $publishedHighRange = 1000;
     protected $stockHighRange = 1000;
+    protected $kneighbors = 2;
     protected $type = null;
 
     public function __construct(array $products, string $type = null)
     {
-        $this->products       = $products;
+        $this->products  = $products;
         $this->type = $type;
         if($type == 'companies')
         $this->stockHighRange = max(array_column($products, 'capital_stock'));
@@ -59,13 +61,44 @@ class ReleaseSimilarity
                     continue;
                 }
                 if($this->type == 'companies')
-                $similarityScores['product_id_' . $_product->id] = $this->calculateCompanySimilarityScore($product, $_product);
+                    $similarityScores['product_id_' . $_product->id] = $this->calculateCompanySimilarityScore($product, $_product);
                 else
-                $similarityScores['product_id_' . $_product->id] = $this->calculateSimilarityScore($product, $_product);
+                    $similarityScores['product_id_' . $_product->id] = $this->calculateSimilarityScore($product, $_product);
             }
             $matrix['product_id_' . $product->id] = $similarityScores;
         }
         return $matrix;
+    }
+
+    public function calculatePredictMatrix(): array
+    {
+        $similarityMatrix  = $this->calculateSimilarityMatrix();
+        $matrix = [];
+        // dd($similarityMatrix);
+        foreach($this->products as $product) {
+
+            $predictScores = [];
+
+            dd((array)$product->followers_id);
+
+            foreach((array)$product->followers_id as $productIdKey => $similarity){
+                
+            }
+
+            // $followers = array_filter((array)$product->followers_id, function($f) {
+            //     return $f == 1;
+            // });
+            // // dd($followers);
+            // $similarities   = $similarityMatrix['product_id_' . $product->id];
+            // $ratedsimilarities = [];
+
+            // $sortedSimilarity = $this->getProductsSortedBySimularity($product->id, $similarityMatrix);
+            // $knearest = array_slice($sortedSimilarity, 0, $this->kneighbors); 
+            // // dd($knearest);
+            // foreach((array)$product->followers_id as $followStatus){
+
+            // }
+        }
     }
 
     public function getProductsSortedBySimularity(int $productId, array $matrix): array
@@ -85,9 +118,9 @@ class ReleaseSimilarity
             if (! count($products)) {
                 continue;
             }
-            // dd($releases);
+            // dd($products);
             $product = $products[array_keys($products)[0]];
-            // dd($release);
+            // dd($product);
             $product->similarity = $similarity;
             $sortedProducts[] = $product;
         }
@@ -110,15 +143,12 @@ class ReleaseSimilarity
             ) * $this->publishedWeight),
             
             // Category similarity
-            (Similarity::jaccard($releaseA->category_ref, $releaseB->category_ref) * $this->categoryWeight)
+            (Similarity::jaccard(array($releaseA->category_ref), array($releaseB->category_ref)) * $this->categoryWeight)
         ]) / ($this->featureWeight + $this->categoryWeight + $this->publishedWeight);
     }
 
     protected function calculateCompanySimilarityScore($companyA, $companyB)
     {
-        // $releaseAFeatures = implode('', get_object_vars($companyA->features));
-        // $releaseBFeatures = implode('', get_object_vars($releaseB->features));
-
         return array_sum([
             // features similarity
             // (Similarity::hamming($releaseAFeatures, $releaseBFeatures) * $this->featureWeight),
@@ -130,7 +160,7 @@ class ReleaseSimilarity
             ) * $this->publishedWeight),
             
             // Category similarity
-            // (Similarity::jaccard($companyA->industry_ref, $companyB->industry_ref) * $this->industryWeight)
-        ]);
+            (Similarity::jaccard((array)$companyA->followers_id, (array)$companyB->followers_id) * $this->followersWeight)
+        ])/ ($this->stockWeight + $this->followersWeight);
     }
 }
