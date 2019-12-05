@@ -349,7 +349,7 @@
                     
                     <li>
                         <b><a href="{{ route('my_account')}}">
-                            {{ __('News') }}&nbsp;
+                            {{ __('Your News') }}&nbsp;
                         </a></b>
                     </li>
                     

@@ -32,7 +32,7 @@ class ReleaseController extends Controller
         $releaseSimilarity = new ReleaseSimilarity($releases);
         $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
         
-        $releases   = $releaseSimilarity->getReleasesSortedBySimularity($selectedId, $similarityMatrix);
+        $releases   = $releaseSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
         $releases_id = array_column($releases, 'id');
         return $releases_id = array_slice($releases_id, 0, 5);
     }

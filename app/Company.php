@@ -15,8 +15,27 @@ class Company extends Model
         'employees_number', 'url',
         'industry_ref', 'email'];
 
+    protected $appends = ['followers_id'];
+
     public function user()
     {
         return $this->hasOne(User::class);
+    }
+
+    public function getFollowersIdAttribute(){
+        $values = [];
+        $users = User::all();
+        $followers_ids= $this->followers()->pluck('id');
+        
+        foreach($users as $user){
+            $magniture = 0;
+            $followingCompanies = $user->followings(Company::class)->pluck('id');
+            $magniture = sqrt(count($followingCompanies));
+            $values[$user->id] = 0;
+            foreach($followers_ids as $follower_id){
+                if($user->id == $follower_id) $values[$user->id] = 1/$magniture;
+            }
+        }
+        return $values;
     }
 }

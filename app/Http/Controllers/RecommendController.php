@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ReleaseSimilarity;
-use App\Release;
+use App\Company;
+use Auth;
 
 class RecommendController extends Controller
 {
@@ -15,21 +16,25 @@ class RecommendController extends Controller
         // $user = Tag::find(1);
 
         // dd($user->toJson());
-        $releases = Release::all()->toJSON();
-        $releases        = json_decode($releases);
+        // dd(Company::all()[18]->followers()->get());
+        $companies = Company::all()->toJSON();
+        $companies        = json_decode($companies);
         $selectedId      = intval(app('request')->input('id') ?? '8');
-        $selectedRelease = $releases[0];
+        $selectedRelease = $companies[0];
 
-        $selectedReleases = array_filter($releases, function ($release) use ($selectedId) { return $release->id === $selectedId; });
+        $selectedReleases = array_filter($companies, function ($companies) use ($selectedId) { return $companies->id === $selectedId; });
         
         if (count($selectedReleases)) {
             $selectedRelease = $selectedReleases[array_keys($selectedReleases)[0]];
             // dd($selectedRelease);
         }
 
-        $releaseSimilarity = new ReleaseSimilarity($releases);
-        $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
-        $releases          = $releaseSimilarity->getReleasesSortedBySimularity($selectedId, $similarityMatrix);
+        $releaseSimilarity = new ReleaseSimilarity($companies, 'companies');
+        // $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
+        $predictMatrix  = $releaseSimilarity->calculatePredictMatrix();
+        // $companies          = $releaseSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
+
+        dd($predictMatrix);
         return view('recomtest', compact('selectedId', 'selectedRelease', 'releases'));
     }
 }

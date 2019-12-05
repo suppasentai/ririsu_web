@@ -17,7 +17,7 @@ class Similarity
         return (strlen($a) - $distance) / strlen($a);
     }
 
-    // Chua can dung (Tinh gia)
+    
     public static function euclidean(array $array1, array $array2, bool $returnDistance = false): float
     {
         $a   = $array1;
@@ -34,9 +34,9 @@ class Similarity
             return $distance;
         }
         // doesn't work well with distances larger than 1
-        // return 1 / (1 + $distance);
+        return 1 / (1 + $distance);
         // so we'll use angular similarity instead
-        return 1 - $distance;
+        // return 1 - $distance;
     }
 
     public static function minMaxNorm(array $values, $min = null, $max = null): array
@@ -46,20 +46,23 @@ class Similarity
         $max  = $max ?? max($values);
 
         foreach ($values as $value) {
+            if($value == null) {
+                $norm[]      = 0;
+                continue;
+            }
             $numerator   = $value - $min;
             $denominator = $max - $min;
             $minMaxNorm  = $numerator / $denominator;
             $norm[]      = $minMaxNorm;
         }
+        
         return $norm;
     }
 
     // Chua can dung (Tinh the the loai)
 
-    public static function jaccard(string $string1, string $string2, string $separator = ','): float
+    public static function jaccard(array $a, array $b): float
     {
-        $a            = explode($separator, $string1);
-        $b            = explode($separator, $string2);
         $intersection = array_unique(array_intersect($a, $b));
         $union        = array_unique(array_merge($a, $b));
 
