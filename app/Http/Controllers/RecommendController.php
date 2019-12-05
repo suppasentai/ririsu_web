@@ -10,13 +10,6 @@ use Auth;
 class RecommendController extends Controller
 {
     public function test(){
-        // $test = Release::all();
-        // dd($test);
-        // $releases        = json_decode(file_get_contents(storage_path('data/products-data.json')));
-        // $user = Tag::find(1);
-
-        // dd($user->toJson());
-        // dd(Company::all()[18]->followers()->get());
         $companies = Company::all()->toJSON();
         $companies        = json_decode($companies);
         $selectedId      = intval(app('request')->input('id') ?? '8');
@@ -30,9 +23,7 @@ class RecommendController extends Controller
         }
 
         $releaseSimilarity = new ReleaseSimilarity($companies, 'companies');
-        // $similarityMatrix  = $releaseSimilarity->calculateSimilarityMatrix();
         $predictMatrix  = $releaseSimilarity->calculatePredictMatrix();
-        // $companies          = $releaseSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
 
         dd($predictMatrix);
         return view('recomtest', compact('selectedId', 'selectedRelease', 'releases'));
