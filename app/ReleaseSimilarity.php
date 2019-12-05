@@ -15,7 +15,7 @@ class ReleaseSimilarity
     protected $followersWeight = 1;
     protected $publishedHighRange = 1000;
     protected $stockHighRange = 1000;
-    protected $kneighbors = 2;
+    protected $kneighbors = 5;
     protected $type = null;
 
     public function __construct(array $products, string $type = null)
@@ -73,32 +73,71 @@ class ReleaseSimilarity
     public function calculatePredictMatrix(): array
     {
         $similarityMatrix  = $this->calculateSimilarityMatrix();
-        $matrix = [];
         // dd($similarityMatrix);
+        $matrix = [];
         foreach($this->products as $product) {
 
             $predictScores = [];
 
-            dd((array)$product->followers_id);
+            // dd((array)$product->followers_id);
+            $arr_user = (array)$product->followers_id;
+            // dd($arr_user);
+            dd($this->products);
+            foreach($arr_user as $id => $status){
+                $followedcompanies_simi = [];
+                 
+                if ($status != 0) {
+                    $predictScores[$id] = 1;
+                   continue;
+                }
+                else {
+                    $predictScores[$id] = 0;
+                    foreach($this->products as $_product){
+                        if ($product->id === $_product->id) {
+                            continue;
+                        }
+                        $_arr_user = (array)$_product->followers_id;
+                        if($_arr_user[$id] != 0) {
+                            $followedcompanies_simi[$_product->id] = $similarityMatrix['product_id_' . $product->id]['product_id_' . $_product->id];
+                        }
+                    }
+                    if($followedcompanies_simi){
+                        // dd($followedcompanies_simi);
+                        arsort($followedcompanies_simi);
+                        // dd($followedcompanies);
+                        $knearest = array_slice($followedcompanies_simi, 0, $this->kneighbors, true);
+                        // dd($knearest);
+                        // dd($followedcompanies);
+                        
 
-            foreach((array)$product->followers_id as $productIdKey => $similarity){
-                
+                        if($knearest)
+                        {
+                            // dd($knearest);
+                            
+                            $numerator = 0;
+                            $denominator = 0;
+                            foreach($knearest as $company_id => $value){
+                                $blehs = array_filter($this->products, function ($product) use ($company_id) { return $product->id == $company_id; });
+                                
+                                $bleh = $blehs[array_keys($blehs)[0]];
+                                // dd($bleh);
+                                // dd(((array)$product->followers_id)[$id]);
+                                $numerator += ((array)$bleh->followers_id)[$id]*$value;
+                                // dd($value);
+                                $denominator ++;
+                            }
+                            // dd($denominator);
+
+                            $predictScores[$id] = $numerator/$denominator;
+
+                        }
+                    }
+                }
             }
-
-            // $followers = array_filter((array)$product->followers_id, function($f) {
-            //     return $f == 1;
-            // });
-            // // dd($followers);
-            // $similarities   = $similarityMatrix['product_id_' . $product->id];
-            // $ratedsimilarities = [];
-
-            // $sortedSimilarity = $this->getProductsSortedBySimularity($product->id, $similarityMatrix);
-            // $knearest = array_slice($sortedSimilarity, 0, $this->kneighbors); 
-            // // dd($knearest);
-            // foreach((array)$product->followers_id as $followStatus){
-
-            // }
+            $matrix[$product->id] = $predictScores;
+            
         }
+        return $matrix;
     }
 
     public function getProductsSortedBySimularity(int $productId, array $matrix): array

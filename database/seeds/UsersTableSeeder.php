@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Role;
 use App\User;
+use App\Company;
 
 class UsersTableSeeder extends Seeder
 {
@@ -46,20 +47,27 @@ class UsersTableSeeder extends Seeder
             'active' => true
         ]);
         $user2->roles()->attach($author);
-
-        $user2 = User::create([
-            // 'name' => Str::random(10),
-            'slug' => uniqid(),
-            'first_name' => 'Samwise',
-            'last_name' => 'Gamgee',
-            // 'institution_id' => 'Central',
-            // 'image' => NULL,
-            // 'identification_document' => 1193373387,
-            'telephone' => '3194995423',
-            // 'address' => 'Calle 12 # 13 - 31 Belén, La Unión, Valle del Cauca, Colombia',
-            'email' => 'mami8x@gmail.com',
-            'password' => bcrypt('secret'),
-        ]);
+        $faker = Faker\Factory::create();
+        for($i=0; $i<200; $i++){
+            $user = User::create([
+                // 'name' => Str::random(10),
+                'slug' => uniqid(),
+                'first_name' => $faker->firstName(),
+                'last_name' => $faker->lastName,
+                // 'institution_id' => 'Central',
+                // 'image' => NULL,
+                // 'identification_document' => 1193373387,
+                'telephone' => $faker->phoneNumber,
+                // 'address' => 'Calle 12 # 13 - 31 Belén, La Unión, Valle del Cauca, Colombia',
+                'email' => $faker->safeEmail,
+                'password' => bcrypt('secret'),
+            ]);
+            $companies = Company::all()->random(rand(6,10));
+            // $user->follow($companies);
+            foreach($companies as $company){
+                $user->follow($company);
+            }
+        }
         // $user->first_name = $request->first_name;
         // $user->last_name = $request->last_name;
         // $user->telephone = $request->telephone;

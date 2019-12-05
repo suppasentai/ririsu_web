@@ -23,16 +23,19 @@ class Company extends Model
     }
 
     public function getFollowersIdAttribute(){
-        $ids = [];
-        $users_ids = User::pluck('id');
+        $values = [];
+        $users = User::all();
         $followers_ids= $this->followers()->pluck('id');
-        $magniture = sqrt(count($followers_ids));
-        foreach($users_ids as $user_id){
-            $ids[$user_id] = 0;
+        
+        foreach($users as $user){
+            $magniture = 0;
+            $followingCompanies = $user->followings(Company::class)->pluck('id');
+            $magniture = sqrt(count($followingCompanies));
+            $values[$user->id] = 0;
             foreach($followers_ids as $follower_id){
-                if($user_id == $follower_id) $ids[$user_id] = 1/$magniture;
+                if($user->id == $follower_id) $values[$user->id] = 1/$magniture;
             }
         }
-        return $ids;
+        return $values;
     }
 }

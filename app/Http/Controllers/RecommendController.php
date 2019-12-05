@@ -34,6 +34,7 @@ class RecommendController extends Controller
         $predictMatrix  = $releaseSimilarity->calculatePredictMatrix();
         // $companies          = $releaseSimilarity->getProductsSortedBySimularity($selectedId, $similarityMatrix);
 
+        dd($predictMatrix);
         return view('recomtest', compact('selectedId', 'selectedRelease', 'releases'));
     }
 }
