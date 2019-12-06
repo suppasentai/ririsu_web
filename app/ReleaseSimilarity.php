@@ -79,10 +79,7 @@ class ReleaseSimilarity
 
             $predictScores = [];
 
-            // dd((array)$product->followers_id);
             $arr_user = (array)$product->followers_id;
-            // dd($arr_user);
-            dd($this->products);
             foreach($arr_user as $id => $status){
                 $followedcompanies_simi = [];
                  

@@ -68,11 +68,5 @@ class UsersTableSeeder extends Seeder
                 $user->follow($company);
             }
         }
-        // $user->first_name = $request->first_name;
-        // $user->last_name = $request->last_name;
-        // $user->telephone = $request->telephone;
-        // $user->email = $request->user_email;
-        // $user->password = Hash::make($request->password);
-        // $user->slug = uniqid();
     }
 }
