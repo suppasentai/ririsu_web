@@ -21,9 +21,13 @@
 
 	<link rel="stylesheet" href="{{ asset('css/modernmag-assets.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/preloader.css') }}">
     @yield('head')
 </head>
 <body class="">
+        <div id="preloader">
+                <div id="loader"></div>
+              </div>
     <div id="container">
 
         
@@ -32,6 +36,7 @@
         @yield('content')
 
         @include('shared.footer')
+        
 
     </div>
     @include('shared.loginmodal')
@@ -43,6 +48,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/gmap3.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/preloader.js') }}"></script>
     
 </body>
 </html>
