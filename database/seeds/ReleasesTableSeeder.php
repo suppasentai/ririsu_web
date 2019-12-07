@@ -14,7 +14,7 @@ class ReleasesTableSeeder extends Seeder
      */
     public function run()
     {
-        $titles = ['Tech', 'Politic', 'Business', 'Food', 'Fashion', 'Sport'];
+        $titles = ['Tech', 'Politic', 'Business', 'Education', 'Fashion', 'Sport'];
         $faker = Faker::create();
         for($i = 1; $i<= 40; $i++){
             $cat = $titles[array_rand($titles)];

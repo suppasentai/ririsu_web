@@ -1,77 +1,77 @@
 <div class="item">
     <div class="news-post image-post">
-        <img src="upload/blog/s10.jpg" alt="">
+        <img src="{{$politic->image}}" alt="">
         <div class="hover-box">
-            <a href="#" class="category category-world">Politic</a>
-            <h2><a href="single-post.html">US Muslims protests against ...</a></h2>
+            <a href="#" class="category category-world">{{$politic->category_ref}}</a>
+            <h2><a href="single-post.html">{{$politic->title}}</a></h2>
             <ul class="post-tags">
-                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                <li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$politic->company->title}}</a></li>
+                <li><i class="lnr lnr-eye"></i>{{views($politic)->count()}}</li>
             </ul>
         </div>
     </div>
 </div>
 <div class="item">
     <div class="news-post image-post">
-        <img src="upload/blog/s2.jpg" alt="">
+        <img src="{{$business->image}}" alt="">
         <div class="hover-box">
-            <a href="#" class="category">Business</a>
-            <h2><a href="single-post.html">Travelling is part of our life</a></h2>
+            <a href="#" class="category">{{$business->category_ref}}</a>
+            <h2><a href="single-post.html">{{$business->title}}</a></h2>
             <ul class="post-tags">
-                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                <li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$business->company->title}}</a></li>
+                <li><i class="lnr lnr-eye"></i>{{views($business)->count()}}</li>
             </ul>
         </div>
     </div>
 </div>
 <div class="item">
     <div class="news-post image-post">
-        <img src="upload/blog/s20.jpg" alt="">
+        <img src="{{$fashion->image}}" alt="">
         <div class="hover-box">
-            <a href="#" class="category category-fashion">Fashion</a>
-            <h2><a href="single-post.html">Trending autumn jeans</a></h2>
+            <a href="#" class="category category-fashion">{{$fashion->category_ref}}</a>
+            <h2><a href="single-post.html">{{$fashion->title}}</a></h2>
             <ul class="post-tags">
-                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                <li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$fashion->company->title}}</a></li>
+                <li><i class="lnr lnr-eye"></i>{{views($fashion)->count()}}</li>
             </ul>
         </div>
     </div>
 </div>
 <div class="item">
     <div class="news-post image-post">
-        <img src="upload/blog/s4.jpg" alt="">
+        <img src="{{$education->image}}" alt="">
         <div class="hover-box">
-            <a href="#" class="category category-food">Food</a>
-            <h2><a href="single-post.html">Traditional food and Healthy food</a></h2>
+            <a href="#" class="category category-food">{{$education->category_ref}}</a>
+            <h2><a href="single-post.html">{{$education->title}}</a></h2>
             <ul class="post-tags">
-                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                <li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$education->company->title}}</a></li>
+                <li><i class="lnr lnr-eye"></i>{{views($education)->count()}}</li>
             </ul>
         </div>
     </div>
 </div>
 <div class="item">
     <div class="news-post image-post">
-        <img src="upload/blog/s30.jpg" alt="">
+        <img src="{{$sport->image}}" alt="">
         <div class="hover-box">
-            <a href="#" class="category category-sport">Sport</a>
-            <h2><a href="single-post.html">Australian Open Semi-Finals</a></h2>
+            <a href="#" class="category category-sport">{{$sport->category_ref}}</a>
+            <h2><a href="single-post.html">{{$sport->title}}</a></h2>
             <ul class="post-tags">
-                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                <li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$sport->company->title}}</a></li>
+                <li><i class="lnr lnr-eye"></i>{{views($sport)->count()}}</li>
             </ul>
         </div>
     </div>
 </div>
 <div class="item">
     <div class="news-post image-post">
-        <img src="upload/blog/s38.jpg" alt="">
+        <img src="{{$tech->image}}" alt="">
         <div class="hover-box">
-            <a href="#" class="category category-tech">Tech</a>
-            <h2><a href="single-post.html">Phantom controller</a></h2>
+            <a href="#" class="category category-tech">{{$tech->category_ref}}</a>
+            <h2><a href="single-post.html">{{$tech->title}}</a></h2>
             <ul class="post-tags">
-                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                <li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$tech->company->title}}</a></li>
+                <li><i class="lnr lnr-eye"></i>{{views($tech)->count()}}</li>
             </ul>
         </div>
     </div>

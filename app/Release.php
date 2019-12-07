@@ -52,8 +52,8 @@ class Release extends Model implements ViewableContract
     public function scopeTech($query){
         return $query->where('category_ref', 'Tech')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
     }
-    public function scopeFood($query){
-        return $query->where('category_ref', 'Food')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    public function scopeEducation($query){
+        return $query->where('category_ref', 'Education')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
     }
     public function scopeFashion($query){
         return $query->where('category_ref', 'Fashion')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();

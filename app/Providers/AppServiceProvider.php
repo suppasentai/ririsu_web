@@ -60,6 +60,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with('news', Release::news());
         });
 
+        View::composer(['home.most_category_views_box'], function ($view) {
+            $view->with('politic', Release::politic());
+            $view->with('business', Release::business());
+            $view->with('tech', Release::tech());
+            $view->with('education', Release::education());
+            $view->with('fashion', Release::fashion());
+            $view->with('sport', Release::sport());
+        });
+
         View::composer(['home.combined_box'], function ($view) {
             $view->with('news', Release::combined());
         });     
