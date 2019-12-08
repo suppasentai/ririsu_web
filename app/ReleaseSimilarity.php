@@ -73,7 +73,6 @@ class ReleaseSimilarity
     public function calculatePredictMatrix(): array
     {
         $similarityMatrix  = $this->calculateSimilarityMatrix();
-        // dd($similarityMatrix);
         $matrix = [];
         foreach($this->products as $product) {
 

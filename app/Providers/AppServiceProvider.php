@@ -61,12 +61,57 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['home.most_category_views_box'], function ($view) {
-            $view->with('politic', Release::politic());
-            $view->with('business', Release::business());
-            $view->with('tech', Release::tech());
-            $view->with('education', Release::education());
-            $view->with('fashion', Release::fashion());
-            $view->with('sport', Release::sport());
+            $view->with('politic', Release::politic()->first());
+            $view->with('business', Release::business()->first());
+            $view->with('tech', Release::tech()->first());
+            $view->with('education', Release::education()->first());
+            $view->with('lifestyle', Release::lifestyle()->first());
+            $view->with('sport', Release::sport()->first());
+        });
+
+        View::composer(['shared.navbar-politic'], function ($view) {
+            $view->with('politics', Release::politic()->take(4)->get());
+        });
+        View::composer(['shared.navbar-sport'], function ($view) {
+            $view->with('sports', Release::sport()->take(4)->get());
+        });
+        View::composer(['shared.navbar-tech'], function ($view) {
+            $view->with('techs', Release::tech()->take(4)->get());
+        });
+        View::composer(['shared.navbar-education'], function ($view) {
+            $view->with('educations', Release::education()->take(4)->get());
+        });
+        View::composer(['shared.navbar-lifestyle'], function ($view) {
+            $view->with('lifestyles', Release::lifestyle()->take(4)->get());
+        });
+        View::composer(['shared.navbar-business'], function ($view) {
+            $view->with('businesses', Release::business()->take(4)->get());
+        });
+        View::composer(['shared.navbar-features'], function ($view) {
+            $view->with('features', Release::featured());
+        });
+
+        View::composer(['shared.navbar-politic'], function ($view) {
+            $view->with('politics', Release::politic()->take(4)->get());
+        });
+
+        View::composer(['shared.navbar-sport'], function ($view) {
+            $view->with('sports', Release::sport()->take(4)->get());
+        });
+        View::composer(['shared.navbar-tech'], function ($view) {
+            $view->with('techs', Release::tech()->take(4)->get());
+        });
+        View::composer(['shared.navbar-education'], function ($view) {
+            $view->with('educations', Release::education()->take(4)->get());
+        });
+        View::composer(['shared.navbar-lifestyle'], function ($view) {
+            $view->with('lifestyles', Release::lifestyle()->take(4)->get());
+        });
+        View::composer(['shared.navbar-business'], function ($view) {
+            $view->with('businesses', Release::business()->take(4)->get());
+        });
+        View::composer(['shared.navbar-features'], function ($view) {
+            $view->with('features', Release::featured());
         });
 
         View::composer(['home.combined_box'], function ($view) {
