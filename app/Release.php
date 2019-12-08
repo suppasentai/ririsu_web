@@ -44,22 +44,22 @@ class Release extends Model implements ViewableContract
     }
 
     public function scopePolitic($query){
-        return $query->where('category_ref', 'Politic')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+        return $query->where('category_ref', 'Politic')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeBusiness($query){
-        return $query->where('category_ref', 'Business')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+        return $query->where('category_ref', 'Business')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeTech($query){
-        return $query->where('category_ref', 'Tech')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+        return $query->where('category_ref', 'Tech')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
-    public function scopeFood($query){
-        return $query->where('category_ref', 'Food')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    public function scopeEducation($query){
+        return $query->where('category_ref', 'Education')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
-    public function scopeFashion($query){
-        return $query->where('category_ref', 'Fashion')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+    public function scopeLifestyle($query){
+        return $query->where('category_ref', 'Lifestyle')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeSport($query){
-        return $query->where('category_ref', 'Sport')->orderBy('created_at','desc')->orderBy('page_views', 'desc')->first();
+        return $query->where('category_ref', 'Sport')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
 
     public function scopeLasted($query){
