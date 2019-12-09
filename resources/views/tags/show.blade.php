@@ -66,5 +66,4 @@
     </div>
 </section>
 <!-- End content section -->
-<!-- End content section -->
 @endsection
