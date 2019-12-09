@@ -232,7 +232,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         //FORM/HTML
         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

@@ -14,6 +14,11 @@ class TagController extends Controller
         return view('tags.index')->withTags($tags);
     }
 
+    public function show($id){
+        $tag = Tag::where('id', '=', $id)->first();  
+        return view('tags.show', ['tag' => $tag, 'releases' => $tag->releases()->paginate(6)]);
+    }
+
     public function store(Request $request){
         $this->validate($request, [
            'title' => 'required|max:255' 

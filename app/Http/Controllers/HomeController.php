@@ -16,13 +16,25 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function __construct(){
-        
+    public function __construct(\Elasticsearch\Client $elastic){
+        $this->elastic = $elastic;
     } 
 
 
     public function index()
     {
+        // $data = [
+        //     'body' => [
+        //         'testField' => 'abc'
+        //     ],
+        //     'index' => 'my_index',
+        //     'type' => 'my_type',
+        //     'id' => 'my_id',
+        // ];
+        // $return = $this->elastic->index($data);
+        // $response =  $this->elastic->nodes()->stats();
+        // dd($response);
+        //dd(phpinfo());
         return view('home');
     }
 

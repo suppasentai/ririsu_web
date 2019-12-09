@@ -19,6 +19,10 @@ Route::get('user/activation/{token}', 'UserActivationController@activateUser')->
 
 Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseController@show']);
 
+Route::post('release_search', 'ItemSearchController@create');
+
+Route::get('tags/{id}', ['as' => 'tags.show', 'uses' => 'TagController@show']);
+
 //create institution
 Route::group(['prefix' => 'companies'], function () {
     Route::get('create_step1', 'CompanyRegisterController@create_step1')->name('create_step1');
@@ -28,7 +32,7 @@ Route::group(['prefix' => 'companies'], function () {
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
-    Route::resource('tags', 'TagController')->middleware('can:tag');;
+    Route::resource('tags', 'TagController')->except(['show'])->middleware('can:tag');;
     Route::resource('companies', 'CompanyController')->except(['create', 'store', 'edit'])->middleware('can:company');
     Route::post('companiesChangeStatus/{company}', 'CompanyController@companiesChangeStatus')
         ->name('companiesChangeStatus')

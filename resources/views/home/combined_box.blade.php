@@ -9,7 +9,7 @@
         <div class="col-md-6">
             <div class="news-post standart-post">
                 <div class="post-image">
-                    <a href="{{ route('releases.show', ['$id' => $news[0]->id])}}">
+                    <a href="{{ route('releases.show', ['slug' => $news[0]->slug])}}">
                         <img src="{{$news[0]->image}}" alt="">
                     </a>
                     <a href="#" class="category category-fashion">{{$news[0]->category_ref}}</a>
@@ -28,7 +28,7 @@
                 <div class="col-6">
                     <div class="news-post thumb-post">
                         <div class="post-image">
-                            <a href="{{ route('releases.show', ['$id' => $news[1]->id])}}">
+                            <a href="{{ route('releases.show', ['slug' => $news[1]->slug])}}">
                                 <img src="{{$news[1]->image}}" alt="">
                             </a>
                         </div>
@@ -38,7 +38,7 @@
                 <div class="col-6">
                     <div class="news-post thumb-post">
                         <div class="post-image">
-                            <a href="{{ route('releases.show', ['$id' => $news[2]->id])}}">
+                            <a href="{{ route('releases.show', ['slug' => $news[2]->slug])}}">
                                 <img src="{{$news[2]->image}}" alt="">
                             </a>
                         </div>
@@ -50,7 +50,7 @@
                 <div class="col-6">
                     <div class="news-post thumb-post">
                         <div class="post-image">
-                            <a href="{{ route('releases.show', ['$id' => $news[3]->id])}}">
+                            <a href="{{ route('releases.show', ['slug' => $news[3]->slug])}}">
                                 <img src="{{$news[3]->image}}" alt="">
                             </a>
                         </div>
@@ -60,7 +60,7 @@
                 <div class="col-6">
                     <div class="news-post thumb-post">
                         <div class="post-image">
-                            <a href="{{ route('releases.show', ['$id' => $news[4]->id])}}">
+                            <a href="{{ route('releases.show', ['slug' => $news[4]->slug])}}">
                                 <img src="{{$news[4]->image}}" alt="">
                             </a>
                         </div>

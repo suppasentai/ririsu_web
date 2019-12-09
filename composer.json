@@ -10,6 +10,8 @@
     "require": {
         "php": "^7.2",
         "bensampo/laravel-enum": "^1.26",
+        "cviebrock/laravel-elasticsearch": "^4.1",
+        "elasticquent/elasticquent": "dev-master",
         "cyrildewit/eloquent-viewable": "^4.1",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",

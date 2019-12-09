@@ -12,7 +12,7 @@
                                 </a>
                                 <a href="#" class="category category-food">{{$lifestyle->category_ref}}</a>
                             </div>
-                            <h2><a href="single-post.html">{{$lifestyle->title}}</a></h2>
+                            <h2><a href="{{ route('releases.show', ['slug' => $lifestyle->slug])}}">{{$lifestyle->title}}</a></h2>
                             <ul class="post-tags">
                                     <li><i class="lnr lnr-apartment"></i><a href="#">{{$lifestyle->company->title}}</a></li>
                                     <li><i class="lnr lnr-eye"></i>{{views($lifestyle)->count()}}</li>
