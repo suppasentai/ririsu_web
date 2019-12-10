@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d46bc89ba2bb71778448ead15dae0e8",
+    "content-hash": "11da778190caa7172879d45bc31a576c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.128.0",
+            "version": "3.128.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "811e55f20b6455a0cce07ecdebe1398b9668c255"
+                "reference": "b550a939356fb66aadf8f92485b53046e1e60ee4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/811e55f20b6455a0cce07ecdebe1398b9668c255",
-                "reference": "811e55f20b6455a0cce07ecdebe1398b9668c255",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b550a939356fb66aadf8f92485b53046e1e60ee4",
+                "reference": "b550a939356fb66aadf8f92485b53046e1e60ee4",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-12-05T01:33:15+00:00"
+            "time": "2019-12-09T19:18:49+00:00"
         },
         {
             "name": "bensampo/laravel-enum",
@@ -1235,16 +1235,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.89",
+            "version": "v1.2.90",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "374d699ce4944107015eee0798eab072e3c47df9"
+                "reference": "35f963386e6a189697fe4b14dc91fb42b17fda4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/374d699ce4944107015eee0798eab072e3c47df9",
-                "reference": "374d699ce4944107015eee0798eab072e3c47df9",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/35f963386e6a189697fe4b14dc91fb42b17fda4b",
+                "reference": "35f963386e6a189697fe4b14dc91fb42b17fda4b",
                 "shasum": ""
             },
             "require": {
@@ -1280,20 +1280,20 @@
                 "crawlerdetect",
                 "php crawler detect"
             ],
-            "time": "2019-11-16T13:47:52+00:00"
+            "time": "2019-12-08T20:03:27+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v6.6.2",
+            "version": "v6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "27efba7e13aaf91a87ae9a63db158e943eb71410"
+                "reference": "d9b24caa67eacd22d917a5fd3b3601937112a329"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/27efba7e13aaf91a87ae9a63db158e943eb71410",
-                "reference": "27efba7e13aaf91a87ae9a63db158e943eb71410",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d9b24caa67eacd22d917a5fd3b3601937112a329",
+                "reference": "d9b24caa67eacd22d917a5fd3b3601937112a329",
                 "shasum": ""
             },
             "require": {
@@ -1389,8 +1389,7 @@
                 "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",
                 "moontoast/math": "Required to use ordered UUIDs (^1.1).",
                 "pda/pheanstalk": "Required to use the beanstalk queue driver (^4.0).",
-                "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
-                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0).",
+                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^3.0).",
                 "symfony/cache": "Required to PSR-6 cache bridge (^4.3.4).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.2).",
                 "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
@@ -1426,7 +1425,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-12-05T13:49:53+00:00"
+            "time": "2019-09-10T14:47:28+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -5729,18 +5728,18 @@
             "authors": [
                 {
                     "name": "Geert Bergman",
-                    "role": "Project Author",
-                    "homepage": "http://www.scrivo.org/"
+                    "homepage": "http://www.scrivo.org/",
+                    "role": "Project Author"
                 },
                 {
                     "name": "Vladimir Jimenez",
-                    "role": "Contributor",
-                    "homepage": "https://allejo.io"
+                    "homepage": "https://allejo.io",
+                    "role": "Contributor"
                 },
                 {
                     "name": "Martin Folkers",
-                    "role": "Contributor",
-                    "homepage": "https://twobrain.io"
+                    "homepage": "https://twobrain.io",
+                    "role": "Contributor"
                 }
             ],
             "description": "Server side syntax highlighter that supports 185 languages. It's a PHP port of highlight.js",

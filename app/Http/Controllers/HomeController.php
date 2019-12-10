@@ -16,8 +16,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function __construct(\Elasticsearch\Client $elastic){
-        $this->elastic = $elastic;
+    public function __construct(){
     } 
 
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Search\ReleasesRepository;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,15 @@ Route::post('release_search', 'ItemSearchController@create');
 
 Route::get('tags/{id}', ['as' => 'tags.show', 'uses' => 'TagController@show']);
 
+//search
+Route::get('/search', function (ReleasesRepository $repository) {
+    //dd((string) request('search'));
+    $releases = $repository->search((string) request('search'));
+    return view('ririsu.search', [
+        'releases' => $releases,
+    ]);
+});
+
 //create institution
 Route::group(['prefix' => 'companies'], function () {
     Route::get('create_step1', 'CompanyRegisterController@create_step1')->name('create_step1');
@@ -37,6 +48,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::post('companiesChangeStatus/{company}', 'CompanyController@companiesChangeStatus')
         ->name('companiesChangeStatus')
         ->middleware('can:company');
+    Route::get('request_release', 'ReleaseController@requestRelease')->name('request_release');
 
     Route::post('follow_company', 'CompanyController@followCompany')->name('follow_company');
     Route::get('my_account', 'AccountController@index')->name('my_account');
