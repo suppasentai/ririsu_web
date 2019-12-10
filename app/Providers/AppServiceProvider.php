@@ -10,6 +10,9 @@ use App\Policies\ReleasePolicy;
 use App\Policies\TagPolicy;
 use App\Policies\CompanyPolicy;
 use Illuminate\Support\Facades\View;
+use App\Search;
+use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -134,6 +137,20 @@ class AppServiceProvider extends ServiceProvider
             $view->with('popular_news', Release::popular());
             $view->with('recent_news', Release::popular());
             $view->with('news', Release::popular());
+        });
+
+        //Elasticsearch
+        $this->app->bind(Search\ReleasesRepository::class, function ($app) {
+            // This is useful in case we want to turn-off our
+            // search cluster or when deploying the search
+            // to a live, running application at first.
+            if (! config('services.search.enabled')) {
+                return new Search\EloquentRepository();
+            }
+
+            return new Search\ElasticsearchRepository(
+                $app->make(Client::class)
+            );
         });
     }
 }

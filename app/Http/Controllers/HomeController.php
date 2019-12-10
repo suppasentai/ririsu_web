@@ -17,12 +17,23 @@ class HomeController extends Controller
      */
 
     public function __construct(){
-        
     } 
 
 
     public function index()
     {
+        // $data = [
+        //     'body' => [
+        //         'testField' => 'abc'
+        //     ],
+        //     'index' => 'my_index',
+        //     'type' => 'my_type',
+        //     'id' => 'my_id',
+        // ];
+        // $return = $this->elastic->index($data);
+        // $response =  $this->elastic->nodes()->stats();
+        // dd($response);
+        //dd(phpinfo());
         return view('home');
     }
 

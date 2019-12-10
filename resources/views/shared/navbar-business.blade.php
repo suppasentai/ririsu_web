@@ -12,10 +12,10 @@
                                 </a>
                                 <a href="#" class="category category-fashion">{{$business->category_ref}}</a>
                             </div>
-                            <h2><a href="single-post.html">{{$business->title}}</a></h2>
+                            <h2><a href="{{ route('releases.show', ['slug' => $business->slug])}}">{{$business->title}}</a></h2>
                             <ul class="post-tags">
-                                    <li><i class="lnr lnr-apartment"></i><a href="#">{{$business->company->title}}</a></li>
-                                    <li><i class="lnr lnr-eye"></i>{{views($business)->count()}}</li>
+                                <li><i class="lnr lnr-apartment"></i><a href="#">{{$business->company->title}}</a></li>
+                                <li><i class="lnr lnr-eye"></i>{{views($business)->count()}}</li>
                             </ul>
                         </div>
                     </div>

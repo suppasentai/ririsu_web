@@ -60,11 +60,9 @@
     </ul>
     @endif
     <div class="search-widget widget">
-        <form>
-            <input type="search" placeholder="Search for..."/>
-            <button type="submit">
-                <i class="fa fa-search"></i>
-            </button>
+        <form action="{{ url('search') }}" method="get" role="search" class="search-form">
+            <input type="text" id="search" name="search" placeholder="Search here" value="{{ request('q') }}">
+            <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
     <div class="widget social-widget">
