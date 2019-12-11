@@ -136,7 +136,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="fieldlabels" for="incorp_date">{{ __('Incoporation Date:') }}</label>
+                                    <label class="fieldlabels" for="incorp_date">{{ __('Incorporation Date:') }}</label>
                                     <input id="incorp_date" class="@error('incorp_date') is-invalid @enderror bg-light" name="incorp_date" value="{{ old('incorp_date') }}" placeholder="Incoporation Date">
                                     @error('incorp_date')
                                     <span class="invalid-feedback" role="alert">

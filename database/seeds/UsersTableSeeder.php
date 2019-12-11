@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
         ]);
         $user1->roles()->attach($admin);
 
-        $author = Role::where('slug', 'journalist')->first();
+        $author = Role::where('slug', 'company')->first();
         $user2 = User::create([
             'name' => Str::random(10),
             'slug' => uniqid(),
@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
                 // 'identification_document' => 1193373387,
                 'telephone' => $faker->phoneNumber,
                 // 'address' => 'Calle 12 # 13 - 31 Belén, La Unión, Valle del Cauca, Colombia',
-                'email' => $faker->safeEmail,
+                'email' => $faker->unique()->safeEmail,
                 'password' => bcrypt('secret'),
             ]);
             $companies = Company::all()->random(rand(6,10));

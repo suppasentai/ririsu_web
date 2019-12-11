@@ -24,18 +24,12 @@ class RolesTableSeeder extends Seeder
             ]
         ]);
         $journalist = Role::create([
-            'name' => 'Journalist', 
-            'slug' => 'journalist',
+            'name' => 'Company', 
+            'slug' => 'company',
             'permissions' => [
                 'release.create' => true,
-                'release.draft' => true
-            ]
-        ]);
-        $client = Role::create([
-            'name' => 'Client', 
-            'slug' => 'client',
-            'permissions' => [
-                'release.form' => true
+                'release.draft' => true,
+
             ]
         ]);
         $customer = Role::create([

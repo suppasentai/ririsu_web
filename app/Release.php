@@ -29,7 +29,6 @@ class Release extends Model implements ViewableContract
         return $this->belongsTo(User::class);
     }
 
-
     public function likes()
     {
         return $this->hasMany(Like::class);
@@ -43,6 +42,10 @@ class Release extends Model implements ViewableContract
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
     public function scopePolitic($query){

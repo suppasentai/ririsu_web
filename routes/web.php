@@ -24,6 +24,7 @@ Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseCont
 Route::post('release_search', 'ItemSearchController@create');
 
 Route::get('tags/{id}', ['as' => 'tags.show', 'uses' => 'TagController@show']);
+Route::get('categories/{id}', ['as' => 'categories.show', 'uses' => 'CategoryController@show']);
 
 //search
 Route::get('/search', function (ReleasesRepository $repository) {
@@ -48,7 +49,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::post('companiesChangeStatus/{company}', 'CompanyController@companiesChangeStatus')
         ->name('companiesChangeStatus')
         ->middleware('can:company');
-    Route::get('request_release', 'ReleaseController@requestRelease')->name('request_release');
 
     Route::post('follow_company', 'CompanyController@followCompany')->name('follow_company');
     Route::get('my_account', 'AccountController@index')->name('my_account');
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('update_password', 'AccountController@editPassword')->name('password_edit');
     Route::post('update_password', 'AccountController@updatePassword')->name('password_update');
 
-    Route::resource('categories', 'CategoryController');
+    // Route::resource('categories', 'CategoryController');
     //Route::resource('instutions', 'InstitutionController');
 
     Route::get('create_articles', 'ReleaseController@create')

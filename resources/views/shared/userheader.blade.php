@@ -71,12 +71,6 @@
                             {{ __('Your News') }}&nbsp;
                         </a></b>
                     </li>
-
-                    <li>
-                        <b><a href="{{ route('request_release')}}">
-                            {{ __('Request a Release') }}&nbsp;
-                        </a></b>
-                    </li>
                     
                     <li class="droper"><b><a href="#">{{__("Account Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">

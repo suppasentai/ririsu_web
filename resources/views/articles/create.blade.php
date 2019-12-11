@@ -22,7 +22,7 @@
               'class' => 'form-horizontal', 'enctype' => 'multipart/form-data', 'id' => 'article_create_form']) !!}
 
               <div class="form-group">
-                {!! Form::label('image', __('Image')) !!}
+                {!! Form::label('image', __('Threshold')) !!}
                 {!! Form::file('image', ['id' => 'image', 'class'=> 'form-control', 'accept'=>'image/*'])!!}
               </div>
               <div class="form-group">

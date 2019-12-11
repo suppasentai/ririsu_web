@@ -85,6 +85,8 @@ class CompanyRegisterController extends Controller
         $user->email = $request->user_email;
         $user->password = Hash::make($request->password);
         $user->slug = uniqid();
+        $role = Role::where('slug', 'company')->first();
+        $user2->roles()->attach($role);
 
         $company->save();
         $user->save();
