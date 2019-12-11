@@ -53,10 +53,6 @@ class ReleaseController extends Controller
         return view('ririsu.show', ['release' => $release, 'similar_releases' => $similar_releases]);
     }
 
-    public function requestRelease(){
-        return view('articles.request');
-    }
-
     public function create()
     {
         $categories = Category::all();

@@ -21,7 +21,7 @@
                             <!-- search-results box -->
                             <div class="search-results-box">
                                 <div class="search-results-banner">
-                                    <h1>Search results for  <span>'Lorem'</span></h1>
+                                    <h1>{{__('Search results for  ')}}<span>'{{ request('q') }}'</span></h1>
                                 </div>
                                 <div class="search-box">
                                     <form action="{{ url('search') }}" method="get" role="search" class="search-form">
