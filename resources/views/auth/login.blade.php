@@ -43,6 +43,11 @@
 
                     <div class="card">
                     <article class="card-body">
+                        @if(session()->has('login_error'))
+                            <div class="alert alert-success">
+                              {{ session()->get('login_error') }}
+                            </div>
+                        @endif
                         <a href="{{ route('register') }}" class="float-right btn btn-outline-primary">{{__("Sign up")}}</a>
                         <h4 class="card-title mb-4 mt-1">{{__("Sign in")}}</h4>
                         <p>

@@ -9,6 +9,7 @@ use Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\CompanyVerifyEmail;
 use Mail;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -18,6 +19,17 @@ class CompanyController extends Controller
     }
 
     public function followedCompanies(){
+        $companies = Auth::user()->followings(Company::class)->get();
+        return view('companies.followed', ['companies' => $companies]);
+    }
+
+    public function followRecom(){
+        
+        $companies = Company::inRandomOrder()->whereNotIn('id', Auth::user()->followings(Company::class)->pluck('id'))->paginate(9);
+        if(Auth::user()->followings(Company::class)->get()){
+            
+        }
+        return view('companies.follow_recom', ['companies' => $companies]);
     }
 
     public function index(){
@@ -25,7 +37,8 @@ class CompanyController extends Controller
         return view('admin.company_index', ['companies' => $companies]);
     }
 
-    public function show(){
+    public function show($id){
+        $company = Company::where('id', '=', $id)->first();
         return view('companies.show');
     }
 

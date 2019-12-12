@@ -22,6 +22,11 @@ class Company extends Model
         return $this->hasOne(User::class);
     }
 
+    public function releases()
+    {
+        return $this->hasMany(Release::class)->orderBy('created_at','desc');
+    }
+
     public function getFollowersIdAttribute(){
         $values = [];
         $users = User::all();

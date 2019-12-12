@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\ActivationService;
+use Illuminate\Validation\ValidationException;
 
 
 class LoginController extends Controller
@@ -49,5 +50,15 @@ class LoginController extends Controller
             return redirect()->intended($this->redirectPath())->with('warning', 'Your account not activated yet');
         }
         return redirect()->intended($this->redirectPath());
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $request->session()->put('login_error', trans('auth.failed'));
+        throw ValidationException::withMessages(
+            [
+                'error' => [trans('auth.failed')],
+            ]
+        );
     }
 }

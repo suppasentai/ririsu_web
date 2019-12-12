@@ -6,7 +6,7 @@
         @include('alerts.success')
         @include('alerts.warning')
         <div class="text-center title-section">
-          <h1>{{__("Tags list")}}</h1>
+          <h1>{{__("Draft")}}</h1>
         </div>
         <div class="row">
           <div class="col-md-12">

@@ -51,7 +51,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link sport" href="{{ route('followed_companies')}}">
+                            {{ __('Followed Companies') }}&nbsp;
+                        </a>
+                    </li>
+
+                                        
+                    <li class="nav-item">
+                        <a class="nav-link food" href="{{ route('my_account')}}">
+                            {{ __('Your News') }}&nbsp;
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fashion" href="{{ route('follow_recom')}}">
+                            {{ __('Follow more company') }}&nbsp;
+                        </a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -62,15 +77,9 @@
         </div>
             <!-- vertical menu -->
             <div class="vertical-box" style=" overflow: hidden;">
-                <h2><a class="text-white food" href="{{ route('my_account')}}">{{Auth::user()->name}}</a></h2>
+                <h2><a class="text-white food" href="{{ route('my_account')}}">{{Auth::user()->email}}</a></h2>
                 <a href="#" class="close-menu"><i class="fa fa-window-close" aria-hidden="true"></i></a>
                 <ul class="vertical-menu social-icons">
-                    
-                    <li>
-                        <b><a href="{{ route('my_account')}}">
-                            {{ __('Your News') }}&nbsp;
-                        </a></b>
-                    </li>
                     
                     <li class="droper"><b><a href="#">{{__("Account Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">
@@ -86,7 +95,6 @@
                             </li>
                         </ul>
                     </li>
-                    
                     <li class="droper"><b><a href="#">{{__("Articles Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">
                             <li>
