@@ -15,7 +15,7 @@ class Company extends Model
         'employees_number', 'url',
         'industry_ref', 'email'];
 
-    protected $appends = ['followers_id', 'lasted'];
+    protected $appends = ['followers_id'];
 
     public function user()
     {
