@@ -30,7 +30,7 @@ class CreateReleasesTable extends Migration
 
             $table->integer('user_id')->index();
             $table->integer('category_id')->index();
-        });
+            });
     }
 
     /**

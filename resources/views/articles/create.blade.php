@@ -101,9 +101,9 @@
                   <select class="form-control" id="category_ref" name="category_ref">
                       @foreach( $categories as $category )
                           @if($category->title == old('category_ref'))
-                              <option value="{{ $category->title }}" selected>{{ $category->title }}</option>
+                              <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
                           @else
-                              <option value="{{ $category->title }}">{{ $category->title }}</option>
+                              <option value="{{ $category->id }}">{{ $category->title }}</option>
                           @endif
                       @endforeach
                   </select>

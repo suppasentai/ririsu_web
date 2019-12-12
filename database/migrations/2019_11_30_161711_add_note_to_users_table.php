@@ -14,7 +14,7 @@ class AddNoteToUsersTable extends Migration
     public function up()
     {
         Schema::table('releases', function (Blueprint $table) {
-            $table->text('note');
+            $table->text('note')->nullable();
         });
     }
 

@@ -18,9 +18,9 @@ class RolesTableSeeder extends Seeder
             'permissions' => [
                 'release.publish' => true,
                 'release.update' => true,
-                'release.create' => true,
                 'release.draft' => true,
                 'admin' => true,
+                'system' => true,
             ]
         ]);
         $journalist = Role::create([
@@ -29,7 +29,8 @@ class RolesTableSeeder extends Seeder
             'permissions' => [
                 'release.create' => true,
                 'release.draft' => true,
-
+                'release.update' => true,
+                'system' => true,
             ]
         ]);
         $customer = Role::create([

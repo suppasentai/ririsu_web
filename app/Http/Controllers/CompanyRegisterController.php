@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\User;
 use App\Industry;
+use App\Role;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Storage;
 
 use App\ActivationService;
 
@@ -77,6 +79,9 @@ class CompanyRegisterController extends Controller
         $company->capital_stock = $request->capital_stock;
         $company->incorp_date = $request->incorp_date;
         $company->industry_ref = $request->industry_ref;
+        $img = $request->file('image');
+        $strFlash = 'Article Created';
+        $strStatus = 'success';
 
         $user = new User();
         $user->first_name = $request->first_name;
@@ -86,10 +91,10 @@ class CompanyRegisterController extends Controller
         $user->password = Hash::make($request->password);
         $user->slug = uniqid();
         $role = Role::where('slug', 'company')->first();
-        $user2->roles()->attach($role);
 
         $company->save();
         $user->save();
+        $user->roles()->attach($role);
 
         $company->user()->save($user);
 

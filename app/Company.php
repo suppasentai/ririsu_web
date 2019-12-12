@@ -15,11 +15,16 @@ class Company extends Model
         'employees_number', 'url',
         'industry_ref', 'email'];
 
-    protected $appends = ['followers_id'];
+    protected $appends = ['followers_id', 'lasted'];
 
     public function user()
     {
         return $this->hasOne(User::class);
+    }
+
+    public function releases()
+    {
+        return $this->hasMany(Release::class)->orderBy('created_at','desc');
     }
 
     public function getFollowersIdAttribute(){

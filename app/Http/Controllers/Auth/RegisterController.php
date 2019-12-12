@@ -34,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/dashboard/my_account';
 
     protected $activationService;
 
@@ -96,10 +96,10 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
         event(new Registered($user));
-        //$this->guard()->login($user);
+        $this->guard()->login($user);
 
         $this->activationService->sendActivationMail($user);
 
-        return redirect('/login')->with('status', 'We\'ll send an email to '.$user->email.' in 5 minutes. Open it up to activate your account.');
+        return redirect(route('my_account'))->with('success', 'We\'ll send an email to '.$user->email.' in 5 minutes. Open it up to activate your account.');
     }
 }

@@ -30,6 +30,7 @@ $(document).ready(function(){
         var capital_stock = $("input[name='capital_stock']").val();
         var incorp_date = $("input[name='incorp_date']").val();
         var industry_ref = $("select[name='industry_ref']").val();
+        var image = $("input[name='image']").val();
 
 
         $.ajax({
@@ -48,6 +49,7 @@ $(document).ready(function(){
                 employees_number:employees_number, 
                 capital_stock:capital_stock,
                 industry_ref:industry_ref,
+                image:image,
             },
             success: function(data) {
                 if($.isEmptyObject(data.error)){
@@ -75,7 +77,7 @@ $(document).ready(function(){
                     duration: 500
                     });
                     setProgressBar(++current);
-                    // console.log(data.success)
+                    console.log(data.success)
                 }else{
                     printErrorMsg(data.error);
                 }
@@ -100,6 +102,7 @@ $(document).ready(function(){
         var capital_stock = $("input[name='capital_stock']").val();
         var incorp_date = $("input[name='incorp_date']").val();
         var industry_ref = $("select[name='industry_ref']").val();
+        var image = $("input[name='image']").val();
 
         //USER INFO
         var _token = $("input[name='_token']").val();
@@ -135,6 +138,7 @@ $(document).ready(function(){
                 employees_number:employees_number, 
                 capital_stock:capital_stock,
                 industry_ref:industry_ref,
+                image:image,
             },
             success: function(data) {
                 if($.isEmptyObject(data.error)){
@@ -177,6 +181,7 @@ $(document).ready(function(){
     
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();
+    $(".print-error-msg").css('display','none');
     
     //Remove class active
     $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");

@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('release.publish', ReleasePolicy::class.'@publish');
         Gate::define('release.draft', ReleasePolicy::class.'@draft');
         Gate::before(function ($user, $ability) {
-            return$user->hasAccess(['admin']) ? true : null;
+            return $user->hasAccess(['admin']) ? true : null;
         });
 
 

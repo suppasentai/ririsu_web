@@ -21,8 +21,6 @@ Route::get('user/activation/{token}', 'UserActivationController@activateUser')->
 
 Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseController@show']);
 
-Route::post('release_search', 'ItemSearchController@create');
-
 Route::get('tags/{id}', ['as' => 'tags.show', 'uses' => 'TagController@show']);
 Route::get('categories/{id}', ['as' => 'categories.show', 'uses' => 'CategoryController@show']);
 
@@ -46,6 +44,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
     Route::resource('tags', 'TagController')->except(['show'])->middleware('can:tag');;
     Route::resource('companies', 'CompanyController')->except(['create', 'store', 'edit'])->middleware('can:company');
+    Route::get('followed', 'CompanyController@followedCompanies')->name('followed_companies');
+    Route::get('follow_recom', 'CompanyController@followRecom')->name('follow_recom');
     Route::post('companiesChangeStatus/{company}', 'CompanyController@companiesChangeStatus')
         ->name('companiesChangeStatus')
         ->middleware('can:company');

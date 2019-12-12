@@ -12,6 +12,7 @@ use App\User;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use App\ReleaseSimilarity;
+use Illuminate\Support\Facades\DB;
 
 class ReleaseController extends Controller
 {
@@ -81,8 +82,11 @@ class ReleaseController extends Controller
         $article = new Release();
         $article->title = $request->title;
         $article->url_video = $request->url_video;
-        $article->category_ref = $request->category_ref;
+        $article->category_id = $request->category_ref;
+        $article->category_ref = DB::table('categories')->where('id', $request->category_ref)->first()->title;
         $article->grade_ref = $request->grade_ref;
+        $article->note = "";
+        $article->company_id = Auth::user()->company->id;
         $article->slug = uniqid();
         if($request->user()->role != "ADMIN"){
             $article->status = ReleaseStatus::Editing;

@@ -29,9 +29,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="name">{{ __('Username*') }}</label>
+                                <label for="name">{{ __('Username') }}</label>
                                 <input id="name" name="name" type="text">
                             </div>
+                            
                         </div>
                         <div class="form-group ">
                         <label for="password">{{ __('Password*') }}</label>

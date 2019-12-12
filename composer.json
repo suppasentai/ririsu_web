@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "amranidev/laracombee": "^0.1.37",
         "bensampo/laravel-enum": "^1.26",
         "cviebrock/laravel-elasticsearch": "^4.1",
         "cyrildewit/eloquent-viewable": "^4.1",

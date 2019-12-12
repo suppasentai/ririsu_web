@@ -18,7 +18,7 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">{{__('Sign Up Company Account')}}</h2>
                 <p>{{__('Fill all form field to go to next step')}}</p>
-                <form id="msform" form method="POST" action="{{ route('post_create_step1') }}">
+                <form id="msform" form method="POST" action="{{ route('post_create_step1') }}"  enctype = 'multipart/form-data'>
                     @csrf
                     <!-- progressbar -->
                     <ul id="progressbar" class="row justify-content-center">
@@ -69,7 +69,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-3">
-                                    <label class="fieldlabels" for="identification_code">{{ __('Identification Code:*') }}</label>
+                                    <label class="fieldlabels" for="identification_code">{{ __('Corporate ID:*') }}</label>
                                     <input id="identification_code" name="identification_code" class="@error('identification_code') is-invalid @enderror bg-light" value="{{ old('identification_code') }}" type="text" required placeholder="Identification Code">
                                     @error('identification_code')
                                     <span class="invalid-feedback" role="alert">
@@ -98,7 +98,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label class="fieldlabels" for="email">{{ __('E-mail:*') }}</label>
+                                    <label class="fieldlabels" for="email">{{ __('Contact E-mail:*') }}</label>
                                     <input id="email" type="text" class="@error('email') is-invalid @enderror bg-light" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -173,7 +173,8 @@
                                     </ul>
                                 </div>
                             @endif
-                        </div> <input type="button" name="next" class="next action-button" id="nextCompany" value="Next" />
+                        </div> 
+                        <input type="button" name="next" class="next action-button" id="nextCompany" value="Next" />
                     </fieldset>
                     {{-- END CLIENT --}}
                     {{-- USER --}}
