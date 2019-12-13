@@ -29,7 +29,7 @@ class Company extends Model
 
     public function getFollowersIdAttribute(){
         $values = [];
-        $users = User::all();
+        $users = User::where('company_id', null)->get();
         $followers_ids= $this->followers()->pluck('id');
         
         foreach($users as $user){
