@@ -33,20 +33,20 @@
                                       
                                       <div class="carousel-item active">
                                         <img src="{{$company->releases[0]->image}}" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                          <h4><b>{{$company->releases[0]->title}}</b></h4>
+                                        <div class="fixed-bottom p-0 carousel-caption d-none d-md-block">
+                                          <p class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></p>
                                         </div>
                                       </div>
                                       <div class="carousel-item">
                                         <img src="{{$company->releases[0]->image}}" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                          <h4><b>{{$company->releases[0]->title}}</b></h4>
+                                        <div class="fixed-bottom p-0  carousel-caption d-none d-md-block">
+                                          <p class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></p>
                                         </div>
                                       </div>
                                       <div class="carousel-item">
                                         <img src="{{$company->releases[0]->image}}" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                          <h4><b>{{$company->releases[0]->title}}</b></h4>
+                                        <div class="fixed-bottom p-0  carousel-caption d-none d-md-block">
+                                          <p class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></p>
                                         </div>
                                       </div>
                                     
