@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
     protected $policies = [
         Release::class => ReleasePolicy::class,
         Tag::class => TagPolicy::class,
+        Company::class => CompanyPolicy::class,
     ];
 
     /**
@@ -45,9 +46,11 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('release.create', ReleasePolicy::class.'@create');
         Gate::define('release.publish', ReleasePolicy::class.'@publish');
         Gate::define('release.draft', ReleasePolicy::class.'@draft');
-        Gate::before(function ($user, $ability) {
-            return $user->hasAccess(['admin']) ? true : null;
-        });
+        Gate::resource('tags', TagPolicy::class);
+        Gate::resource('company', CompanyPolicy::class);
+        // Gate::before(function ($user, $ability) {
+        //     return $user->hasAccess(['admin']) ? true : null;
+        // });
 
 
         //pass data to views

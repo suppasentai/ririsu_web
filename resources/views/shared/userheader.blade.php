@@ -95,13 +95,16 @@
                             </li>
                         </ul>
                     </li>
+                    @can('release.draft')
                     <li class="droper"><b><a href="#">{{__("Articles Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">
+                            @can('release.create')
                             <li>
                                 <a href="{{ route('create_articles')}}" role="button">
                                     {{ __('New Articles') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            @endcan
                             <li>
                                 <a class='pr-5' href="{{ route('my_acticles')}}" role="button">
                                     {{ __('My Articles') }} <span class="caret"></span>
@@ -114,7 +117,8 @@
                             </li>
                         </ul>
                     </li>
-                    @can('admin')
+                    @endcan
+                    @can('tags.create')
                     <li class="droper"><b><a href="#">{{__("Admin Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">
                             <li>
@@ -130,8 +134,6 @@
                         </ul>
                     </li>
                     @endcan
-
-                    
                     
                     <li>
                         <b><a href="{{ route('home')}}" role="button">

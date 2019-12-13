@@ -18,7 +18,7 @@ class CompanyPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->hasAccess(['tag']);
+        return $user->hasAccess(['system']);
     }
 
     /**
@@ -30,7 +30,7 @@ class CompanyPolicy
      */
     public function view(User $user, Company $company)
     {
-        return $user->hasAccess(['tag']) or $user->id == $company->user->id;
+        return $user->hasAccess(['system']) or $user->id == $company->user->id;
     }
 
     /**
@@ -41,7 +41,7 @@ class CompanyPolicy
      */
     public function create(User $user)
     {
-        return $user->hasAccess(['tag']);
+        return $user->hasAccess(['system']);
     }
 
     /**
@@ -53,7 +53,7 @@ class CompanyPolicy
      */
     public function update(User $user, Company $company)
     {
-        return $user->hasAccess(['tag']) or $user->id == $company->user->id;;
+        return $user->hasAccess(['system']) or $user->id == $company->user->id;;
     }
 
     /**
@@ -65,7 +65,7 @@ class CompanyPolicy
      */
     public function delete(User $user, Company $company)
     {
-        return $user->hasAccess(['tag']);
+        return $user->hasAccess(['system']);
     }
 
     /**
@@ -77,7 +77,7 @@ class CompanyPolicy
      */
     public function restore(User $user, Company $company)
     {
-        return $user->hasAccess(['tag']);
+        return $user->hasAccess(['system']);
     }
 
     /**
@@ -89,6 +89,6 @@ class CompanyPolicy
      */
     public function forceDelete(User $user, Company $company)
     {
-        return $user->hasAccess(['tag']);
+        return $user->hasAccess(['system']);
     }
 }
