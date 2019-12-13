@@ -19,7 +19,7 @@
                               <div class="card-img-top" style="background-image: url('{{$company->image}}')"></div>
                             @endif
                             <div class="card-body" >
-                            <h5 class="card-title" style="font-family: 'Anton', sans-serif">{{$company->title}}<hr></h5>
+                            <h5 class="card-title" style="font-family: 'Anton', sans-serif">{{$company->id}}<hr></h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{$company->industry_ref}}</h6>
                             @if($company->releases->count()>=3)
                             <div class="bd-example">
