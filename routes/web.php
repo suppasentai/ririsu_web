@@ -42,8 +42,8 @@ Route::group(['prefix' => 'companies'], function () {
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
-    Route::resource('tags', 'TagController')->except(['show'])->middleware('can:tag');;
-    Route::resource('companies', 'CompanyController')->except(['create', 'store', 'edit'])->middleware('can:company');
+    Route::resource('tags', 'TagController')->except(['show'])->middleware('can:tags.viewAny');;
+    Route::resource('companies', 'CompanyController')->except(['create', 'store', 'edit'])->middleware('can:company.viewAny');
     Route::get('followed', 'CompanyController@followedCompanies')->name('followed_companies');
     Route::get('follow_recom', 'CompanyController@followRecom')->name('follow_recom');
     Route::post('companiesChangeStatus/{company}', 'CompanyController@companiesChangeStatus')
