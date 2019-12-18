@@ -6,6 +6,7 @@ use App\Tag;
 use App\Category;
 use App\Company;
 use Faker\Factory as Faker;
+use App\Enums\ReleaseStatus;
 
 class ReleasesTableSeeder extends Seeder
 {
@@ -32,6 +33,7 @@ class ReleasesTableSeeder extends Seeder
                     'note' => $faker->realText($maxNbChars = 200, $indexSize = 2),
                     'company_id' => $company->id,
                     'category_id' => $category->id,
+                    'status' => ReleaseStatus::Published,
                 ]);
                 $tag = Tag::all()->random(3);
                 $release1->tags()->attach($tag);

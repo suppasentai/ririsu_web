@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\CompanyVerifyEmail;
 use Mail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class CompanyController extends Controller
 {
@@ -27,8 +28,20 @@ class CompanyController extends Controller
         
         $companies = Company::inRandomOrder()->whereNotIn('id', Auth::user()->followings(Company::class)->pluck('id'))->paginate(9);
         if(Auth::user()->followings(Company::class)->get()){
-            
+            $test = Redis::get('companiesPredict');
+            // dd($test);
+            $test = json_decode($test, true);
+            $predictArray = [];
+            foreach($test as $id => $company){
+                $predictArray[$id] = $company[Auth::user()->id];
+            }
+            $predictArray = array_filter($predictArray, function ($rate) { return $rate != 1; });
+            arsort($predictArray);
+            $ids =  array_keys($predictArray);
+            $placeholders = implode(',',array_fill(0, count($ids), '?'));       
+            $companies = Company::whereIn('id', array_keys($predictArray))->orderByRaw("field(id,{$placeholders})", $ids)->paginate(9);
         }
+        // dd($companies);
         return view('companies.follow_recom', ['companies' => $companies]);
     }
 

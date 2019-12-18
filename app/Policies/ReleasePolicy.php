@@ -33,6 +33,6 @@ class ReleasePolicy
     }
 
     public function draft(User $user){
-        return $user->inRole('editor');
+        return $user->hasAccess(['release.draft']);
     }
 }
