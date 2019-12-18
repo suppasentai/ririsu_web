@@ -22,9 +22,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        // Redis::set('name', 'Taylor');
-        // $test = Redis::get('companiesPredict');
-        // dd($test);
+        //Redis::set('name', 'Taylor');
+        //$test = Redis::get('companiesPredict');
+        //dd($test);
         return view('home');
     }
 
