@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        'App\Console\Commands\LoadRecommend'
+        Commands\LoadRecommend::class,
     ];
 
     /**
@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('command:loadrecommend')->everyFifteenMinutes()->runInBackground();
+        $schedule->command('command:loadrecommend')->everyFiveMinutes()->runInBackground();
 
     }
 

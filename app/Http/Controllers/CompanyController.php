@@ -29,7 +29,6 @@ class CompanyController extends Controller
         $companies = Company::inRandomOrder()->whereNotIn('id', Auth::user()->followings(Company::class)->pluck('id'))->paginate(9);
         if(Auth::user()->followings(Company::class)->get()){
             $test = Redis::get('companiesPredict');
-            // dd($test);
             $test = json_decode($test, true);
             $predictArray = [];
             foreach($test as $id => $company){
