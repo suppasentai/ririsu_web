@@ -3,7 +3,7 @@
 @section('content')
     <!-- wide-news-heading
 			================================================== -->
-		<div class="wide-news-heading">
+		<div class="wide-news-heading" style="height: 338px;">
 
             @include('home.main_news_box')
             @include('home.most_category_views_box')

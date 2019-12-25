@@ -21,7 +21,7 @@
                             <!-- search-results box -->
                             <div class="search-results-box">
                                 <div class="search-results-banner">
-                                    <h1>{{__('Search results for  ')}}<span>'{{ request('q') }}'</span></h1>
+                                    <h1>{{__('Search results for ')}}<span>'{{ request('search') }}'</span></h1>
                                 </div>
                                 <div class="search-box">
                                     <form action="{{ url('search') }}" method="get" role="search" class="search-form">
@@ -55,7 +55,7 @@
                                                 <p>{!! \Illuminate\Support\Str::words(strip_tags($release->description), 20, '...') !!}</p>
                                                 <div>
                                                     @foreach ($release->tags as $tag)
-                                                        <span class="badge badge-pill badge-secondary">{{ $tag->title}}</span>
+                                                        <a href="{{ route('tags.show', ['id' => $tag->id])}}" class="badge badge-pill badge-secondary">{{ $tag->title}}</a>
                                                     @endforeach
                                                 </div>
                                             </div>

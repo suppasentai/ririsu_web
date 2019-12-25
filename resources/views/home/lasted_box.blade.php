@@ -12,14 +12,17 @@
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="{{ route('releases.show', ['slug' => $lasted_news[6]->slug])}}">
-                            <img src="{{ $lasted_news[6]->image }}" alt="">
+                            <img src="{{ $lasted_news[6]->image }}" style="height: 206px;" alt="">
                         </a>
                     <a href="#" class="category category-travel">{{$lasted_news[6]->category_ref}}</a>
                     </div>
                     <h2><a href="{{ route('releases.show', ['slug' => $lasted_news[6]->slug])}}">{{$lasted_news[6]->title}}</a></h2>
                     <ul class="post-tags">
-                        <li><i class="lnr lnr-user"></i>{{__("by ")}}<a href="#">{{$lasted_news[6]->user->firstname}}</a></li>
+                        <li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$lasted_news[6]->company->title}}</a></li>
                         <li><i class="lnr lnr-eye"></i>{{views($lasted_news[6])->count()}}</li>
+                        @foreach ($lasted_news[6]->tags as $tag)
+                            <li><a href="{{ route('tags.show', ['id' => $tag->id])}}" class="badge badge-secondary text-white">{{ $tag->title}}</a></li>
+                        @endforeach
                     </ul>
                     <p>{!! \Illuminate\Support\Str::words(strip_tags($lasted_news[6]->description), 20, '...') !!}</p>
                 </div>

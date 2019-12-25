@@ -48,23 +48,35 @@ class Release extends Model implements ViewableContract
         return $this->belongsTo(Category::class);
     }
 
-    public function scopePolitic($query){
-        return $query->where('category_ref', 'Politic')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+    public function scopePolitic(){
+        return $releases  = Release::whereHas('category', function($query){
+            $query->where('title', 'Politic');
+        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
-    public function scopeBusiness($query){
-        return $query->where('category_ref', 'Business')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+    public function scopeBusiness(){
+        return $releases  = Release::whereHas('category', function($query){
+            $query->where('title', 'Business');
+        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
-    public function scopeTech($query){
-        return $query->where('category_ref', 'Tech')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+    public function scopeTech(){
+        return $releases  = Release::whereHas('category', function($query){
+            $query->where('title', 'Tech');
+        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeEducation($query){
-        return $query->where('category_ref', 'Education')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        return $releases  = Release::whereHas('category', function($query){
+            $query->where('title', 'Education');
+        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeLifestyle($query){
-        return $query->where('category_ref', 'Lifestyle')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        return $releases  = Release::whereHas('category', function($query){
+            $query->where('title', 'Lifestyle');
+        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeSport($query){
-        return $query->where('category_ref', 'Sport')->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        return $releases  = Release::whereHas('category', function($query){
+            $query->where('title', 'Sport');
+        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
 
     public function scopeLasted($query){

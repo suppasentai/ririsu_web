@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a class="nav-link world" href="#">{{__('Politic ')}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    <a class="nav-link world" href="{{ route('categories.show', ['id' => $politics[0]->category->id])}}">{{__('Politic ')}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
     <div class="mega-posts-menu">
         <div class="posts-line">
             <div class="row">

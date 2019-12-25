@@ -22,18 +22,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $data = [
-        //     'body' => [
-        //         'testField' => 'abc'
-        //     ],
-        //     'index' => 'my_index',
-        //     'type' => 'my_type',
-        //     'id' => 'my_id',
-        // ];
-        // $return = $this->elastic->index($data);
-        // $response =  $this->elastic->nodes()->stats();
-        // dd($response);
-        //dd(phpinfo());
+        //Redis::set('name', 'Taylor');
+        //$test = Redis::get('companiesPredict');
+        //dd($test);
         return view('home');
     }
 

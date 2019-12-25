@@ -54,6 +54,13 @@
 
                     @include('sidebar.tags_box')
 
+                    <div class="search-widget widget">
+                        <form action="{{ url('search') }}" method="get" role="search" class="search-form">
+                            <input type="text" id="search" name="search" placeholder="Search here" value="{{ request('q') }}">
+                            <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+
                     @include('sidebar.widget_box')
 
                 </div>

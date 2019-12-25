@@ -50,11 +50,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mr-auto">
+                    @if(!Auth::user()->hasAccess(['system']))
                     <li class="nav-item">
                         <a class="nav-link sport" href="{{ route('followed_companies')}}">
                             {{ __('Followed Companies') }}&nbsp;
                         </a>
                     </li>
+                    @endif
 
                                         
                     <li class="nav-item">
@@ -63,11 +65,13 @@
                         </a>
                     </li>
 
+                    @if(!Auth::user()->hasAccess(['system']))
                     <li class="nav-item">
                         <a class="nav-link fashion" href="{{ route('follow_recom')}}">
                             {{ __('Follow more company') }}&nbsp;
                         </a>
                     </li>
+                    @endif
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search for..." aria-label="Search">
@@ -118,7 +122,7 @@
                         </ul>
                     </li>
                     @endcan
-                    @can('tags.create')
+                    @can('release.publish')
                     <li class="droper"><b><a href="#">{{__("Admin Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">
                             <li>
