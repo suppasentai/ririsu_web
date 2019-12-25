@@ -31,6 +31,7 @@
                             <a href="{{ route('releases.show', ['slug' => $news[1]->slug])}}">
                                 <img src="{{$news[1]->image}}" alt="">
                             </a>
+                            <a href="#" class="category category-fashion">{{$news[1]->category_ref}}</a>
                         </div>
                     <h2><a href="single-post.html">{{$news[1]->title}}</a></h2>
                     </div>
@@ -41,6 +42,7 @@
                             <a href="{{ route('releases.show', ['slug' => $news[2]->slug])}}">
                                 <img src="{{$news[2]->image}}" alt="">
                             </a>
+                            <a href="#" class="category category-fashion">{{$news[2]->category_ref}}</a>
                         </div>
                         <h2><a href="single-post.html">{{$news[2]->title}}</a></h2>
                     </div>
@@ -53,6 +55,7 @@
                             <a href="{{ route('releases.show', ['slug' => $news[3]->slug])}}">
                                 <img src="{{$news[3]->image}}" alt="">
                             </a>
+                            <a href="#" class="category category-fashion">{{$news[3]->category_ref}}</a>
                         </div>
                         <h2><a href="single-post.html">{{$news[3]->title}}</a></h2>
                     </div>
@@ -63,6 +66,7 @@
                             <a href="{{ route('releases.show', ['slug' => $news[4]->slug])}}">
                                 <img src="{{$news[4]->image}}" alt="">
                             </a>
+                            <a href="#" class="category category-fashion">{{$news[4]->category_ref}}</a>
                         </div>
                         <h2><a href="single-post.html">{{$news[4]->title}}</a></h2>
                     </div>

@@ -15,7 +15,7 @@
                 <li><a href="#"><i class="lnr lnr-book"></i><span>{{$new->updated_at}}</span></a></li>
                 <li><i class="lnr lnr-eye"></i>{{views($new)->count()}}</li>
             </ul>
-            <p>{!! \Illuminate\Support\Str::words(strip_tags($new->description), 1, '...') !!}</p>
+            <p>{!! \Illuminate\Support\Str::words(strip_tags($new->description), 20, '...') !!}</p>
         </div>
     </div>
 </div>

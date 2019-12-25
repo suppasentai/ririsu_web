@@ -26,7 +26,7 @@ Route::get('categories/{id}', ['as' => 'categories.show', 'uses' => 'CategoryCon
 
 //search
 Route::get('/search', function (ReleasesRepository $repository) {
-    //dd((string) request('search'));
+    // dd((string) request('search'));
     $releases = $repository->search((string) request('search'));
     return view('ririsu.search', [
         'releases' => $releases,
