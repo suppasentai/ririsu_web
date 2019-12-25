@@ -122,7 +122,7 @@
                         </ul>
                     </li>
                     @endcan
-                    @can('tags.create')
+                    @can('release.publish')
                     <li class="droper"><b><a href="#">{{__("Admin Control")}}<i class="fa fa-angle-down" aria-hidden="true"></i></a></b>
                         <ul class="level2 social-icons">
                             <li>

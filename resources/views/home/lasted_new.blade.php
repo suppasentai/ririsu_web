@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="news-post standart-post">
-            <div class="post-image">
+            <div class="post-image"  >
                 <a href="{{ route('releases.show', ['slug' => $new->slug])}}">
-                    <img src="{{ $new->image }}" alt="">
+                    <img src="{{ $new->image }}" style="height: 205px;" alt="">
                 </a>
                 <a href="#" class="category category-world">{{$new->category_ref}}</a>
             </div>
@@ -17,9 +17,9 @@
     </div>
     <div class="col-sm-6">
         <div class="news-post standart-post">
-            <div class="post-image">
+            <div class="post-image" >
                 <a href="{{ route('releases.show', ['slug' => $new_2->slug])}}">
-                    <img src="{{ $new_2->image }}" alt="">
+                    <img src="{{ $new_2->image }}"  style="height: 205px;" alt="">
                 </a>
                 <a href="#" class="category category-tech">{{$new_2->category_ref}}</a>
             </div>

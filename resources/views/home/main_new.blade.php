@@ -1,6 +1,6 @@
 <li>
     <div class="news-post large-image-post">
-        <img src="{{$new->image}}" alt="">
+        <img src="{{$new->image}}" class="h-100" alt="">
         <div class="hover-box">
             <a href="#" class="category category">{{($new->category->title)}}</a>
             <h2><a href="{{ route('releases.show', ['slug' => $new->slug])}}">{{$new->title}}</a></h2>

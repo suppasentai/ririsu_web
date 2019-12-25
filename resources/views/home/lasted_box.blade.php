@@ -12,7 +12,7 @@
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="{{ route('releases.show', ['slug' => $lasted_news[6]->slug])}}">
-                            <img src="{{ $lasted_news[6]->image }}" alt="">
+                            <img src="{{ $lasted_news[6]->image }}" style="height: 206px;" alt="">
                         </a>
                     <a href="#" class="category category-travel">{{$lasted_news[6]->category_ref}}</a>
                     </div>

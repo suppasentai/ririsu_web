@@ -29,6 +29,7 @@ class RolesTableSeeder extends Seeder
                 'release.create' => true,
                 'release.draft' => true,
                 'release.update' => true,
+                'system' => true,
             ]
         ]);
         $customer = Role::create([

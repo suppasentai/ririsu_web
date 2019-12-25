@@ -2,7 +2,7 @@
     <div class="news-post standart-post">
         <div class="post-image">
             <a href="{{ route('releases.show', ['slug' => $new->slug])}}">
-                <img src="{{ $new->image }}" alt="">
+                <img src="{{ $new->image }}" alt="" style="height: 140px;">
             </a>
             <a href="#" class="category category-tech">{{$new->category_ref}}</a>
         </div>
