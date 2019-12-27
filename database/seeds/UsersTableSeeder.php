@@ -69,7 +69,7 @@ class UsersTableSeeder extends Seeder
         }
 
 
-        for($i=0; $i<200; $i++){
+        for($i=0; $i<100; $i++){
             $user = User::create([
                 // 'name' => Str::random(10),
                 'slug' => uniqid(),
@@ -83,7 +83,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'password' => bcrypt('secret'),
             ]);
-            $companies = Company::all()->random(rand(6,10));
+            $companies = Company::all()->random(rand(20,30));
             // $user->follow($companies);
             foreach($companies as $company){
                 $user->follow($company);
@@ -103,7 +103,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'duccao@gmail.com',
             'password' => bcrypt('secret'),
         ]);
-        $companies = Company::all()->random(rand(6,10));
+        $companies = Company::all()->random(rand(20,30));
         // $user->follow($companies);
         foreach($companies as $company){
             $user->follow($company);
