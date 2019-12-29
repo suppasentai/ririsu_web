@@ -65,8 +65,16 @@ class Similarity
     {
         $intersection = array_unique(array_intersect($a, $b));
         $union        = array_unique(array_merge($a, $b));
-
+        
         return count($intersection) / count($union);
+    }
+
+    public static function jaccard_company(array $a, array $b): float
+    {
+        $intersection_company = array_unique(array_intersect_key($a, $b));
+        $union_company        = array_unique(array_merge($a, $b));
+        
+        return array_sum($intersection_company)/array_sum($union_company);
     }
 
     

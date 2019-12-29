@@ -97,6 +97,11 @@
                                     {{ __('Change Password') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('cold_start')}}" role="button">
+                                    {{ __('Industries/ Tags') }} <span class="caret"></span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     @can('release.draft')

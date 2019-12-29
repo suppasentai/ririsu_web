@@ -7,6 +7,8 @@ use App\Grade;
 use App\Company;
 use App\Release;
 use App\User;
+use App\Industry;
+use App\Tag;
 use App\Http\Requests\EditProfileRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
@@ -22,6 +24,32 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function coldStart(){
+        $industries = Industry::all();
+        $tags = Tag::all()->random(24);
+        return view('my_account.start', ['industries' => $industries, 'tags'=> $tags]);
+    }
+
+    public function endStart(Request $request){
+        $tags_ids = array_keys($request->all());
+        $tags_ids = array_filter($tags_ids, function($item){
+            return(is_int($item));
+        });
+        
+        $tags = Tag::find($tags_ids)->all();
+        // dd($tags);
+        auth()->user()->toggleFavorite($tags);
+        // dd(auth()->user()->toggleFavorite($tags));
+        return redirect(route('follow_recom'));
+    }
+
+    public function industryChangeStatus(Request $request, Industry $industry){
+
+        auth()->user()->toggleFavorite($industry);
+
+        return response()->json(auth()->user()->hasFavorited($industry));
     }
 
     protected function get_recommend($currentrelease){
@@ -47,8 +75,17 @@ class AccountController extends Controller
 
     public function index()
     {
-        $news = Release::orderBy('created_at', 'desc')->paginate(9);
-        $featured_news = Release::orderBy('created_at', 'desc')->paginate(5);
+        $following_companies = Auth::user()->followings(Company::class)->get();
+        // dd($following_companies);
+        $news = collect(new Release);
+        if(count($following_companies)){
+            foreach($following_companies as $following_company){
+                // dd($following_company);
+                $news = $news->merge($following_company->releases);
+            }
+            $news = $news->sortByDesc('updated_at')->paginate(9);
+        }
+        else $news = Release::orderBy('updated_at', 'desc')->paginate(9);
         return view('my_account.index', ['news' => $news]);
     }
 

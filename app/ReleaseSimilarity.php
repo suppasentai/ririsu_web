@@ -3,6 +3,7 @@
 namespace App;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class ReleaseSimilarity
 {
@@ -46,6 +47,17 @@ class ReleaseSimilarity
     public function setIndustryWeight(float $weight): void
     {
         $this->categoryWeight = $weight;
+    }
+
+    public function calculateContentSimilarity(): array
+    {
+        $array = [];
+        foreach ($this->products as $_product) {
+            $array[$_product->id] = $this->calculateCompanyContentSimilarityScore(Auth::user(), $_product);
+        }
+        // $array[$product->id] = $similarityScores;
+        arsort($array);
+        return $array;
     }
 
     public function calculateSimilarityMatrix(): array
@@ -192,10 +204,27 @@ class ReleaseSimilarity
             (Similarity::euclidean(
                 Similarity::minMaxNorm([$companyA->capital_stock*0.1, $companyA->employees_number*1000], 0, $this->publishedHighRange),
                 Similarity::minMaxNorm([$companyB->capital_stock*0.1, $companyB->employees_number*1000], 0, $this->publishedHighRange)
-            ) * $this->publishedWeight),
+            ) * 0.75),
             
             // Category similarity
-            (Similarity::jaccard((array)$companyA->followers_id, (array)$companyB->followers_id) * $this->followersWeight)
-        ])/ ($this->stockWeight + $this->followersWeight);
+            (Similarity::jaccard_company((array)$companyA->followers_id, (array)$companyB->followers_id) * $this->followersWeight)
+        ])/ (0.75 + $this->followersWeight);
     }
+
+    protected function calculateCompanyContentSimilarityScore($user, $company)
+    {
+        // dd($company->features);
+        $userTags = implode('', get_object_vars((object)$user->features));
+        $companyTags = implode('', get_object_vars((object)$company->features));
+
+        return array_sum([
+            // features similarity
+            (Similarity::hamming($userTags, $companyTags) * $this->featureWeight),
+            
+            // Category similarity
+            // (Similarity::jaccard_company((array)$companyA->followers_id, (array)$companyB->followers_id) * $this->followersWeight)
+        ])/ ($this->followersWeight);
+    }
+
+
 }

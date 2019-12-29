@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Overtrue\LaravelFollow\Traits\CanBeFavorited;
 
 class Tag extends Model
 {
+    use CanBeFavorited;
+
     protected $fillable = [
         'title',
     ];

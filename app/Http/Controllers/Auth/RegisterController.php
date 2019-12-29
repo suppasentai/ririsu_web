@@ -100,6 +100,6 @@ class RegisterController extends Controller
 
         $this->activationService->sendActivationMail($user);
 
-        return redirect(route('my_account'))->with('success', 'We\'ll send an email to '.$user->email.' in 5 minutes. Open it up to activate your account.');
+        return redirect(route('cold_start'))->with('success', 'We\'ll send an email to '.$user->email.' in 5 minutes. Open it up to activate your account.');
     }
 }

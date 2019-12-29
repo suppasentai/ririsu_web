@@ -24,6 +24,10 @@ Route::get('/releases/{slug}',  ['as' => 'releases.show', 'uses' => 'ReleaseCont
 Route::get('tags/{id}', ['as' => 'tags.show', 'uses' => 'TagController@show']);
 Route::get('categories/{id}', ['as' => 'categories.show', 'uses' => 'CategoryController@show']);
 
+
+
+
+
 //search
 Route::get('/search', function (ReleasesRepository $repository) {
     // dd((string) request('search'));
@@ -41,7 +45,7 @@ Route::group(['prefix' => 'companies'], function () {
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
-
+    
     Route::resource('tags', 'TagController')->except(['show'])->middleware('can:tags.viewAny');;
     Route::resource('companies', 'CompanyController')->except(['create', 'store', 'edit'])->middleware('can:company.viewAny');
     Route::get('followed', 'CompanyController@followedCompanies')->name('followed_companies');
@@ -49,14 +53,20 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::post('companiesChangeStatus/{company}', 'CompanyController@companiesChangeStatus')
         ->name('companiesChangeStatus')
         ->middleware('can:company');
-
     Route::post('follow_company', 'CompanyController@followCompany')->name('follow_company');
+
+    //Account
     Route::get('my_account', 'AccountController@index')->name('my_account');
     Route::get('my_articles', 'AccountController@articles')->name('my_acticles');
     Route::get('update_my_account', 'AccountController@edit')->name('my_account_edit');
     Route::post('update_my_account', 'AccountController@update')->name('my_account_update');
     Route::get('update_password', 'AccountController@editPassword')->name('password_edit');
     Route::post('update_password', 'AccountController@updatePassword')->name('password_update');
+    //COLD START TEST
+    Route::get('start', 'AccountController@coldStart')->name('cold_start');
+    Route::post('industryFavoriteStatus/{industry}', 'AccountController@industryChangeStatus')
+    ->name('industryFavoriteStatus');
+    Route::post('end_start', 'AccountController@endStart')->name('end_start');
 
     // Route::resource('categories', 'CategoryController');
     //Route::resource('instutions', 'InstitutionController');

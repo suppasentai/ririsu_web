@@ -7,10 +7,12 @@
 @section('content')
     <!--========Cards========-->
     <section id="content-section">
-<div class="container-fluid main-cont">
+      <div class="container-fluid main-cont">
         <div class="row news-row">
             <div class="container-fluid col-md-12 col-sm-6 justify-content-center news-block">
-                
+                <div class="title-section">
+                  <h1><span>{{ __('Companies for you') }}</span></h1>
+                </div>
                 <div class="card-group">
                     @foreach($companies as $company)
                       <div class="underlay">

@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\View;
 use App\Search;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -153,6 +155,20 @@ class AppServiceProvider extends ServiceProvider
 
             return new Search\ElasticsearchRepository(
                 $app->make(Client::class)
+            );
+        });
+
+        Collection::macro('paginate', function($perPage, $total = null, $page = null, $pageName = 'page') {
+            $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
+            return new LengthAwarePaginator(
+                $this->forPage($page, $perPage),
+                $total ?: $this->count(),
+                $perPage,
+                $page,
+                [
+                    'path' => LengthAwarePaginator::resolveCurrentPath(),
+                    'pageName' => $pageName,
+                ]
             );
         });
     }

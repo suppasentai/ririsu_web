@@ -13,12 +13,12 @@ class IndustriesTableSeeder extends Seeder
     {
         $titles = ['Fisheries / Agriculture / Forestry', 'Mining', 'Construction', 'Manufacturing', 'Electricity & Gas', 'Warehouse / Transportation',
                     'Telecommunications', 'Commercial (wholesale, retail)', 'Finance / Insurance', 'Real Estate Business', 'Restaurant / Accommodation', 'Medical / Welfare',
-                    'Education', 'Service', 'Government & Local Government', 'Foundation/ Association/ Religious Corp.'];
+                    'Education', 'Government & Local Government', 'Foundation/ Association/ Religious Corp.'];
         foreach ($titles as $key => $value) {
             DB::table('industries')->insert([
                 'title' => $value,
                 'description' => NULL,
-                'image' => NULL,
+                'image' => "images/industries_images/".($key+1).".png",
             ]);
         }
     }
