@@ -101,7 +101,7 @@ class CompanyRegisterController extends Controller
         event(new Registered($user));
         auth()->login($user);
 
-        $this->activationService->sendActivationMail($user);
+        //$this->activationService->sendActivationMail($user);
 
         return response()->json(['success'=>'Added new records.']);
     }
