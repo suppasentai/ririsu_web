@@ -13,16 +13,27 @@
                 </div>
                 <div class="col-md-4 col-sm-3">
                     <ul class="social-icons">
-                        @guest
-                        <li>
-                            <b><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></b>
-                        </li>
+                        
+                        @if(Auth::user()->roles[0]->slug == 'company')
+                            <li>
+                                <a href="{{ route('my_acticles')}}" role="button">
+                                    <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                                </a>
+                            </li>
+                        @elseif(Auth::user()->roles[0]->slug == 'editor')
+                            <li>
+                                <a href="{{ route('articlesFormStatus')}}" role="button">
+                                    <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                                </a>
+                            </li>
                         @else
-                        <li>
-                            <a href="{{ route('my_account')}}" role="button">
-                                <b>{{ __('My Profile') }} <span class="caret"></span></b>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="{{ route('my_account')}}" role="button">
+                                    <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                                </a>
+                            </li>
+                        @endif
+                        
                         <li>
                             <b><a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -34,7 +45,6 @@
                                 @csrf
                             </form>
                         </li>
-                        @endguest
                     </ul>
                 </div>
             </div>
@@ -51,13 +61,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mr-auto">
                                         
-                    <li class="nav-item">
-                        <a class="nav-link food" href="{{ route('my_account')}}">
-                            {{ __('Your News') }}&nbsp;
-                        </a>
-                    </li>
-
                     @if(!Auth::user()->hasAccess(['system']))
+                    <li class="nav-item">
+                            <a class="nav-link food" href="{{ route('my_account')}}">
+                                {{ __('Your News') }}&nbsp;
+                            </a>
+                        </li>
                     <li class="nav-item">
                         <a class="nav-link fashion" href="{{ route('follow_recom')}}">
                             {{ __('Follow more company') }}&nbsp;
@@ -73,7 +82,7 @@
         </div>
             <!-- vertical menu -->
             <div class="vertical-box" style=" overflow: hidden;">
-                <h2><a class="text-white food" href="{{ route('my_account')}}">{{Auth::user()->email}}</a></h2>
+                <h2><a class="text-white food">{{Auth::user()->email}}</a></h2>
                 <a href="#" class="close-menu"><i class="fa fa-window-close" aria-hidden="true"></i></a>
                 <ul class="vertical-menu social-icons">
                     
@@ -118,11 +127,13 @@
                                     {{ __('My Articles') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            @can('release.publish')
                             <li>
                                 <a href="{{ route('articlesFormStatus')}}" role="button">
                                     {{ __('Drafts ') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            @endcan
                         </ul>
                     </li>
                     @endcan

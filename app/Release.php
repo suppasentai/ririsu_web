@@ -51,66 +51,66 @@ class Release extends Model implements ViewableContract
     public function scopePolitic(){
         return $releases  = Release::whereHas('category', function($query){
             $query->where('title', 'Politic');
-        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        })->where('status', 2)->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeBusiness(){
         return $releases  = Release::whereHas('category', function($query){
             $query->where('title', 'Business');
-        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        })->where('status', 2)->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeTech(){
         return $releases  = Release::whereHas('category', function($query){
             $query->where('title', 'Tech');
-        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        })->where('status', 2)->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeEducation($query){
         return $releases  = Release::whereHas('category', function($query){
             $query->where('title', 'Education');
-        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        })->where('status', 2)->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeLifestyle($query){
         return $releases  = Release::whereHas('category', function($query){
             $query->where('title', 'Lifestyle');
-        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        })->where('status', 2)->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
     public function scopeSport($query){
         return $releases  = Release::whereHas('category', function($query){
             $query->where('title', 'Sport');
-        })->orderBy('created_at','desc')->orderBy('page_views', 'desc');
+        })->where('status', 2)->orderBy('created_at','desc')->orderBy('page_views', 'desc');
     }
 
     public function scopeLasted($query){
-        return $query->orderBy('created_at' , 'desc')->take(15)->get();
+        return $query->where('status', 2)->orderBy('created_at' , 'desc')->take(15)->get();
     }
 
     public function scopeFeatured($query){
-        return $query->orderBy('page_views', 'desc')->orderBy('created_at','desc')->paginate(5);
+        return $query->where('status', 2)->orderBy('page_views', 'desc')->orderBy('created_at','desc')->paginate(5);
     }
 
     public function scopeFeaturedToday($query){
         return $query->whereBetween('created_at', 
             [Carbon::now()->subHours(24)->format("Y-m-d H:i:s"), Carbon::now()]
-            )->orderBy('page_views', 'desc')->take(4)->get();
+            )->where('status', 2)->orderBy('page_views', 'desc')->take(4)->get();
     }
 
     public function scopeCombined($query){
-        return $query->inRandomOrder()->limit(5)->get();
+        return $query->where('status', 2)->inRandomOrder()->limit(5)->get();
     }
 
     public function scopeNews($query){
-        return $query->orderBy('created_at' , 'desc')->paginate(6);
+        return $query->where('status', 2)->orderBy('created_at' , 'desc')->paginate(6);
     }
 
     public function scopeWeekly($query){
         return $query->whereBetween('created_at', 
             [Carbon::now()->subWeek()->format("Y-m-d H:i:s"), Carbon::now()]
-            )->take(12)->get();
+            )->where('status', 2)->take(12)->get();
     }
 
     public function scopePopular($query){
         return $query->orderBy('page_views', 'desc')->whereBetween('created_at', 
         [Carbon::now()->subDay(3)->format("Y-m-d H:i:s"), Carbon::now()]
-        )->take(4)->get();
+        )->where('status', 2)->take(4)->get();
     }
 
     public function scopePublished($query){

@@ -27,11 +27,25 @@
                             <b><a href="#" data-toggle="modal" data-target="#loginModal">{{__('Login')}}</a></b>
                         </li>
                         @else
-                        <li>
-                            <a href="{{ route('my_account')}}" role="button">
-                                <b>{{ __('My Profile') }} <span class="caret"></span></b>
-                            </a>
-                        </li>
+                        @if(Auth::user()->roles[0]->slug == 'company')
+                            <li>
+                                <a href="{{ route('my_acticles')}}" role="button">
+                                    <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                                </a>
+                            </li>
+                        @elseif(Auth::user()->roles[0]->slug == 'editor')
+                            <li>
+                                <a href="{{ route('articlesFormStatus')}}" role="button">
+                                    <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                                </a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ route('my_account')}}" role="button">
+                                    <b>{{ __('My Profile') }} <span class="caret"></span></b>
+                                </a>
+                            </li>
+                        @endif
                         <li>
                             <b><a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();

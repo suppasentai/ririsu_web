@@ -49,6 +49,8 @@ class LoginController extends Controller
             $this->activationService->sendActivationMail($user);
             return redirect()->intended($this->redirectPath())->with('warning', 'Your account not activated yet');
         }
+        if ($user->roles[0]->slug == 'company') return redirect(route('my_acticles'));
+        if ($user->roles[0]->slug == 'editor') return redirect(route('articlesFormStatus'));
         return redirect()->intended($this->redirectPath());
     }
 

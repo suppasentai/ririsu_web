@@ -69,6 +69,7 @@ class UsersTableSeeder extends Seeder
             $user->roles()->attach($author);
         }
 
+        $customer = Role::where('slug', 'customer')->first();
 
         for($i=0; $i<100; $i++){
             $user = User::create([
@@ -84,11 +85,10 @@ class UsersTableSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'password' => bcrypt('secret'),
             ]);
-            $companies = Company::all()->random(rand(20,30));
+            $companies = Company::all()->random(rand(20,30))->all();
             // $user->follow($companies);
-            foreach($companies as $company){
-                $user->follow($company);
-            }
+            $user->follow($companies);
+            $user->roles()->attach($customer);
         }
 
         $user = User::create([
@@ -104,10 +104,9 @@ class UsersTableSeeder extends Seeder
             'email' => 'duccao@gmail.com',
             'password' => bcrypt('secret'),
         ]);
-        $companies = Company::all()->random(rand(20,30));
-        // $user->follow($companies);
-        foreach($companies as $company){
-            $user->follow($company);
-        }
+        $user->roles()->attach($customer);
+        $companies = Company::all()->random(rand(20,30))->all();
+        $user->follow($companies);
+        
     }
 }

@@ -147,6 +147,9 @@ class ReleaseController extends Controller
         }
         $article->tags()->sync($tags_array);
 
+        if (Auth::user()->roles[0]->slug == 'company') return redirect(route('my_acticles'));
+        if (Auth::user()->roles[0]->slug == 'editor') return redirect(route('articlesFormStatus'));
+
         return redirect(route('my_account'));
     }
 }

@@ -21,6 +21,7 @@ class ReleasesTableSeeder extends Seeder
         foreach(Company::all() as $company){
             for($i = 1; $i<= 3; $i++){
                 $category = Category::all()->random();
+                $tag = Tag::all()->random(3);
                 $release1 = Release::create([
                     'image' => '/upload/blog/s'.(($i%40)+1).'.jpg',
                     'title' => $faker->realText($maxNbChars = 30, $indexSize = 2), 
@@ -33,7 +34,6 @@ class ReleasesTableSeeder extends Seeder
                     'category_id' => $category->id,
                     'status' => ReleaseStatus::Published,
                 ]);
-                $tag = Tag::all()->random(3);
                 $release1->tags()->attach($tag);
             }
         }
