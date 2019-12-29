@@ -19,7 +19,7 @@
 										<a href="#" class="category">
 											{{$new->category_ref}}
 										</a>
-										<h2><a href="single-post.html">{{$new->title}}</a></h2>
+										<h2><a href="{{ route('releases.show', ['slug' => $new->slug])}}">{{$new->title}}</a></h2>
 										<ul class="post-tags">
 											<li><i class="lnr lnr-apartment"></i>{{__("by ")}}<a href="#">{{$new->company->title}}</a></li>
 											<li><i class="lnr lnr-eye"></i>{{views($new)->count()}}</li>
