@@ -51,9 +51,9 @@ class CompanyController extends Controller
         // $companies = Company::inRandomOrder()->whereNotIn('id', Auth::user()->followings(Company::class)->pluck('id'))->paginate(9);
         // $company1 = Company::find(1);
         // dd(Tag::find($company1->tags));
-
+        $companiesCF = collect(new Company);
         
-        if(Auth::user()->followings(Company::class)->get()){
+        if(count(Auth::user()->followings(Company::class)->get())){
             $test = Redis::get('companiesPredict');
             $test = json_decode($test, true);
             $predictArray = [];
@@ -69,8 +69,10 @@ class CompanyController extends Controller
             $ids =  array_keys($result);
             $placeholders = implode(',',array_fill(0, count($ids), '?'));       
             $companiesCF = Company::whereIn('id', array_keys($result))->orderByRaw("field(id,{$placeholders})", $ids)->get();
+            $companies = $companiesContent->merge($companiesCF)->paginate(9);
         }
-        $companies = $companiesContent->merge($companiesCF)->paginate(9);
+        else $companies = $companiesContent->paginate(9);
+        
         return view('companies.follow_recom', ['companies' => $companies]);
     }
 

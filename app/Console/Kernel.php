@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('command:loadrecommend')->everyFiveMinutes()->runInBackground();
+        $schedule->command('command:loadrecommend')->everyMinute()->runInBackground();
 
     }
 
