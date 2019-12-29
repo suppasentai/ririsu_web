@@ -8,9 +8,9 @@
     <!--========Cards========-->
     <section id="content-section">
       <div class="container-fluid main-cont">
-        <div class="row news-row">
+        <div class="row news-row m-0">
             <div class="container-fluid col-md-12 col-sm-6 justify-content-center news-block">
-                <div class="title-section">
+                <div class="title-section text-center">
                   <h1><span>{{ __('Companies for you') }}</span></h1>
                 </div>
                 <div class="card-group">
@@ -21,7 +21,7 @@
                               <div class="card-img-top" style="background-image: url('{{$company->image}}')"></div>
                             @endif
                             <div class="card-body" >
-                            <h5 class="card-title" style="font-family: 'Anton', sans-serif">{{$company->id}}<hr></h5>
+                            <h5 class="card-title" style="font-family: 'Anton', sans-serif">{{$company->title}}<hr></h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{$company->industry_ref}}</h6>
                             @if($company->releases->count()>=3)
                             <div class="bd-example">
@@ -36,19 +36,19 @@
                                       <div class="carousel-item active">
                                         <img src="{{$company->releases[0]->image}}" class="d-block w-100" alt="...">
                                         <div class="fixed-bottom p-0 carousel-caption d-none d-md-block">
-                                          <p class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></p>
+                                            <a href="{{ route('releases.show', ['slug' => $company->releases[0]->slug])}}" class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></a>
+                                          </div>
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="{{$company->releases[1]->image}}" class="d-block w-100" alt="...">
+                                        <div class="fixed-bottom p-0  carousel-caption d-none d-md-block">
+                                            <a href="{{ route('releases.show', ['slug' => $company->releases[0]->slug])}}" class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></a>
                                         </div>
                                       </div>
                                       <div class="carousel-item">
-                                        <img src="{{$company->releases[0]->image}}" class="d-block w-100" alt="...">
+                                        <img src="{{$company->releases[2]->image}}" class="d-block w-100" alt="...">
                                         <div class="fixed-bottom p-0  carousel-caption d-none d-md-block">
-                                          <p class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></p>
-                                        </div>
-                                      </div>
-                                      <div class="carousel-item">
-                                        <img src="{{$company->releases[0]->image}}" class="d-block w-100" alt="...">
-                                        <div class="fixed-bottom p-0  carousel-caption d-none d-md-block">
-                                          <p class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></p>
+                                            <a href="{{ route('releases.show', ['slug' => $company->releases[0]->slug])}}" class="text-white bg-secondary"><b>{{$company->releases[0]->title}}</b></a>
                                         </div>
                                       </div>
                                     
@@ -96,9 +96,9 @@
                       </div>
                     @endforeach
                 </div>
+                {{ $companies->links() }}
 
             </div>
-            {{ $companies->links() }}
 
         </div>
     </div>

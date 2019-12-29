@@ -13,6 +13,7 @@ use Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use App\ReleaseSimilarity;
+use App\ContentCompanySimilarity;
 
 class CompanyController extends Controller
 {
@@ -22,20 +23,18 @@ class CompanyController extends Controller
     }
 
     public function followedCompanies(){
-        $companies = Auth::user()->followings(Company::class)->get();
+        $companies = Auth::user()->followings(Company::class)->paginate(9);
         return view('companies.followed', ['companies' => $companies]);
     }
 
-    protected function get_recommend($currentrelease){
+    protected function getContentRecommend(){
 
-        $companies = Company::all()->toJSON();
-        $companies        = json_decode($companies);
+        // dd($companies[1]->features);
+        // $companies        = json_decode($companies);
         // dd($companies);
-        
-        // $selectedId      = intval(app('request')->input('id') ?? '105');
-
-        $recomCompanySimilarity = new ReleaseSimilarity($companies, 'companies');
+        $recomCompanySimilarity = new ContentCompanySimilarity();
         $recomCompanies = $recomCompanySimilarity->calculateContentSimilarity();
+
         return $recomCompanies;
     }
 
@@ -43,7 +42,7 @@ class CompanyController extends Controller
 
         // $release = Release::where('slug', '=', $slug)->first();
         
-        $recommend_company = $this->get_recommend(Auth::user());
+        $recommend_company = $this->getContentRecommend();
         $ids = array_keys($recommend_company);
         $placeholders = implode(',',array_fill(0, count($ids), '?'));
         $companiesContent = Company::whereIn('id', array_keys($recommend_company))->orderByRaw("field(id,{$placeholders})", $ids)->get();
@@ -69,10 +68,10 @@ class CompanyController extends Controller
             $ids =  array_keys($result);
             $placeholders = implode(',',array_fill(0, count($ids), '?'));       
             $companiesCF = Company::whereIn('id', array_keys($result))->orderByRaw("field(id,{$placeholders})", $ids)->get();
-            $companies = $companiesContent->merge($companiesCF)->paginate(9);
+            $companies = $companiesCF->merge($companiesContent)->paginate(9);
         }
         else $companies = $companiesContent->paginate(9);
-        
+
         return view('companies.follow_recom', ['companies' => $companies]);
     }
 

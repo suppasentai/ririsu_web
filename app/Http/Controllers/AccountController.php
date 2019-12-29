@@ -78,15 +78,17 @@ class AccountController extends Controller
         $following_companies = Auth::user()->followings(Company::class)->get();
         // dd($following_companies);
         $news = collect(new Release);
+        $favorating_tags = Auth::user()->favorites(Tag::class)->with('releases')->get();
         if(count($following_companies)){
             foreach($following_companies as $following_company){
                 // dd($following_company);
                 $news = $news->merge($following_company->releases);
             }
-            $news = $news->sortByDesc('updated_at')->paginate(9);
+            $news = $news->sortByDesc('updated_at');
         }
-        else $news = Release::orderBy('updated_at', 'desc')->paginate(9);
-        return view('my_account.index', ['news' => $news]);
+        else $news = Release::orderBy('updated_at', 'desc');
+        $another_news = $news->splice(3)->paginate(10);
+        return view('my_account.index', ['news' => $news, 'another_news' => $another_news, 'favorating_tags' => $favorating_tags] );
     }
 
     public function articles()

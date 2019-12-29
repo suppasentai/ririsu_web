@@ -31,16 +31,12 @@ class Company extends Model
     public function getFollowersIdAttribute(){
         $values = [];
         $users = User::where('company_id', null)->get();
-        $followers_ids= $this->followers()->pluck('id');
-        
         foreach($users as $user){
             $magniture = 0;
             $followingCompanies = $user->followings(Company::class)->pluck('id');
             $magniture = sqrt(count($followingCompanies));
             $values[$user->id] = 0;
-            foreach($followers_ids as $follower_id){
-                if($user->id == $follower_id) $values[$user->id] = 1/$magniture;
-            }
+            if($this->isFollowedBy($user)) $values[$user->id] = 1/$magniture;
         }
         return $values;
     }
@@ -49,7 +45,6 @@ class Company extends Model
         $results = [];
         $releases = $this->releases;
         foreach($releases as $release){
-            // dd($release->tags->toArray());
             $results = array_merge($results, $release->tags->pluck('id')->toArray()); 
         }
         return Tag::find(array_unique($results));

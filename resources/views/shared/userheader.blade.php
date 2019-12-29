@@ -50,14 +50,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mr-auto">
-                    @if(!Auth::user()->hasAccess(['system']))
-                    <li class="nav-item">
-                        <a class="nav-link sport" href="{{ route('followed_companies')}}">
-                            {{ __('Followed Companies') }}&nbsp;
-                        </a>
-                    </li>
-                    @endif
-
                                         
                     <li class="nav-item">
                         <a class="nav-link food" href="{{ route('my_account')}}">
@@ -73,8 +65,8 @@
                     </li>
                     @endif
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search for..." aria-label="Search">
+                <form  action="{{ url('search') }}" method="get" role="search" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search for..." value="{{ request('q') }}" aria-label="Search">
                     <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
@@ -97,11 +89,18 @@
                                     {{ __('Change Password') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            @if(!Auth::user()->hasAccess(['system']))
                             <li>
                                 <a href="{{ route('cold_start')}}" role="button">
                                     {{ __('Industries/ Tags') }} <span class="caret"></span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('followed_companies')}}" role="button">
+                                    {{ __('Following Companies') }} <span class="caret"></span>
+                                </a>
+                            </li>
+                            @endif
                         </ul>
                     </li>
                     @can('release.draft')

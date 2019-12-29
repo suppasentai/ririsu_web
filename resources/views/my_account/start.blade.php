@@ -29,7 +29,7 @@
                                             <i id="{{ $industry->id }}" class="material-icons"></i>
                                         @endif
                                     </h4>
-                                    <img src="{{asset($industry->image)}}" alt="Photo of sunset">
+                                    <img src="/{{$industry->image}}" alt="Photo of sunset">
                                     <h5 class="card-industryFavoriteStatustitle text-center mt-3 mb-3">{{$industry->title}}</h5>
                                 </div>
                             </div>

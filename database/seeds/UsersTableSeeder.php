@@ -27,7 +27,8 @@ class UsersTableSeeder extends Seeder
             'address' => 'Calle 11 # 13 - 31 Belén, La Unión, Valle del Cauca, Colombia',
             'email' => 'sonduc2210@gmail.com',
             'password' => bcrypt('secret'),
-            'active' => true
+            'active' => true,
+            'company_id' => 1,
         ]);
         $user1->roles()->attach($admin);
 
