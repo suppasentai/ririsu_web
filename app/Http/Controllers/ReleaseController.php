@@ -87,6 +87,7 @@ class ReleaseController extends Controller
         $article->grade_ref = $request->grade_ref;
         $article->note = "";
         $article->company_id = Auth::user()->company->id;
+        // dd(Auth::user()->company->id);
         $article->slug = uniqid();
         if($request->user()->role != "ADMIN"){
             $article->status = ReleaseStatus::Editing;
